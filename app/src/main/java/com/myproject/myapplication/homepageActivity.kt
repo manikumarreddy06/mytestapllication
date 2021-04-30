@@ -17,7 +17,7 @@ class homepageActivity : AppCompatActivity() {
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btn1.setOnClickListener {
-           Intent(this,storeactivity::class.java).also {
+           Intent(this,ScannerActivity::class.java).also {
                startActivity(it)
            }
             binding.btn2.setOnClickListener {
