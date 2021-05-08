@@ -5,11 +5,7 @@ import com.google.gson.JsonObject
 import com.myproject.myapplication.BuildConfig
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
-import okhttp3.ConnectionPool
-import okhttp3.Interceptor
-import okhttp3.MultipartBody
-import okhttp3.OkHttpClient
-import okhttp3.RequestBody
+import okhttp3.*
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -23,8 +19,7 @@ interface WebServiceProvider {
     companion object {
 
 
-        private const val BASE_URL = "https://services.medfin.in/" //production
-
+        private const val BASE_URL = "http://15.206.255.26:8080/" //production
 
 
         private val okHttpClient = OkHttpClient.Builder()
@@ -78,8 +73,8 @@ interface WebServiceProvider {
     }
 
 
-    //@POST("app/login")
-    //fun login(@Body data: JsonObject): Single<Single>
+    @POST("api/login")
+    fun login(@Body data: JsonObject): Single<ResponseBody>
 
 
 
