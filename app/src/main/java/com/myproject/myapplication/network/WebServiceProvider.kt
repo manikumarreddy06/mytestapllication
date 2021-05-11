@@ -3,6 +3,7 @@ package com.myproject.myapplication.network
 import android.text.TextUtils
 import com.google.gson.JsonObject
 import com.myproject.myapplication.BuildConfig
+import com.myproject.myapplication.model.LoginResponseBean
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import okhttp3.*
@@ -74,7 +75,7 @@ interface WebServiceProvider {
 
 
     @POST("api/login")
-    fun login(@Body data: JsonObject): Single<ResponseBody>
+    fun login(@Body data: JsonObject): Single<LoginResponseBean>
 
 
 
