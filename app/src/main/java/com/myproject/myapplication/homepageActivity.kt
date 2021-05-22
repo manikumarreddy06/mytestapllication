@@ -11,7 +11,7 @@ import com.myproject.myapplication.databinding.ActivityMainBinding
 import com.myproject.myapplication.databinding.ActivityMainBinding.inflate
 
 class homepageActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityHomepageBinding
+    private lateinit var binding:ActivityHomepageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
@@ -35,6 +35,8 @@ class homepageActivity : AppCompatActivity() {
                  startActivity(it)
              }
             }
+
+
 
         }
     }

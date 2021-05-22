@@ -23,14 +23,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btnSubmit.setOnClickListener {
+        binding.btnsubmit.setOnClickListener {
 
 
-            var usernumber = binding.etUserName.text
+            var usernumber = binding.etMobilenum.text
             var userpassword = binding.etPassword.text
 
             doLogin(usernumber, userpassword)
-
 
         }
 
