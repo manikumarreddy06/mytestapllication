@@ -78,6 +78,12 @@ class MainActivity : AppCompatActivity() {
         preferenceManager.set(PreferenceManager.USER_NAME,response.username)
         preferenceManager.set(PreferenceManager.LOGIN_STATUS,true)
 
+
+
+        Intent(this,homepageActivity::class.java).also {
+            startActivity(it)
+        }
+
         //remain fields
     }
 }
