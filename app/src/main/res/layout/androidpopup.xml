@@ -4,18 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="hello world"
-        android:textSize="25sp"
         android:layout_marginLeft="125dp"
         android:layout_marginTop="100dp"
-        />
+        android:text="hello world"
+        android:textSize="25sp" />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp"
+        />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +40,7 @@
          android:layout_width="150dp"
          android:layout_marginTop="20dp"
          android:layout_height="wrap_content"
-         android:layout_marginLeft="10dp"/>
+         android:layout_marginLeft="25dp"/>
 
 
  </LinearLayout>
