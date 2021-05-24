@@ -20,15 +20,16 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnsubmit.setOnClickListener {
 
 
-            var usernumber = binding.etMobilenum.text
+            var username = binding.etMobilenum.text
             var userpassword = binding.etPassword.text
 
-            doLogin(usernumber, userpassword)
+            doLogin(username, userpassword)
+
 
         }
 
@@ -36,13 +37,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun doLogin(usernumber: Editable, userpassword: Editable) {
         val obj = JsonObject()
-        obj!!.addProperty("userPhoneNumber", usernumber.toString())
-        obj!!.addProperty("password", userpassword.toString())
+        obj.addProperty("userPhoneNumber", usernumber.toString())
+        obj.addProperty("password", userpassword.toString())
 
 
         var provider: WebServiceProvider =
             WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
-        provider!!.login(obj)
+        provider.login(obj)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<LoginResponseBean> {
                 override fun onSubscribe(d: Disposable) {
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity() {
                         onsaveData(response.user)
                     }
                     else if(!TextUtils.isEmpty(response.message)){
-                        Toast.makeText(this@MainActivity, "messafe-->"+response.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "message-->"+response.message, Toast.LENGTH_SHORT).show()
                     }
                     else {
                         Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
@@ -71,10 +72,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun onsaveData(response: User) {
 
-        var preferenceManager:PreferenceManager= PreferenceManager.instance(this)
+        var preferenceManager:PreferenceManager= PreferenceManager.instance(this,)
 
         preferenceManager.set(PreferenceManager.USER_NAME,response.username)
         preferenceManager.set(PreferenceManager.LOGIN_STATUS,true)
+        preferenceManager.set(PreferenceManager.USER_ID,response.id)
+        preferenceManager.set(PreferenceManager.USER_MOBILE_NUMBER,response.userPhoneNumber)
+        preferenceManager.set(PreferenceManager.CITY_ID,response.cityId)
+
 
 
 

@@ -19,6 +19,8 @@ public class PreferenceManager {
     public static final String USER_EMAIL_ID = "USER_EMAIL_ID";
     public static final String USER_ACCESS_TOKEN = "USER_ACCESS_TOKEN";
     public static final String LOGIN_STATUS = "LOGIN_STATUS";
+    public static final String CITY_ID="CITY_ID";
+    public static final String PASSWORD="PASSWORD";
 
 
 
