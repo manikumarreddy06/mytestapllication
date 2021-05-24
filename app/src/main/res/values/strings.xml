@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string-array name="languages">
+        <item>English</item>
+        <item>german</item>
+        <item>french</item>
+    </string-array>
 </resources>

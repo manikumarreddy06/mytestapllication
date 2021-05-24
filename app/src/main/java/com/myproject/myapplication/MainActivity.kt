@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                         onsaveData(response.user)
                     }
                     else if(!TextUtils.isEmpty(response.message)){
-                        Toast.makeText(this@MainActivity, "messafe-->"+response.message, Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@MainActivity, "message-->"+response.message, Toast.LENGTH_SHORT).show()
                     }
                     else {
                         Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
@@ -77,15 +77,6 @@ class MainActivity : AppCompatActivity() {
         preferenceManager.set(PreferenceManager.USER_ID,response.id)
         preferenceManager.set(PreferenceManager.USER_MOBILE_NUMBER,response.userPhoneNumber)
         preferenceManager.set(PreferenceManager.CITY_ID,response.cityId)
-
-
-
-
-
-
-
-
-
 
 
         //remain fields
