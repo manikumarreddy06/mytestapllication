@@ -79,6 +79,8 @@ interface WebServiceProvider {
 
 
 
+    @POST("api/product/search")
+    fun productSearch(@Body data: JsonObject): Single<LoginResponseBean>
 
 
 }

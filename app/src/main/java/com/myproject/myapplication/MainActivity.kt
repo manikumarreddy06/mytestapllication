@@ -15,7 +15,6 @@ import com.myproject.myapplication.network.WebServiceProvider
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import okhttp3.ResponseBody
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

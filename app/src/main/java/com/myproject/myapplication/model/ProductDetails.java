@@ -1,6 +1,8 @@
+
 package com.myproject.myapplication.model;
 
 import java.io.Serializable;
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,11 +12,6 @@ public class ProductDetails implements Serializable
     @SerializedName("id")
     @Expose
     private long id;
-
-    public ProductDetails(String productName) {
-        this.productName = productName;
-    }
-
     @SerializedName("productName")
     @Expose
     private String productName;
@@ -27,7 +24,10 @@ public class ProductDetails implements Serializable
     @SerializedName("description")
     @Expose
     private String description;
-    private final static long serialVersionUID = 5813106815197538236L;
+    @SerializedName("productVariants")
+    @Expose
+    private List<ProductVariant> productVariants = null;
+    private final static long serialVersionUID = -395865367225957669L;
 
     public long getId() {
         return id;
@@ -69,4 +69,16 @@ public class ProductDetails implements Serializable
         this.description = description;
     }
 
+    public List<ProductVariant> getProductVariants() {
+        return productVariants;
+    }
+
+    public void setProductVariants(List<ProductVariant> productVariants) {
+        this.productVariants = productVariants;
+    }
+
+
+    public ProductDetails(String productName) {
+        this.productName = productName;
+    }
 }
