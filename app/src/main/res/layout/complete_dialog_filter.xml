@@ -39,7 +39,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+
+        android:layout_height="wrap_content"
         android:layout_below="@+id/title"
         android:orientation="vertical"
         android:paddingBottom="@dimen/margin_4dp">
@@ -155,7 +156,7 @@
 
 
             <EditText
-                android:id="@+id/etInputCustomerName"
+                android:id="@+id/etProcPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_vertical_margin"
@@ -192,13 +193,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_vertical_margin"
                 android:layout_marginRight="@dimen/activity_vertical_margin"
-                android:text="Procurent Price"
+                android:text="Selling Price"
                 android:textColor="@color/primaryText"
                 android:textSize="@dimen/size_16sp" />
 
 
             <EditText
-                android:id="@+id/etInputCustomerName"
+                android:id="@+id/etInputSellPrice"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/activity_vertical_margin"

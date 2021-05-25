@@ -27,6 +27,9 @@
         <activity android:name=".storeactivity" />
         <activity android:name=".homepageActivity" />
 
+
+        <activity android:name=".inward.FilterListActivity" />
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,6 +1,7 @@
 package com.myproject.myapplication.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
             public void onClick(View v) {
                 String productName = horizontalGrocderyList.get(position).getProductName().toString();
                 Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
