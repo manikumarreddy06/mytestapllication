@@ -1,15 +1,15 @@
 package com.myproject.myapplication
 
 import android.Manifest
+import android.app.Activity
+import android.app.Dialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.media.MediaBrowserServiceCompat
@@ -18,14 +18,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonObject
 import com.google.zxing.Result
+import com.medfin.Utils
 import com.myproject.myapplication.ZXingScannerView.ResultHandler
 import com.myproject.myapplication.adapters.ProductListAdapter
-import com.myproject.myapplication.model.LoginResponseBean
+import com.myproject.myapplication.inward.AddProduct
+import com.myproject.myapplication.model.ProductDetailResponse
 import com.myproject.myapplication.model.ProductDetails
+import com.myproject.myapplication.model.ProductVariant
 import com.myproject.myapplication.network.WebServiceProvider
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import java.lang.Double
 import java.util.*
 
 class ScannerActivity : AppCompatActivity(), ResultHandler {
@@ -113,7 +117,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
         private const val REQUEST_PERMISSION = 123
     }
 
-    private fun doProductSearch(productCode:String) {
+    private fun doProductSearch(productCode: String) {
         val obj = JsonObject()
         obj!!.addProperty("productCode", productCode)
 
@@ -122,14 +126,23 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
             WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
         provider!!.productSearch(obj)
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<LoginResponseBean> {
+            .subscribe(object : SingleObserver<ProductDetailResponse> {
                 override fun onSubscribe(d: Disposable) {
 
                 }
 
-                override fun onSuccess(response: LoginResponseBean) {
-                    Toast.makeText(this@ScannerActivity, "suceess", Toast.LENGTH_SHORT).show()
+                override fun onSuccess(response: ProductDetailResponse) {
+                   
+                    if(response.isIsvalid()) {
 
+                        Toast.makeText(this@ScannerActivity, "suceess", Toast.LENGTH_SHORT).show()
+
+                        showpopup(response!!.productDetails!!.productVariants,response!!.productDetails!!)
+                    }
+                    else{
+                        Toast.makeText(this@ScannerActivity, "product not found", Toast.LENGTH_SHORT).show()
+
+                    }
 
                 }
 
@@ -139,4 +152,128 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                 }
             })
     }
+
+
+    private fun showpopup(
+        productVariants: MutableList<ProductVariant>,
+        productDetails: ProductDetails
+    ) {
+
+
+        var selectedPosition:Int=-1;
+        val dialog = Dialog(this@ScannerActivity)
+        // Include dialog.xml file
+        // Include dialog.xml file
+        dialog.setContentView(R.layout.complete_dialog_filter)
+        // Set dialog title
+        // Set dialog title
+
+
+        val spinner: Spinner =dialog.findViewById(R.id.spVariant)
+
+
+        val btnSubmit: Button =dialog.findViewById(R.id.btnSubmit)
+
+        val btnCancel: Button =dialog.findViewById(R.id.btnCancel)
+
+
+        val etProductQty: EditText =dialog.findViewById(R.id.etProductQty)
+        val etProcPrice: EditText =dialog.findViewById(R.id.etProcPrice)
+        val etInputSellPrice: EditText =dialog.findViewById(R.id.etInputSellPrice)
+
+        dialog.show();
+
+        val outlet: MutableList<String> = ArrayList()
+        outlet.add("Select")
+        for (item in productVariants!!)
+            outlet.add(item.productVariantName)
+
+        // Initializing an ArrayAdapter
+        val adapter = ArrayAdapter(
+            this, // Context
+            android.R.layout.simple_spinner_dropdown_item, // Layout
+            outlet // Array
+        )
+
+        // Set the drop down view resource
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line)
+
+        // Finally, data bind the spinner object with dapter
+        spinner.adapter = adapter;
+
+        // Set an on item selected listener for spinner object
+        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long){
+                // Display the selected item text on text view
+                //text_view.text = "Spinner selected : ${parent.getItemAtPosition(position).toString()}"
+                selectedPosition=position
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>){
+
+
+
+
+            }
+        }
+
+
+        btnSubmit.setOnClickListener{
+
+
+
+
+
+
+            val quantity:Int=etProductQty.text.toString().toInt()
+            val procuPrice:Int=etProcPrice.text.toString().toInt()
+            val sellPrice:Int=etInputSellPrice.text.toString().toInt()
+
+            if(selectedPosition<0){
+                Utils.toast("select variant",this@ScannerActivity)
+            }
+            else if(quantity<0){
+                Utils.toast("quantity should be  more than zero",this@ScannerActivity)
+            }
+            else if(procuPrice<0){
+                Utils.toast("procurent Price should be  more than zero",this@ScannerActivity)
+            }
+
+            else if(sellPrice<0){
+                Utils.toast("sellPrice should be  more than zero",this@ScannerActivity)
+            }
+
+            else{
+
+                var prodVariant:ProductVariant= productVariants[selectedPosition-1]
+                prodVariant.procPrice= procuPrice.toLong()
+                prodVariant.sellingPrice=sellPrice.toLong()
+                prodVariant.quantity=quantity.toLong()
+
+
+                val intent = Intent()
+                intent.putExtra("addProduct", prodVariant)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+            }
+
+
+            Toast.makeText(this@ScannerActivity, "product add", Toast.LENGTH_SHORT).show()
+        }
+
+        btnCancel.setOnClickListener{
+
+
+            Toast.makeText(this@ScannerActivity, "product cancel ", Toast.LENGTH_SHORT).show()
+        }
+
+
+
+
+
+
+
+
+    }
+
 }

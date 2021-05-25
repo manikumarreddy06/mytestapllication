@@ -9,6 +9,7 @@ import com.myproject.myapplication.databinding.ActivityHomepageBinding
 import com.myproject.myapplication.databinding.ActivityHomepageBinding.inflate
 import com.myproject.myapplication.databinding.ActivityMainBinding
 import com.myproject.myapplication.databinding.ActivityMainBinding.inflate
+import com.myproject.myapplication.inward.InwardProductActivity
 
 class homepageActivity : AppCompatActivity() {
     private lateinit var binding:ActivityHomepageBinding
@@ -17,11 +18,12 @@ class homepageActivity : AppCompatActivity() {
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btn1.setOnClickListener {
-           Intent(this,ScannerActivity::class.java).also {
-               startActivity(it)
-           }
+            Intent(this, ScannerActivity::class.java).also {
+                startActivity(it)
+            }
+        }
             binding.btn2.setOnClickListener {
-                Intent(this,inactivity::class.java).also {
+                Intent(this,InwardProductActivity::class.java).also {
                     startActivity(it)
                 }
             }
@@ -36,8 +38,5 @@ class homepageActivity : AppCompatActivity() {
              }
             }
 
-
-
-        }
     }
 }

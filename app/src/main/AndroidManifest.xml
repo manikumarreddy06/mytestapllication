@@ -28,7 +28,7 @@
         <activity android:name=".homepageActivity" />
 
 
-        <activity android:name=".inward.FilterListActivity" />
+        <activity android:name=".inward.InwardProductActivity" />
 
         <activity android:name=".SplashActivity">
             <intent-filter>

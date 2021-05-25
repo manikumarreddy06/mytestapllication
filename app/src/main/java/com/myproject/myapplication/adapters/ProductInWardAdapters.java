@@ -12,7 +12,9 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myproject.myapplication.R;
+import com.myproject.myapplication.inward.AddProduct;
 import com.myproject.myapplication.model.ProductDetails;
+import com.myproject.myapplication.model.ProductVariant;
 
 import java.util.List;
 
@@ -21,10 +23,10 @@ import java.util.List;
  */
 
 public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAdapters.GroceryViewHolder>{
-    private List<ProductDetails> horizontalGrocderyList;
+    private List<ProductVariant> horizontalGrocderyList;
     Context context;
 
-    public ProductInWardAdapters(List<ProductDetails> horizontalGrocderyList, Context context){
+    public ProductInWardAdapters(List<ProductVariant> horizontalGrocderyList, Context context){
         this.horizontalGrocderyList= horizontalGrocderyList;
         this.context = context;
     }
@@ -32,7 +34,7 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
     @Override
     public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
-        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.horizontal_category, parent, false);
+        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_lineitem_layout, parent, false);
         GroceryViewHolder gvh = new GroceryViewHolder(groceryProductView);
         return gvh;
     }
@@ -40,15 +42,22 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
     @Override
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         //holder.imageView.setImageResource(horizontalGrocderyList.get(position).getProductName());
-        holder.txtview.setText(horizontalGrocderyList.get(position).getProductName());
+        holder.txtview.setText(horizontalGrocderyList.get(position).getProductVariantName());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String productName = horizontalGrocderyList.get(position).getProductName().toString();
+                String productName = horizontalGrocderyList.get(position).getProductVariantName().toString();
                 Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
 
             }
         });
+        holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
+
+        holder.tvSellingPrice.setText("Selling Price:"+horizontalGrocderyList.get(position).getSellingPrice());
+
+
+        holder.tvQuantity.setText("Quatity:"+horizontalGrocderyList.get(position).getQuantity());
+
     }
 
     @Override
@@ -59,10 +68,17 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
     public class GroceryViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView txtview;
+        TextView tvProcprice;
+        TextView tvSellingPrice;
+        TextView tvQuantity;
         public GroceryViewHolder(View view) {
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
             txtview=view.findViewById(R.id.idProductName);
+            tvProcprice=view.findViewById(R.id.tvProcprice);
+            tvSellingPrice=view.findViewById(R.id.tvSellingPrice);
+            tvQuantity=view.findViewById(R.id.tvQuantity);
+
         }
     }
 }

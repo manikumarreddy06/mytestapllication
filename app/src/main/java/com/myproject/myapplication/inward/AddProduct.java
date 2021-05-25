@@ -1,11 +1,12 @@
+package com.myproject.myapplication.inward;
 
-package com.myproject.myapplication.model;
 
-import java.io.Serializable;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ProductVariant implements Serializable
+import java.io.Serializable;
+
+public class AddProduct implements Serializable
 {
 
     @SerializedName("productId")
@@ -14,15 +15,9 @@ public class ProductVariant implements Serializable
     @SerializedName("variantId")
     @Expose
     private long variantId;
-    @SerializedName("productVariantName")
-    @Expose
-    private String productVariantName;
-    @SerializedName("description")
-    @Expose
-    private String description;
     @SerializedName("price")
     @Expose
-    private long price;
+    private String price;
     @SerializedName("procPrice")
     @Expose
     private long procPrice;
@@ -31,11 +26,11 @@ public class ProductVariant implements Serializable
     private long sellingPrice;
     @SerializedName("storeId")
     @Expose
-    private String storeId;
+    private long storeId;
     @SerializedName("quantity")
     @Expose
     private long quantity;
-    private final static long serialVersionUID = -4447632388529275673L;
+    private final static long serialVersionUID = 4478176112159785282L;
 
     public long getProductId() {
         return productId;
@@ -53,27 +48,11 @@ public class ProductVariant implements Serializable
         this.variantId = variantId;
     }
 
-    public String getProductVariantName() {
-        return productVariantName;
-    }
-
-    public void setProductVariantName(String productVariantName) {
-        this.productVariantName = productVariantName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public long getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(long price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 
@@ -93,11 +72,11 @@ public class ProductVariant implements Serializable
         this.sellingPrice = sellingPrice;
     }
 
-    public String getStoreId() {
+    public long getStoreId() {
         return storeId;
     }
 
-    public void setStoreId(String storeId) {
+    public void setStoreId(long storeId) {
         this.storeId = storeId;
     }
 
@@ -109,7 +88,4 @@ public class ProductVariant implements Serializable
         this.quantity = quantity;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 }

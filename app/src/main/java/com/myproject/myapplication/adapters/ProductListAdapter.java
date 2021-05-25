@@ -64,6 +64,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
             txtview=view.findViewById(R.id.idProductName);
+
         }
     }
 }

@@ -3,7 +3,9 @@ package com.myproject.myapplication.network
 import android.text.TextUtils
 import com.google.gson.JsonObject
 import com.myproject.myapplication.BuildConfig
+import com.myproject.myapplication.inward.AddProduct
 import com.myproject.myapplication.model.LoginResponseBean
+import com.myproject.myapplication.model.ProductDetailResponse
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import okhttp3.*
@@ -80,7 +82,11 @@ interface WebServiceProvider {
 
 
     @POST("api/product/search")
-    fun productSearch(@Body data: JsonObject): Single<LoginResponseBean>
+    fun productSearch(@Body data: JsonObject): Single<ProductDetailResponse>
+
+
+    @POST("api/variant/add")
+    fun productSearch(@Body data:MutableList<AddProduct?>): Single<ProductDetailResponse>
 
 
 }
