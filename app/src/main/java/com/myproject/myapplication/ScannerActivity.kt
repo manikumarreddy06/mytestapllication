@@ -119,12 +119,12 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
 
     private fun doProductSearch(productCode: String) {
         val obj = JsonObject()
-        obj!!.addProperty("productCode", productCode)
+        obj.addProperty("productCode", productCode)
 
 
         var provider: WebServiceProvider =
             WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
-        provider!!.productSearch(obj)
+        provider.productSearch(obj)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<ProductDetailResponse> {
                 override fun onSubscribe(d: Disposable) {

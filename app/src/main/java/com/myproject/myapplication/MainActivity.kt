@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding= ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.btnsubmit.setOnClickListener {
+        binding.btnSubmit.setOnClickListener {
 
 
             var username = binding.etMobilenum.text

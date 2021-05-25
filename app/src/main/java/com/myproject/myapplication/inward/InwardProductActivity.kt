@@ -118,7 +118,7 @@ class InwardProductActivity : AppCompatActivity() {
 
                 override fun onSuccess(response: ProductDetailResponse) {
 
-                    
+
 
                         Toast.makeText(this@InwardProductActivity, "suceess", Toast.LENGTH_SHORT).show()
                         finish()
