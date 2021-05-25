@@ -12,61 +12,57 @@
     <LinearLayout
         android:id="@+id/ll_main_layout"
         android:layout_width="match_parent"
-        android:background="@drawable/andbackground"
         android:layout_height="match_parent"
+        android:background="@drawable/andbackground"
         android:gravity="center_horizontal"
-        android:padding="25dp"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="50sp"
-            android:layout_marginTop="100dp"
-            android:fontFamily="cursive"
-            android:textColor="#D84315"
-            android:padding="30dp"
-            android:text="Login"/>
+        android:orientation="vertical"
+        android:padding="25dp">
+
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="login"
+         android:textSize="50sp"
+         android:layout_marginTop="150dp"
+         android:textStyle="italic"
+         android:textColor="@color/colorPrimaryDark"/>
+
         <EditText
             android:id="@+id/et_mobilenum"
-            android:hint="Enter your mobile number"
-            android:textSize="25sp"
-            android:textColor="#9E9B10"
-            android:textColorHint="#151412"
-            android:textAlignment="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:hint="Enter your mobile number"
+            android:layout_marginTop="50dp"
+            android:textAlignment="center"
+            android:textColor="#10100F"
+            android:textColorHint="#151412"
+            android:textSize="25sp" />
+
         <EditText
             android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:hint="Password"
-            android:textColor="#08605B"
-            android:textSize="25sp"
-            android:textColorHint="#23211D"
-            android:textAlignment="center"
             android:inputType="textPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-        <LinearLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:textAlignment="center"
+            android:textColor="#08605B"
+            android:textColorHint="#23211D"
+            android:textSize="25sp" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
             <Button
-                android:id="@+id/btnsubmit"
-                android:layout_weight="1"
-                android:layout_marginTop="50dp"
-                android:layout_width="100dp"
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="submit" />
-
-        </LinearLayout>
+                android:layout_marginTop="45dp"
+                android:text="submit"
+                android:textStyle="bold"
+                android:background="@color/white"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
     </LinearLayout>
 </LinearLayout>
 </LinearLayout>
