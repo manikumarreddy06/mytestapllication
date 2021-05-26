@@ -1,7 +1,6 @@
 package com.myproject.myapplication.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,42 +8,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myproject.myapplication.R;
-import com.myproject.myapplication.model.ProductDetails;
-
-import org.jetbrains.annotations.NotNull;
+import com.myproject.myapplication.model.ProductInfo;
+import com.myproject.myapplication.model.ProductVariant;
 
 import java.util.List;
-
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 
 /**
  * Created by Sadruddin on 12/24/2017.
  */
 
-public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.GroceryViewHolder>{
-    private List<ProductDetails> horizontalGrocderyList;
+public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.GroceryViewHolder>{
+    private List<ProductInfo> horizontalGrocderyList;
     Context context;
-    RecyclerViewClickListener mListener;
-    public interface RecyclerViewClickListener {
 
-        void onClick(ProductDetails product);
-    }
-    public ProductListAdapter(List<ProductDetails> horizontalGrocderyList, Context context,RecyclerViewClickListener listener){
+    public InventoryAdapters(List<ProductInfo> horizontalGrocderyList, Context context){
         this.horizontalGrocderyList= horizontalGrocderyList;
         this.context = context;
-        mListener=listener;
-
     }
 
     @Override
     public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
-        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.horizontal_category, parent, false);
+        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_lineitem_layout, parent, false);
         GroceryViewHolder gvh = new GroceryViewHolder(groceryProductView);
         return gvh;
     }
@@ -59,9 +47,15 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 String productName = horizontalGrocderyList.get(position).getProductName().toString();
                 Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
 
-                mListener.onClick(horizontalGrocderyList.get(position));
             }
         });
+        //holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
+
+        //holder.tvSellingPrice.setText("Selling Price:"+horizontalGrocderyList.get(position).getSellingPrice());
+
+
+        //holder.tvQuantity.setText("Quatity:"+horizontalGrocderyList.get(position).getQuantity());
+
     }
 
     @Override
@@ -69,18 +63,24 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         return horizontalGrocderyList.size();
     }
 
-
-
     public class GroceryViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView txtview;
+        TextView tvProcprice;
+        TextView tvSellingPrice;
+        TextView tvQuantity;
         public GroceryViewHolder(View view) {
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
             txtview=view.findViewById(R.id.idProductName);
+            tvProcprice=view.findViewById(R.id.tvProcprice);
+            tvSellingPrice=view.findViewById(R.id.tvSellingPrice);
+            tvQuantity=view.findViewById(R.id.tvQuantity);
 
         }
     }
 
-
+    public void setData(List<ProductInfo> horizontalGrocderyList){
+        this.horizontalGrocderyList= horizontalGrocderyList;
+    }
 }

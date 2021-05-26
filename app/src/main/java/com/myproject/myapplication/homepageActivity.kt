@@ -1,18 +1,12 @@
 package com.myproject.myapplication
 
-import android.app.PendingIntent.getActivity
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceManager.getDefaultSharedPreferences
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.myproject.myapplication.databinding.ActivityHomepageBinding
-import com.myproject.myapplication.databinding.ActivityHomepageBinding.inflate
-import com.myproject.myapplication.databinding.ActivityMainBinding
-import com.myproject.myapplication.databinding.ActivityMainBinding.inflate
 import com.myproject.myapplication.inward.InwardProductActivity
 
 import com.myproject.myapplication.network.PreferenceManager
@@ -24,8 +18,16 @@ class homepageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
+
+        binding.tvUserName.text="Name : "+PreferenceManager.instance(this@homepageActivity).get(PreferenceManager.USER_NAME,"")
+
+        binding.tvStoreName.text="Store Name : "+PreferenceManager.instance(this@homepageActivity).get(PreferenceManager.STORE_NAME,"")
+
+        binding.tvUserType.text="Type : "+PreferenceManager.instance(this@homepageActivity).get(PreferenceManager.USER_TYPE,"")
         binding.btn1.setOnClickListener {
-            Intent(this, ScannerActivity::class.java).also {
+            Intent(this, StoreInvactivity::class.java).also {
                 startActivity(it)
             }
         }
@@ -41,9 +43,7 @@ class homepageActivity : AppCompatActivity() {
              }
         }
         binding.btn4.setOnClickListener {
-             Intent(this, plactivity::class.java).also {
-                 startActivity(it)
-             }
+
         }
 
             binding.btnLogout.setOnClickListener{

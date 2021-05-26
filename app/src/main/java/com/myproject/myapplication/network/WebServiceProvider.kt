@@ -6,6 +6,7 @@ import com.myproject.myapplication.BuildConfig
 import com.myproject.myapplication.inward.AddProduct
 import com.myproject.myapplication.model.LoginResponseBean
 import com.myproject.myapplication.model.ProductDetailResponse
+import com.myproject.myapplication.model.StoreInvResponseBean
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import okhttp3.*
@@ -88,6 +89,9 @@ interface WebServiceProvider {
     @POST("api/variant/add")
     fun productSearch(@Body data:MutableList<AddProduct?>): Single<ProductDetailResponse>
 
+
+    @GET("api/product/{storeId}")
+    fun getInventory(@Path("storeId") storeId: String): Single<StoreInvResponseBean>
 
 }
 

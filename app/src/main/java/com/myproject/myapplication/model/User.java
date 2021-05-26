@@ -8,12 +8,17 @@ public class User implements Serializable
 
     private long id;
     private String username;
-    private Object password;
+    private String password;
     private String userPhoneNumber;
     private String cityId;
-    private Object cityName;
-    private Object userTypeId;
-    private Object userTypeName;
+    private String cityName;
+    private String userTypeId;
+    private String userTypeName;
+
+    private String storeId;
+
+    private String storeName;
+
     private final static long serialVersionUID = -4259411983342301927L;
 
     public long getId() {
@@ -36,9 +41,6 @@ public class User implements Serializable
         return password;
     }
 
-    public void setPassword(Object password) {
-        this.password = password;
-    }
 
     public String getUserPhoneNumber() {
         return userPhoneNumber;
@@ -60,24 +62,47 @@ public class User implements Serializable
         return cityName;
     }
 
-    public void setCityName(Object cityName) {
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setCityName(String cityName) {
         this.cityName = cityName;
     }
 
-    public Object getUserTypeId() {
+    public String getUserTypeId() {
         return userTypeId;
     }
 
-    public void setUserTypeId(Object userTypeId) {
+    public void setUserTypeId(String userTypeId) {
         this.userTypeId = userTypeId;
     }
 
-    public Object getUserTypeName() {
+    public String getUserTypeName() {
         return userTypeName;
     }
 
-    public void setUserTypeName(Object userTypeName) {
+    public void setUserTypeName(String userTypeName) {
         this.userTypeName = userTypeName;
     }
 
+    public String getStoreId() {
+        return storeId;
+    }
+
+    public void setStoreId(String storeId) {
+        this.storeId = storeId;
+    }
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 }

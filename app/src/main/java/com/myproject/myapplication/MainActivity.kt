@@ -79,6 +79,10 @@ class MainActivity : AppCompatActivity() {
         preferenceManager.set(PreferenceManager.USER_ID,response.id)
         preferenceManager.set(PreferenceManager.USER_MOBILE_NUMBER,response.userPhoneNumber)
         preferenceManager.set(PreferenceManager.CITY_ID,response.cityId)
+        preferenceManager.set(PreferenceManager.STORE_ID,response.storeId)
+        preferenceManager.set(PreferenceManager.STORE_NAME,response.storeName)
+
+        preferenceManager.set(PreferenceManager.USER_TYPE,response.userTypeName)
 
 
 
