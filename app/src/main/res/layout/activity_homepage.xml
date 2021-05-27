@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="#730099"
     android:gravity="center_vertical"
     android:orientation="vertical"
     tools:context=".homepageActivity">
@@ -15,24 +15,27 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Name:"
+            android:text="@string/username"
             android:textStyle="bold"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="15dp"
-            android:textSize="20dp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Store Name:"
-            android:textStyle="bold"
+            android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="15dp"
             android:textSize="20dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Type of user :"
+            android:text="@string/userstore_name"
             android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/type_of_user"
+            android:textStyle="bold"
+            android:textColor="@color/white"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="15dp"
             android:textSize="20dp"/>
@@ -40,79 +43,93 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="350dp"
         android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:gravity="center_horizontal|center_vertical"
-        android:layout_height="match_parent">
+        android:layout_margin="20dp"
+        android:background="@drawable/homepagebackgroundscreen"
+        android:layout_centerVertical="true"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:weightSum="2">
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal|center_vertical"
+            android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn1"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@color/orange"
-                android:padding="10dp"
-                android:text="@string/Inventory"
-                android:textColor="@color/white"
-                android:textSize="@dimen/size_20sp" />
+                android:layout_height="150dp"
+                android:weightSum="2">
+
+                <Button
+                    android:id="@+id/btn1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/homepageinventory"
+                    android:padding="10dp"
+                    android:text="@string/outward"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
 
 
-            <Button
-                android:id="@+id/btn2"
+                <Button
+                    android:id="@+id/btn2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/homepageinward"
+                    android:text="@string/Inward"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@color/orange"
-                android:text="@string/Inward"
-                android:textColor="@color/white"
-                android:textSize="@dimen/size_20sp" />
+                android:layout_height="150dp"
+                android:weightSum="2">
 
+                <Button
+                    android:id="@+id/btn3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/androidhomepageoutward"
+                    android:padding="10dp"
+                    android:text="@string/Inventory"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/size_20sp" />
+
+
+                <Button
+                    android:id="@+id/btn4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/androidplbutton"
+                    android:text="P/L"
+                    android:textColor="@color/white"
+                    android:textSize="30sp" />
+            </LinearLayout>
 
         </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:weightSum="2">
-
-            <Button
-                android:id="@+id/btn3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@color/orange"
-                android:padding="10dp"
-                android:text="@string/outward"
-                android:textColor="@color/white"
-                android:textSize="@dimen/size_20sp" />
-
-
-            <Button
-                android:id="@+id/btn4"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerVertical="true"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                android:background="@color/orange"
-                android:text="P/L"
-                android:textColor="@color/white"
-                android:textSize="30sp" />
-        </LinearLayout>
 
     </LinearLayout>
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -121,11 +138,14 @@
         >
         <Button
             android:id="@+id/btnLogout"
-            android:background="@color/dark_gray"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="@string/Logout"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="25sp"
             />
     </LinearLayout>
 

@@ -185,7 +185,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
 
         val outlet: MutableList<String> = ArrayList()
         outlet.add("Select")
-        for (item in productVariants!!)
+        for (item in productVariants)
             outlet.add(item.productVariantName)
 
         // Initializing an ArrayAdapter
