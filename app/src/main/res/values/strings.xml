@@ -7,4 +7,5 @@
     <string name="username">Name:</string>
     <string name="userstore_name">Store Name:</string>
     <string name="type_of_user">Type of user :</string>
+    <string name="product_addition">PRODUCT ADDITION</string>
 </resources>
