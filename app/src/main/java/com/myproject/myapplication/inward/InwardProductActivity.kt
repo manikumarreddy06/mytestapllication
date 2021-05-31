@@ -16,6 +16,7 @@ import com.myproject.myapplication.ScannerActivity
 import com.myproject.myapplication.adapters.ProductInWardAdapters
 import com.myproject.myapplication.model.ProductDetailResponse
 import com.myproject.myapplication.model.ProductVariant
+import com.myproject.myapplication.network.PreferenceManager
 import com.myproject.myapplication.network.WebServiceProvider
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -96,6 +97,7 @@ class InwardProductActivity : AppCompatActivity() {
 
         var list: MutableList<AddProduct?>? = ArrayList()
 
+        val storeId=PreferenceManager.instance(this@InwardProductActivity).get(PreferenceManager.STORE_ID,"1").toLong()
         for (item in productList!!) {
             val ite:AddProduct= AddProduct()
             ite.productId=item.productId
@@ -103,6 +105,7 @@ class InwardProductActivity : AppCompatActivity() {
             ite.procPrice=item.procPrice
             ite.sellingPrice=item.sellingPrice
             ite.quantity=item.quantity
+            ite.storeId=storeId
 
             list!!.add(ite)
         }

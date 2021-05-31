@@ -22,6 +22,12 @@ public class PreferenceManager {
     public static final String CITY_ID="CITY_ID";
     public static final String PASSWORD="PASSWORD";
 
+    public static final String STORE_ID="STORE_ID";
+
+    public static final String STORE_NAME="STORE_NAME";
+
+
+    public static final String USER_TYPE="USER_TYPE";
 
 
 
