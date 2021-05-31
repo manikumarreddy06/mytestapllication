@@ -8,4 +8,9 @@
     <string name="userstore_name">Store Name:</string>
     <string name="type_of_user">Type of user :</string>
     <string name="product_addition">PRODUCT ADDITION</string>
+    <string name="current_product">CURRENT PRODUCT</string>
+    <string name="_1">- 1 +</string>
+    <string name="_10">$10</string>
+    <string name="selling_price">Selling price:</string>
+    <string name="purchase_price">Purchase Price:</string>
 </resources>
