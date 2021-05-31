@@ -91,6 +91,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(it)
         }
 
-        //remain fields
+        //remaining fields
     }
 }

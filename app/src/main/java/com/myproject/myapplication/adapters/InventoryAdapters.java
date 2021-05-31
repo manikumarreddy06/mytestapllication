@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.myproject.myapplication.R;
 import com.myproject.myapplication.model.ProductInfo;
-import com.myproject.myapplication.model.ProductVariant;
 
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
     @Override
     public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
-        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_lineitem_layout, parent, false);
+        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_add_layout, parent, false);
         GroceryViewHolder gvh = new GroceryViewHolder(groceryProductView);
         return gvh;
     }
@@ -73,9 +72,9 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
             txtview=view.findViewById(R.id.idProductName);
-            tvProcprice=view.findViewById(R.id.tvProcprice);
-            tvSellingPrice=view.findViewById(R.id.tvSellingPrice);
-            tvQuantity=view.findViewById(R.id.tvQuantity);
+//            tvProcprice=view.findViewById(R.id.tvProcprice);
+//            tvSellingPrice=view.findViewById(R.id.tvSellingPrice);
+//            tvQuantity=view.findViewById(R.id.tvQuantity);
 
         }
     }

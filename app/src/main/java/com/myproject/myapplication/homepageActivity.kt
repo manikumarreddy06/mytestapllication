@@ -33,7 +33,7 @@ class homepageActivity : AppCompatActivity() {
         }
 
         binding.btn2.setOnClickListener {
-                Intent(this, InwardProductActivity::class.java).also {
+                Intent(this, ScannerActivity::class.java).also {
                     startActivity(it)
                 }
         }

@@ -1,7 +1,6 @@
 package com.myproject.myapplication.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +11,6 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myproject.myapplication.R;
-import com.myproject.myapplication.inward.AddProduct;
-import com.myproject.myapplication.model.ProductDetails;
 import com.myproject.myapplication.model.ProductVariant;
 
 import java.util.List;
@@ -34,7 +31,7 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
     @Override
     public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
-        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_lineitem_layout, parent, false);
+        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_add_layout, parent, false);
         GroceryViewHolder gvh = new GroceryViewHolder(groceryProductView);
         return gvh;
     }
@@ -51,12 +48,12 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
 
             }
         });
-        holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
-
-        holder.tvSellingPrice.setText("Selling Price:"+horizontalGrocderyList.get(position).getSellingPrice());
-
-
-        holder.tvQuantity.setText("Quatity:"+horizontalGrocderyList.get(position).getQuantity());
+//        holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
+//
+//        holder.tvSellingPrice.setText("Selling Price:"+horizontalGrocderyList.get(position).getSellingPrice());
+//
+//
+//        holder.tvQuantity.setText("Quatity:"+horizontalGrocderyList.get(position).getQuantity());
 
     }
 
@@ -75,9 +72,9 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
             txtview=view.findViewById(R.id.idProductName);
-            tvProcprice=view.findViewById(R.id.tvProcprice);
-            tvSellingPrice=view.findViewById(R.id.tvSellingPrice);
-            tvQuantity=view.findViewById(R.id.tvQuantity);
+//            tvProcprice=view.findViewById(R.id.tvProcprice);
+//            tvSellingPrice=view.findViewById(R.id.tvSellingPrice);
+//            tvQuantity=view.findViewById(R.id.tvQuantity);
 
         }
     }
