@@ -14,6 +14,9 @@ class plactivity: AppCompatActivity() {
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        
+
     }
 
 
