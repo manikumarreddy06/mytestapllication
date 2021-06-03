@@ -37,7 +37,7 @@ class SplashActivity : AppCompatActivity() {
     fun redirectToActivity() {
         val userLoginStatus = PreferenceManager.instance(mContext).get(PreferenceManager.LOGIN_STATUS, false)
         if (userLoginStatus) {
-            startActivity(Intent(mContext, homepageActivity::class.java))
+            startActivity(Intent(mContext, HomepageActivity::class.java))
         } else
             startActivity(Intent(mContext, MainActivity::class.java))
 

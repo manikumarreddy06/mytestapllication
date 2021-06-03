@@ -87,7 +87,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        Intent(this,homepageActivity::class.java).also {
+        Intent(this,HomepageActivity::class.java).also {
             startActivity(it)
         }
 

@@ -8,21 +8,39 @@ import com.google.gson.annotations.SerializedName;
 public class ProductVariant implements Serializable
 {
 
-    @SerializedName("productId")
-    @Expose
-    private long productId;
     @SerializedName("variantId")
     @Expose
     private long variantId;
     @SerializedName("productVariantName")
     @Expose
     private String productVariantName;
-    @SerializedName("description")
+    @SerializedName("units")
     @Expose
-    private String description;
-    @SerializedName("price")
+    private String units;
+    @SerializedName("unit_type")
     @Expose
-    private long price;
+    private String unitType;
+    @SerializedName("barcode")
+    @Expose
+    private String barcode;
+    @SerializedName("brand_name")
+    @Expose
+    private String brandName;
+    @SerializedName("sub_category")
+    @Expose
+    private String subCategory;
+    @SerializedName("parent_category")
+    @Expose
+    private String parentCategory;
+    @SerializedName("product_family")
+    @Expose
+    private Object productFamily;
+    @SerializedName("mrp")
+    @Expose
+    private String mrp;
+    @SerializedName("imageUrl")
+    @Expose
+    private String imageUrl;
     @SerializedName("procPrice")
     @Expose
     private long procPrice;
@@ -35,15 +53,6 @@ public class ProductVariant implements Serializable
     @SerializedName("quantity")
     @Expose
     private long quantity;
-    private final static long serialVersionUID = -4447632388529275673L;
-
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
 
     public long getVariantId() {
         return variantId;
@@ -61,20 +70,76 @@ public class ProductVariant implements Serializable
         this.productVariantName = productVariantName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getUnits() {
+        return units;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setUnits(String units) {
+        this.units = units;
     }
 
-    public long getPrice() {
-        return price;
+    public String getUnitType() {
+        return unitType;
     }
 
-    public void setPrice(long price) {
-        this.price = price;
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public String getBrandName() {
+        return brandName;
+    }
+
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
+    }
+
+    public String getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(String subCategory) {
+        this.subCategory = subCategory;
+    }
+
+    public String getParentCategory() {
+        return parentCategory;
+    }
+
+    public void setParentCategory(String parentCategory) {
+        this.parentCategory = parentCategory;
+    }
+
+    public Object getProductFamily() {
+        return productFamily;
+    }
+
+    public void setProductFamily(Object productFamily) {
+        this.productFamily = productFamily;
+    }
+
+    public String getMrp() {
+        return mrp;
+    }
+
+    public void setMrp(String mrp) {
+        this.mrp = mrp;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public long getProcPrice() {
@@ -107,9 +172,5 @@ public class ProductVariant implements Serializable
 
     public void setQuantity(long quantity) {
         this.quantity = quantity;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 }

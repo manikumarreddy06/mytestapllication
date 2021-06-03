@@ -100,7 +100,6 @@ class InwardProductActivity : AppCompatActivity() {
         val storeId=PreferenceManager.instance(this@InwardProductActivity).get(PreferenceManager.STORE_ID,"1").toLong()
         for (item in productList!!) {
             val ite:AddProduct= AddProduct()
-            ite.productId=item.productId
             ite.variantId=item.variantId
             ite.procPrice=item.procPrice
             ite.sellingPrice=item.sellingPrice

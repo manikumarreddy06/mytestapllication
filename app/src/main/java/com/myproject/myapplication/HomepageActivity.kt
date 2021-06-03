@@ -7,12 +7,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.myproject.myapplication.databinding.ActivityHomepageBinding
-import com.myproject.myapplication.inward.InwardProductActivity
 
 import com.myproject.myapplication.network.PreferenceManager
 
 
-class homepageActivity : AppCompatActivity() {
+class HomepageActivity : AppCompatActivity() {
     private lateinit var binding:ActivityHomepageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,11 +20,11 @@ class homepageActivity : AppCompatActivity() {
 
 
 
-        binding.tvUserName.text="Name : "+PreferenceManager.instance(this@homepageActivity).get(PreferenceManager.USER_NAME,"")
+        binding.tvUserName.text="Name : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_NAME,"")
 
-        binding.tvStoreName.text="Store Name : "+PreferenceManager.instance(this@homepageActivity).get(PreferenceManager.STORE_NAME,"")
+        binding.tvStoreName.text="Store Name : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.STORE_NAME,"")
 
-        binding.tvUserType.text="Type : "+PreferenceManager.instance(this@homepageActivity).get(PreferenceManager.USER_TYPE,"")
+        binding.tvUserType.text="Type : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_TYPE,"")
         binding.btn1.setOnClickListener {
             Intent(this, StoreInvactivity::class.java).also {
                 startActivity(it)
@@ -53,7 +52,7 @@ class homepageActivity : AppCompatActivity() {
                     .setPositiveButton("yes") { dialogInterface: DialogInterface, i: Int ->
                         Toast.makeText(this,"logged out successfully",Toast.LENGTH_SHORT).show()
 
-                        PreferenceManager.instance(this@homepageActivity).clearUserSession()
+                        PreferenceManager.instance(this@HomepageActivity).clearUserSession()
                         Intent(this, MainActivity::class.java).also {
                             startActivity(it)
 

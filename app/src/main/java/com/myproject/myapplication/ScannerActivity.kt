@@ -3,11 +3,13 @@ package com.myproject.myapplication
 import android.Manifest
 import android.app.Activity
 import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -22,9 +24,7 @@ import com.google.zxing.Result
 import com.medfin.Utils
 import com.myproject.myapplication.ZXingScannerView.ResultHandler
 import com.myproject.myapplication.adapters.ProductListAdapter
-import com.myproject.myapplication.model.ProductDetailResponse
-import com.myproject.myapplication.model.ProductDetails
-import com.myproject.myapplication.model.ProductVariant
+import com.myproject.myapplication.model.*
 import com.myproject.myapplication.network.WebServiceProvider
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -41,7 +41,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
     private var groceryAdapter: ProductListAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_scanner)
         //        Thread.setDefaultUncaughtExceptionHandler(new UnCaughtException(this));
         if (ContextCompat.checkSelfPermission(
                 this,
@@ -55,24 +55,9 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
         val contentFrame = findViewById<View>(R.id.content_frame) as ViewGroup
         mScannerView = ZXingScannerView(this)
         contentFrame.addView(mScannerView)
-        groceryRecyclerView = findViewById(R.id.rvcontent)
-        // add a divider after each item for more clarity
-        groceryRecyclerView!!.addItemDecoration(
-            DividerItemDecoration(
-                this@ScannerActivity,
-                LinearLayoutManager.HORIZONTAL
-            )
-        )
-        groceryAdapter = ProductListAdapter(productList, applicationContext,object : ProductListAdapter.RecyclerViewClickListener {
-            override fun onClick(product: ProductDetails?) {
-                showpopupWithoutBarcode(product)
-            }
-        });
+        doProductSearch()
 
-        val horizontalLayoutManager =LinearLayoutManager(this@ScannerActivity, LinearLayoutManager.HORIZONTAL, false)
-        groceryRecyclerView!!.setLayoutManager(horizontalLayoutManager)
-        groceryRecyclerView!!.setAdapter(groceryAdapter)
-        populategroceryList()
+
     }
 
     private fun populategroceryList() {
@@ -154,6 +139,74 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                     Toast.makeText(this@ScannerActivity, "failure", Toast.LENGTH_SHORT).show()
                 }
             })
+    }
+
+    private fun doProductSearch() {
+
+
+
+        var provider: WebServiceProvider =
+            WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
+        provider.productSearchbyCategory()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<CategoryResponseBean> {
+                override fun onSubscribe(d: Disposable) {
+
+                }
+
+                override fun onSuccess(response: CategoryResponseBean) {
+
+                    if(response.isIsvalid()) {
+
+                        Toast.makeText(this@ScannerActivity, "suceess", Toast.LENGTH_SHORT).show()
+                        
+                        prepareCategoryUI(response.categoryItems)
+                    }
+                    else{
+                        Toast.makeText(this@ScannerActivity, "product not found", Toast.LENGTH_SHORT).show()
+
+                    }
+
+                }
+
+                override fun onError(e: Throwable) {
+                    e.printStackTrace()
+                    Toast.makeText(this@ScannerActivity, "failure", Toast.LENGTH_SHORT).show()
+                }
+            })
+    }
+
+    private fun prepareCategoryUI(categoryItems: List<CategoryItem>) {
+
+        val inflater: LayoutInflater = this@ScannerActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val viewGroup : ViewGroup = findViewById (R.id.container)
+        viewGroup!!.removeAllViews()
+        for (item in categoryItems) {
+
+            val view : ViewGroup = inflater.inflate(R.layout.other_cat_item, viewGroup, false) as ViewGroup
+
+
+            groceryRecyclerView = view.findViewById(R.id.rvcontent)
+            // add a divider after each item for more clarity
+            groceryRecyclerView!!.addItemDecoration(
+                DividerItemDecoration(
+                    this@ScannerActivity,
+                    LinearLayoutManager.HORIZONTAL
+                )
+            )
+            groceryAdapter = ProductListAdapter(item.value, applicationContext,object : ProductListAdapter.RecyclerViewClickListener {
+                override fun onClick(product: ProductVariant?) {
+
+                }
+            });
+
+            val horizontalLayoutManager =LinearLayoutManager(this@ScannerActivity, LinearLayoutManager.HORIZONTAL, false)
+            groceryRecyclerView!!.setLayoutManager(horizontalLayoutManager)
+            groceryRecyclerView!!.setAdapter(groceryAdapter)
+            populategroceryList()
+
+            viewGroup.addView(view)
+        }
     }
 
 
@@ -336,7 +389,6 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                 prodVariant.sellingPrice=sellPrice.toLong()
                 prodVariant.quantity=quantity.toLong()
                prodVariant.variantId=1;
-               prodVariant.productId=1;
                prodVariant.productVariantName=product!!.productName;
 
 

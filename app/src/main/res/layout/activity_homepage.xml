@@ -7,7 +7,7 @@
     android:background="#730099"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    tools:context=".homepageActivity">
+    tools:context=".HomepageActivity">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
