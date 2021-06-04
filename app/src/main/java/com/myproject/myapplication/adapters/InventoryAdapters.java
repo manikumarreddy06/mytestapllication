@@ -31,7 +31,7 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
     @Override
     public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
-        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_add_layout, parent, false);
+        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_add_product, parent, false);
         GroceryViewHolder gvh = new GroceryViewHolder(groceryProductView);
         return gvh;
     }

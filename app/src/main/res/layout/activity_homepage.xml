@@ -1,157 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#730099"
+    android:orientation="vertical">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="650dp"
+    android:background="@drawable/homepagedesign"
     android:gravity="center_vertical"
     android:orientation="vertical"
     tools:context=".HomepageActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvUserName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/username"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
-            android:textSize="20dp"/>
-        <TextView
-
-            android:id="@+id/tvStoreName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/userstore_name"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
-            android:textSize="20dp"/>
-        <TextView
-
-            android:id="@+id/tvUserType"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/type_of_user"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="15dp"
-            android:textSize="20dp"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:orientation="vertical"
-        android:layout_centerInParent="true"
-        android:layout_margin="20dp"
-        android:background="@drawable/homepagebackgroundscreen"
-        android:layout_centerVertical="true"
-        >
-
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Labhyam"
+                android:textColor="@color/white"
+                android:textSize="35sp"
+                android:layout_marginLeft="40dp"/>
+            <TextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/username"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="20dp"/>
+            <TextView
+                android:id="@+id/tvStoreName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/userstore_name"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
+                android:textSize="18sp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
             android:orientation="vertical"
-            android:layout_centerInParent="true"
-            android:gravity="center_horizontal|center_vertical"
-            android:layout_height="match_parent">
+            android:layout_margin="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/homepagebackgroundscreen"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:weightSum="2">
-
+                android:layout_height="70dp"
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:layout_weight="2">
                 <Button
                     android:id="@+id/btn1"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
+                    android:layout_height="150dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@drawable/homepageinventory"
-                    android:padding="10dp"
+                    android:background="@drawable/androidhomepageoutward"
                     android:text="@string/outward"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
-
+                    android:textSize="28sp"
+                    />
 
                 <Button
                     android:id="@+id/btn2"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="150dp"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/homepageinward"
                     android:text="@string/Inward"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
-
-
+                    android:textSize="30sp"
+                    />
             </LinearLayout>
-
-
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:weightSum="2">
-
+                android:layout_height="70dp"
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:layout_weight="2">
                 <Button
                     android:id="@+id/btn3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
+                    android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/androidhomepageoutward"
-                    android:padding="10dp"
-                    android:text="@string/Inventory"
+                    android:layout_weight="2"
+                    android:background="@drawable/homepageinventory"
+                    android:text="@string/Inward"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/size_20sp" />
-
+                    android:textSize="25sp"/>
 
                 <Button
                     android:id="@+id/btn4"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_centerVertical="true"
+                    android:layout_height="150dp"
                     android:layout_margin="10dp"
-                    android:layout_weight="1"
+                    android:layout_weight="2"
                     android:background="@drawable/androidplbutton"
-                    android:text="P/L"
+                    android:text="@string/p_l"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:textSize="25sp"/>
             </LinearLayout>
 
         </LinearLayout>
-
-
     </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-
-        >
-        <Button
-            android:id="@+id/btnLogout"
-            android:background="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:text="@string/Logout"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="25sp"
-            />
-    </LinearLayout>
-
 </RelativeLayout>
+  <Button
+      android:id="@+id/btnlogout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@color/white"
+      android:textSize="30sp"
+      android:textColor="@color/black"
+      android:text="@string/Logout"/>
+
+
+</LinearLayout>

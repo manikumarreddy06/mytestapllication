@@ -5,6 +5,16 @@
     android:layout_margin="10dp"
     android:background="@drawable/product_gradient"
     android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#730099"
+        android:gravity="center"
+        android:text="@string/product_addition"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
     <ImageView
         android:id="@+id/idProductImage"
         android:layout_width="50dp"

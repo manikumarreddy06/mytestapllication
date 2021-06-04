@@ -20,11 +20,10 @@ class HomepageActivity : AppCompatActivity() {
 
 
 
-        binding.tvUserName.text="Name : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_NAME,"")
+        binding.tvUserName.text="Welcome : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_NAME,"")
 
-        binding.tvStoreName.text="Store Name : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.STORE_NAME,"")
+        binding.tvStoreName.text="srinivasa general stores : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.STORE_NAME,"")
 
-        binding.tvUserType.text="Type : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_TYPE,"")
         binding.btn1.setOnClickListener {
             Intent(this, StoreInvactivity::class.java).also {
                 startActivity(it)
@@ -45,7 +44,7 @@ class HomepageActivity : AppCompatActivity() {
 
         }
 
-            binding.btnLogout.setOnClickListener{
+            binding.btnlogout.setOnClickListener{
                 val logout=AlertDialog.Builder(this)
                     .setTitle("Log out")
                     .setMessage("Are you sure you want to logout")

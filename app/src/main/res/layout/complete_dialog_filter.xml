@@ -7,6 +7,16 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#730099"
+        android:gravity="center"
+        android:text="@string/product_addition"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <RelativeLayout
         android:layout_width="match_parent"
