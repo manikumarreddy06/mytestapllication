@@ -106,6 +106,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
     }
 
     private fun doProductSearch(productCode: String) {
+        Utils.showDialog(this@ScannerActivity,"Loading")
         val obj = JsonObject()
         obj.addProperty("productCode", productCode)
 
@@ -120,7 +121,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                 }
 
                 override fun onSuccess(response: ProductDetailResponse) {
-                   
+                    Utils.hideDialog()
                     if(response.isIsvalid()) {
 
                         Toast.makeText(this@ScannerActivity, "suceess", Toast.LENGTH_SHORT).show()
@@ -135,6 +136,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                 }
 
                 override fun onError(e: Throwable) {
+                    Utils.hideDialog()
                     e.printStackTrace()
                     Toast.makeText(this@ScannerActivity, "failure", Toast.LENGTH_SHORT).show()
                 }
@@ -144,7 +146,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
     private fun doProductSearch() {
 
 
-
+        Utils.showDialog(this@ScannerActivity,"Loading")
         var provider: WebServiceProvider =
             WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
         provider.productSearchbyCategory()
@@ -155,7 +157,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                 }
 
                 override fun onSuccess(response: CategoryResponseBean) {
-
+                    Utils.hideDialog()
                     if(response.isIsvalid()) {
 
                         Toast.makeText(this@ScannerActivity, "suceess", Toast.LENGTH_SHORT).show()
@@ -170,6 +172,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                 }
 
                 override fun onError(e: Throwable) {
+                    Utils.hideDialog()
                     e.printStackTrace()
                     Toast.makeText(this@ScannerActivity, "failure", Toast.LENGTH_SHORT).show()
                 }
@@ -186,17 +189,23 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
             val view : ViewGroup = inflater.inflate(R.layout.other_cat_item, viewGroup, false) as ViewGroup
 
 
+            var t:TextView = view.findViewById(R.id.tvTitle)
+            t.text=item.key
+
             groceryRecyclerView = view.findViewById(R.id.rvcontent)
             // add a divider after each item for more clarity
-            groceryRecyclerView!!.addItemDecoration(
-                DividerItemDecoration(
-                    this@ScannerActivity,
-                    LinearLayoutManager.HORIZONTAL
-                )
-            )
+//            groceryRecyclerView!!.addItemDecoration(
+//                DividerItemDecoration(
+//                    this@ScannerActivity,
+//                    LinearLayoutManager.HORIZONTAL
+//                )
+//            )
             groceryAdapter = ProductListAdapter(item.value, applicationContext,object : ProductListAdapter.RecyclerViewClickListener {
                 override fun onClick(product: ProductVariant?) {
 
+
+
+                    
                 }
             });
 
