@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.myproject.myapplication.R;
 import com.myproject.myapplication.model.ProductDetails;
+import com.myproject.myapplication.model.ProductVariant;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -27,14 +28,14 @@ import kotlin.jvm.functions.Function1;
  */
 
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.GroceryViewHolder>{
-    private List<ProductDetails> horizontalGrocderyList;
+    private List<ProductVariant> horizontalGrocderyList;
     Context context;
     RecyclerViewClickListener mListener;
     public interface RecyclerViewClickListener {
 
-        void onClick(ProductDetails product);
+        void onClick(ProductVariant product);
     }
-    public ProductListAdapter(List<ProductDetails> horizontalGrocderyList, Context context,RecyclerViewClickListener listener){
+    public ProductListAdapter(List<ProductVariant> horizontalGrocderyList, Context context, RecyclerViewClickListener listener){
         this.horizontalGrocderyList= horizontalGrocderyList;
         this.context = context;
         mListener=listener;
@@ -52,11 +53,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         //holder.imageView.setImageResource(horizontalGrocderyList.get(position).getProductName());
-        holder.txtview.setText(horizontalGrocderyList.get(position).getProductName());
+        holder.txtview.setText(horizontalGrocderyList.get(position).getProductVariantName());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String productName = horizontalGrocderyList.get(position).getProductName().toString();
+                String productName = horizontalGrocderyList.get(position).getProductVariantName().toString();
                 Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
 
                 mListener.onClick(horizontalGrocderyList.get(position));

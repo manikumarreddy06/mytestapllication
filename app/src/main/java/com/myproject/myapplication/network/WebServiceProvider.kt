@@ -4,6 +4,7 @@ import android.text.TextUtils
 import com.google.gson.JsonObject
 import com.myproject.myapplication.BuildConfig
 import com.myproject.myapplication.inward.AddProduct
+import com.myproject.myapplication.model.CategoryResponseBean
 import com.myproject.myapplication.model.LoginResponseBean
 import com.myproject.myapplication.model.ProductDetailResponse
 import com.myproject.myapplication.model.StoreInvResponseBean
@@ -84,6 +85,10 @@ interface WebServiceProvider {
 
     @POST("api/product/search")
     fun productSearch(@Body data: JsonObject): Single<ProductDetailResponse>
+
+
+    @GET("api/product/search")
+    fun productSearchbyCategory(): Single<CategoryResponseBean>
 
 
     @POST("api/variant/add")

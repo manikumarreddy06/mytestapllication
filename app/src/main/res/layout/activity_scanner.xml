@@ -25,22 +25,19 @@
         android:layout_below="@+id/tv_scan"
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="400dp">
+        android:layout_height="200dp">
     </FrameLayout>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="Other Categories "
-            android:textColor="@android:color/black" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvcontent"
+        <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_scan"
-            android:orientation="horizontal">
-        </androidx.recyclerview.widget.RecyclerView>
+            android:orientation="vertical"
+            >
+
+        </LinearLayout>
+
+
     </LinearLayout>
 </RelativeLayout>

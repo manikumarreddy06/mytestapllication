@@ -37,15 +37,15 @@ class InwardProductActivity : AppCompatActivity() {
 
         groceryRecyclerView = findViewById(R.id.rvContent)
 
-         var tvAddItem: TextView = findViewById(R.id.tvAddItem)
-
-        updateBtn = findViewById(R.id.updateBtn)
-
-        tvAddItem.setOnClickListener(){
-            Intent(this, ScannerActivity::class.java).also {
-                startActivityForResult(it,SECOND_ACTIVITY_REQUEST_CODE)
-            }
-        }
+//         var tvAddItem: TextView = findViewById(R.id.tvAddItem)
+//
+//        updateBtn = findViewById(R.id.updateBtn)
+//
+//        tvAddItem.setOnClickListener(){
+//            Intent(this, ScannerActivity::class.java).also {
+//                startActivityForResult(it,SECOND_ACTIVITY_REQUEST_CODE)
+//            }
+//        }
 
 
         // add a divider after each item for more clarity
@@ -100,7 +100,6 @@ class InwardProductActivity : AppCompatActivity() {
         val storeId=PreferenceManager.instance(this@InwardProductActivity).get(PreferenceManager.STORE_ID,"1").toLong()
         for (item in productList!!) {
             val ite:AddProduct= AddProduct()
-            ite.productId=item.productId
             ite.variantId=item.variantId
             ite.procPrice=item.procPrice
             ite.sellingPrice=item.sellingPrice
