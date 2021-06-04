@@ -8,7 +8,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class StoreInvResponseBean implements Serializable
 {
-
     @SerializedName("isvalid")
     @Expose
     private boolean isvalid;

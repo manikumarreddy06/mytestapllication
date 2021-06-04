@@ -79,3 +79,4 @@
             android:background="@color/white"
             android:textStyle="bold" />
     </LinearLayout>
+</LinearLayout>

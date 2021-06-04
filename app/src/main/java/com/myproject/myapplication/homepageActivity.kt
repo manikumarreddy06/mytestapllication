@@ -66,10 +66,5 @@ class homepageActivity : AppCompatActivity() {
              logout.show()
 
             }
-
-
-
         }
-
-
 }
