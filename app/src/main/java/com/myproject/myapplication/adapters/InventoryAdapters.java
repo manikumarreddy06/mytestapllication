@@ -31,7 +31,7 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
     @Override
     public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
-        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_add_product, parent, false);
+        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inventory_line_item, parent, false);
         GroceryViewHolder gvh = new GroceryViewHolder(groceryProductView);
         return gvh;
     }
@@ -39,21 +39,20 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
     @Override
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         //holder.imageView.setImageResource(horizontalGrocderyList.get(position).getProductName());
-        holder.txtview.setText(horizontalGrocderyList.get(position).getProductName());
+        holder.txtview.setText(horizontalGrocderyList.get(position).getProductVariantName());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String productName = horizontalGrocderyList.get(position).getProductName().toString();
+                 String productName = horizontalGrocderyList.get(position).getProductVariantName().toString();
                 Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
 
             }
         });
         //holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
 
-        //holder.tvSellingPrice.setText("Selling Price:"+horizontalGrocderyList.get(position).getSellingPrice());
+        holder.tvSellingPrice.setText("Selling Price:"+horizontalGrocderyList.get(position).getSellingPrice());
 
-
-        //holder.tvQuantity.setText("Quatity:"+horizontalGrocderyList.get(position).getQuantity());
+        holder.tvQuantity.setText("Quatity:"+horizontalGrocderyList.get(position).getQuantity());
 
     }
 
@@ -71,10 +70,9 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
         public GroceryViewHolder(View view) {
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
-            txtview=view.findViewById(R.id.idProductName);
-//            tvProcprice=view.findViewById(R.id.tvProcprice);
-//            tvSellingPrice=view.findViewById(R.id.tvSellingPrice);
-//            tvQuantity=view.findViewById(R.id.tvQuantity);
+            txtview=view.findViewById(R.id.inwardproductname);
+            tvSellingPrice=view.findViewById(R.id.inwardquantity);
+            tvQuantity=view.findViewById(R.id.inwardprice);
 
         }
     }
