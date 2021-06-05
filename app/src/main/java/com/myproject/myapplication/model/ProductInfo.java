@@ -20,7 +20,25 @@ public class ProductInfo implements Serializable
     @SerializedName("variantName")
     @Expose
     private String variantName;
-    private final static long serialVersionUID = 6560395365332039995L;
+
+
+    @SerializedName("procPrice")
+    @Expose
+    private long procPrice;
+
+    @SerializedName("sellingPrice")
+    @Expose
+    private long sellingPrice;
+
+    @SerializedName("quantity")
+    @Expose
+    private long quantity;
+
+    public ProductInfo(long quantity) {
+        this.quantity = quantity;
+    }
+
+
 
     public String getProductId() {
         return productId;
@@ -54,4 +72,28 @@ public class ProductInfo implements Serializable
         this.variantName = variantName;
     }
 
+
+    public long getProcPrice() {
+        return procPrice;
+    }
+
+    public void setProcPrice(long procPrice) {
+        this.procPrice = procPrice;
+    }
+
+    public long getSellingPrice() {
+        return sellingPrice;
+    }
+
+    public void setSellingPrice(long sellingPrice) {
+        this.sellingPrice = sellingPrice;
+    }
+
+    public long getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(long quantity) {
+        this.quantity = quantity;
+    }
 }
