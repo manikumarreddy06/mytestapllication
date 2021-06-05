@@ -39,16 +39,16 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
     @Override
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         //holder.imageView.setImageResource(horizontalGrocderyList.get(position).getProductName());
-        holder.txtview.setText(horizontalGrocderyList.get(position).getProductName());
+        holder.txtview.setText(horizontalGrocderyList.get(position).getProductVariantName());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 String productName = horizontalGrocderyList.get(position).getProductName().toString();
+                 String productName = horizontalGrocderyList.get(position).getProductVariantName().toString();
                 Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
 
             }
         });
-        holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
+        //holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
 
         holder.tvSellingPrice.setText("Selling Price:"+horizontalGrocderyList.get(position).getSellingPrice());
 
@@ -71,7 +71,6 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
             txtview=view.findViewById(R.id.inwardproductname);
-           tvProcprice=view.findViewById(R.id.inwardproductname);
             tvSellingPrice=view.findViewById(R.id.inwardquantity);
             tvQuantity=view.findViewById(R.id.inwardprice);
 
