@@ -50,7 +50,7 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
         });
         //holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
 
-        holder.tvSellingPrice.setText("Selling Price:"+horizontalGrocderyList.get(position).getSellingPrice());
+        holder.tvSellingPrice.setText(""+horizontalGrocderyList.get(position).getSellingPrice());
 
         holder.tvQuantity.setText("Quatity:"+horizontalGrocderyList.get(position).getQuantity());
 
@@ -71,8 +71,8 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
             txtview=view.findViewById(R.id.inwardproductname);
-            tvSellingPrice=view.findViewById(R.id.inwardquantity);
-            tvQuantity=view.findViewById(R.id.inwardprice);
+            tvSellingPrice=view.findViewById(R.id.tvPrice);
+            tvQuantity=view.findViewById(R.id.tvQty);
 
         }
     }

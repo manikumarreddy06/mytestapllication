@@ -25,23 +25,29 @@ class HomepageActivity : AppCompatActivity() {
         binding.tvStoreName.text=PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.STORE_NAME,"")
 
         binding.btn1.setOnClickListener {
-            Intent(this, InventoryActivity::class.java).also {
+            ProductUtils.instance(this).clear()
+            ProductUtils.instance(this).isOutOrderTypeFlag = true
+            Intent(this, ScannerActivity::class.java).also {
                 startActivity(it)
             }
         }
 
         binding.btn2.setOnClickListener {
+
+            ProductUtils.instance(this).clear()
+            ProductUtils.instance(this).isOutOrderTypeFlag = false
                 Intent(this, ScannerActivity::class.java).also {
                     startActivity(it)
                 }
         }
         binding.btn3.setOnClickListener {
-             Intent(this, outactivity::class.java).also {
-                 startActivity(it)
-             }
+            Intent(this, InventoryActivity::class.java).also {
+                startActivity(it)
+            }
         }
         binding.btn4.setOnClickListener {
 
+            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
         }
 
             binding.btnlogout.setOnClickListener{

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonObject
 import com.medfin.Utils
+import com.myproject.myapplication.HomepageActivity
 import com.myproject.myapplication.ProductUtils
 import com.myproject.myapplication.R
 import com.myproject.myapplication.ScannerActivity
@@ -57,7 +58,29 @@ class InwardProductActivity : AppCompatActivity() {
         }
 
 
+        if(ProductUtils.instance(this).isOutOrderTypeFlag){
+            binding.tvHeaderTitle.text="Product Checkout"
+        }
+        else{
+            binding.tvHeaderTitle.text="Product Addition"
+        }
 
+        var quantity:Int=1
+        binding.minus.setOnClickListener(){
+
+            quantity=binding.etProductQty.text.toString().toInt()-1
+            if(quantity>0) {
+                binding.etProductQty.setText(quantity.toString());
+            }
+            else{
+                Utils.toast("quantity should be  more than zero",this)
+            }
+        }
+
+        binding.plus.setOnClickListener(){
+            quantity=binding.etProductQty.text.toString().toInt()+1
+            binding.etProductQty.setText(quantity.toString());
+        }
 
         binding.addMoreBtn!!.setOnClickListener(){
 
@@ -101,20 +124,22 @@ class InwardProductActivity : AppCompatActivity() {
 
 
         productList=ProductUtils.instance(this).productList
-        groceryAdapter = ProductInWardAdapters(productList, applicationContext)
-        val horizontalLayoutManager =
-            LinearLayoutManager(this@InwardProductActivity, LinearLayoutManager.VERTICAL, false)
-        binding.rvContent!!.setLayoutManager(horizontalLayoutManager)
-        binding.rvContent!!.setAdapter(groceryAdapter)
+        if(productList!=null) {
+            groceryAdapter = ProductInWardAdapters(productList, applicationContext)
+            val horizontalLayoutManager =
+                LinearLayoutManager(this@InwardProductActivity, LinearLayoutManager.VERTICAL, false)
+            binding.rvContent!!.setLayoutManager(horizontalLayoutManager)
+            binding.rvContent!!.setAdapter(groceryAdapter)
 
 
 
-        binding.rvContent!!.addItemDecoration(
-            DividerItemDecoration(
-                this@InwardProductActivity,
-                LinearLayoutManager.VERTICAL
+            binding.rvContent!!.addItemDecoration(
+                DividerItemDecoration(
+                    this@InwardProductActivity,
+                    LinearLayoutManager.VERTICAL
+                )
             )
-        )
+        }
 
         binding.updateBtn!!.setOnClickListener(){
 
@@ -186,30 +211,64 @@ class InwardProductActivity : AppCompatActivity() {
             list!!.add(ite)
         }
 
-        var provider: WebServiceProvider =
-            WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
-        provider!!.productSearch(list!!)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<ProductDetailResponse> {
-                override fun onSubscribe(d: Disposable) {
+        if(ProductUtils.instance(this).isOutOrderTypeFlag){
+            Utils.showDialog(this,"Loading")
+            var provider: WebServiceProvider =
+                WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
+            provider!!.productOut(list!!)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : SingleObserver<ProductDetailResponse> {
+                    override fun onSubscribe(d: Disposable) {
 
-                }
+                    }
 
-                override fun onSuccess(response: ProductDetailResponse) {
+                    override fun onSuccess(response: ProductDetailResponse) {
+                        Utils.hideDialog()
+                        Toast.makeText(this@InwardProductActivity, "success", Toast.LENGTH_SHORT).show()
 
-
-
-                        Toast.makeText(this@InwardProductActivity, "suceess", Toast.LENGTH_SHORT).show()
+                        val intent =Intent(this@InwardProductActivity,HomepageActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
                         finish()
 
+                    }
 
+                    override fun onError(e: Throwable) {
+                        Utils.hideDialog()
+                        e.printStackTrace()
+                        Toast.makeText(this@InwardProductActivity, "failure", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        }
+        else{
+            Utils.showDialog(this,"Loading")
+            var provider: WebServiceProvider =
+                WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
+            provider!!.productAdd(list!!)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : SingleObserver<ProductDetailResponse> {
+                    override fun onSubscribe(d: Disposable) {
 
-                }
+                    }
 
-                override fun onError(e: Throwable) {
-                    e.printStackTrace()
-                    Toast.makeText(this@InwardProductActivity, "failure", Toast.LENGTH_SHORT).show()
-                }
-            })
+                    override fun onSuccess(response: ProductDetailResponse) {
+                        Utils.hideDialog()
+                        Toast.makeText(this@InwardProductActivity, "success", Toast.LENGTH_SHORT).show()
+
+                        val intent =Intent(this@InwardProductActivity,HomepageActivity::class.java)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(intent);
+                        finish()
+
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Utils.hideDialog()
+                        e.printStackTrace()
+                        Toast.makeText(this@InwardProductActivity, "failure", Toast.LENGTH_SHORT).show()
+                    }
+                })
+        }
+
     }
 }

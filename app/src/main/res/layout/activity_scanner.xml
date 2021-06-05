@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cardview_light_background">
+    android:background="@color/bg_color">
 
 
     <LinearLayout
@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
+            android:id="@+id/tvHeaderTitle"
             android:layout_width="fill_parent"
             android:layout_height="50dp"
             android:background="#730099"
@@ -21,15 +22,25 @@
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scan the Barcode"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:gravity="center_horizontal"
+            android:textStyle="bold" />
     <TextView
         android:padding="5dp"
-        android:textColor="@android:color/white"
-        android:background="@android:color/black"
-        android:text="@string/place_your_camera_above_the_bar_code_on_coupon_to_scan"
+        android:text="Place camera above the barcode of the product"
         android:id="@+id/tv_scan"
+        android:textColor="@color/black"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"/>
+
 
     <FrameLayout
         android:layout_below="@+id/tv_scan"

@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.medfin.Utils
 import com.myproject.myapplication.adapters.InventoryAdapters
 import com.myproject.myapplication.databinding.ActivityInventoryBinding
 import com.myproject.myapplication.model.ProductInfo
@@ -50,6 +51,7 @@ class InventoryActivity : AppCompatActivity() {
 
         val storeId=PreferenceManager.instance(this@InventoryActivity).get(PreferenceManager.STORE_ID,"1").toString()
 
+        Utils.showDialog(this,"Loading")
         var provider: WebServiceProvider =
             WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
         provider.getInventory(storeId)
@@ -60,7 +62,7 @@ class InventoryActivity : AppCompatActivity() {
                 }
 
                 override fun onSuccess(response: StoreInvResponseBean) {
-
+                    Utils.hideDialog()
                     if(response.isIsvalid()) {
 
                         Toast.makeText(this@InventoryActivity, "suceess", Toast.LENGTH_SHORT).show()
@@ -74,6 +76,7 @@ class InventoryActivity : AppCompatActivity() {
                 }
 
                 override fun onError(e: Throwable) {
+                    Utils.hideDialog()
                     e.printStackTrace()
                     Toast.makeText(this@InventoryActivity, "failure", Toast.LENGTH_SHORT).show()
                 }
