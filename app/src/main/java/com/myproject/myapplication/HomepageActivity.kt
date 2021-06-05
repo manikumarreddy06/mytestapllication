@@ -20,12 +20,12 @@ class HomepageActivity : AppCompatActivity() {
 
 
 
-        binding.tvUserName.text="Welcome : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_NAME,"")
+        binding.tvUserName.text="Welcome "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_NAME,"")
 
-        binding.tvStoreName.text="srinivasa general stores : "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.STORE_NAME,"")
+        binding.tvStoreName.text=PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.STORE_NAME,"")
 
         binding.btn1.setOnClickListener {
-            Intent(this, StoreInvactivity::class.java).also {
+            Intent(this, InventoryActivity::class.java).also {
                 startActivity(it)
             }
         }

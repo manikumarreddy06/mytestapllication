@@ -24,7 +24,7 @@
         <activity android:name=".plactivity" />
         <activity android:name=".outactivity" />
         <activity android:name=".inactivity" />
-        <activity android:name=".StoreInvactivity" />
+        <activity android:name=".InventoryActivity" />
         <activity android:name=".HomepageActivity" />
 
 

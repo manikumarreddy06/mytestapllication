@@ -1,7 +1,6 @@
 package com.myproject.myapplication.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +12,9 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myproject.myapplication.R;
-import com.myproject.myapplication.model.ProductDetails;
 import com.myproject.myapplication.model.ProductVariant;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
-
-import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 
 /**
  * Created by Sadruddin on 12/24/2017.
@@ -45,7 +38,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
-        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.horizontal_category, parent, false);
+        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.category_line_item, parent, false);
         GroceryViewHolder gvh = new GroceryViewHolder(groceryProductView);
         return gvh;
     }

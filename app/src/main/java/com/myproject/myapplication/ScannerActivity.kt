@@ -204,7 +204,9 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                 override fun onClick(product: ProductVariant?) {
 
 
-
+                    val intent =Intent(this@ScannerActivity,inactivity::class.java)
+                    intent.putExtra("addProduct", product)
+                    startActivity(intent);
                     
                 }
             });

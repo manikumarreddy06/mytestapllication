@@ -27,7 +27,7 @@ class SplashActivity : AppCompatActivity() {
         // Using handler with postDelayed called runnable run method
         {
             redirectToActivity()
-        }, 5 * 1000
+        }, 1 * 1000
         ) // wait for 5 seconds
 
 
