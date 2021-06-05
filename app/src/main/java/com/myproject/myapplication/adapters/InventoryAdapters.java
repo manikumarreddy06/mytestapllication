@@ -43,7 +43,7 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String productName = horizontalGrocderyList.get(position).getProductName().toString();
+                 String productName = horizontalGrocderyList.get(position).getProductName().toString();
                 Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
 
             }
@@ -70,7 +70,7 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
         public GroceryViewHolder(View view) {
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
-            txtview=view.findViewById(R.id.idProductName);
+            txtview=view.findViewById(R.id.inwardproductname);
            tvProcprice=view.findViewById(R.id.inwardproductname);
             tvSellingPrice=view.findViewById(R.id.inwardquantity);
             tvQuantity=view.findViewById(R.id.inwardprice);

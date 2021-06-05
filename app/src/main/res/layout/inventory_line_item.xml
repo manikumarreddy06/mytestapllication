@@ -12,6 +12,7 @@
         android:orientation="vertical">
 
         <ImageView
+            android:id="@+id/idProductImage"
             android:layout_width="130dp"
             android:layout_height="90dp"
             android:layout_marginTop="50dp"
