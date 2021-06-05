@@ -3,6 +3,7 @@ package com.myproject.myapplication.inward
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -11,9 +12,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonObject
+import com.medfin.Utils
+import com.myproject.myapplication.ProductUtils
 import com.myproject.myapplication.R
 import com.myproject.myapplication.ScannerActivity
 import com.myproject.myapplication.adapters.ProductInWardAdapters
+import com.myproject.myapplication.databinding.ActivityHomepageBinding
+import com.myproject.myapplication.databinding.InwardAddProductBinding
 import com.myproject.myapplication.model.ProductDetailResponse
 import com.myproject.myapplication.model.ProductVariant
 import com.myproject.myapplication.network.PreferenceManager
@@ -26,47 +31,119 @@ class InwardProductActivity : AppCompatActivity() {
 
 
 
-    private val productList: MutableList<ProductVariant> = ArrayList()
-    private var groceryRecyclerView: RecyclerView? = null
+    private var productList: MutableList<ProductVariant> = ArrayList()
     private var groceryAdapter: ProductInWardAdapters? = null
     private val SECOND_ACTIVITY_REQUEST_CODE:Int=100
-    private var updateBtn: Button?=null;
+
+    var product:ProductVariant?=null
+
+
+    private lateinit var binding:InwardAddProductBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_inward)
-
-        groceryRecyclerView = findViewById(R.id.rvContent)
-
-//         var tvAddItem: TextView = findViewById(R.id.tvAddItem)
-//
-//        updateBtn = findViewById(R.id.updateBtn)
-//
-//        tvAddItem.setOnClickListener(){
-//            Intent(this, ScannerActivity::class.java).also {
-//                startActivityForResult(it,SECOND_ACTIVITY_REQUEST_CODE)
-//            }
-//        }
+        binding = InwardAddProductBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
 
-        // add a divider after each item for more clarity
+        product= intent!!.extras!!.get("addProduct") as ProductVariant
 
+
+
+        if(product!=null){
+
+
+            var tproductName:TextView= findViewById(R.id.productName)
+            tproductName.text=product!!.productVariantName
+        }
+
+
+
+
+        binding.addMoreBtn!!.setOnClickListener(){
+
+            if(TextUtils.isEmpty(binding.etProductQty.text.toString())){
+                Utils.toast("quantity should be  more than zero",this)
+            }
+            else if(TextUtils.isEmpty(binding.etProcPrice.text.toString())){
+                Utils.toast("procurent Price should be  more than zero",this)
+            }
+
+            else if(TextUtils.isEmpty(binding.etInputSellPrice.text.toString())){
+                Utils.toast("sellPrice should be  more than zero",this)
+            }
+
+            else{
+
+
+                val quantity:Int=binding.etProductQty.text.toString().toInt()
+                val procuPrice:Int=binding.etProcPrice.text.toString().toInt()
+                val sellPrice:Int=binding.etInputSellPrice.text.toString().toInt()
+                product!!.procPrice= procuPrice.toLong()
+                product!!.sellingPrice=sellPrice.toLong()
+                product!!.quantity=quantity.toLong()
+
+
+
+                ProductUtils.instance(this).addProduct(product!!)
+                //add product functionlity
+                Intent(this, ScannerActivity::class.java).also {
+                    startActivity(it)
+                }
+            }
+
+
+
+
+
+        }
+
+
+
+
+        productList=ProductUtils.instance(this).productList
         groceryAdapter = ProductInWardAdapters(productList, applicationContext)
         val horizontalLayoutManager =
             LinearLayoutManager(this@InwardProductActivity, LinearLayoutManager.VERTICAL, false)
-        groceryRecyclerView!!.setLayoutManager(horizontalLayoutManager)
-        groceryRecyclerView!!.setAdapter(groceryAdapter)
+        binding.rvContent!!.setLayoutManager(horizontalLayoutManager)
+        binding.rvContent!!.setAdapter(groceryAdapter)
 
 
 
-        groceryRecyclerView!!.addItemDecoration(
+        binding.rvContent!!.addItemDecoration(
             DividerItemDecoration(
                 this@InwardProductActivity,
                 LinearLayoutManager.VERTICAL
             )
         )
 
-        updateBtn!!.setOnClickListener(){
-            updateProducts(productList);
+        binding.updateBtn!!.setOnClickListener(){
+
+            if(TextUtils.isEmpty(binding.etProductQty.text.toString())){
+                Utils.toast("quantity should be  more than zero",this)
+            }
+            else if(TextUtils.isEmpty(binding.etProcPrice.text.toString())){
+                Utils.toast("procurent Price should be  more than zero",this)
+            }
+
+            else if(TextUtils.isEmpty(binding.etInputSellPrice.text.toString())){
+                Utils.toast("sellPrice should be  more than zero",this)
+            }
+
+            else {
+
+
+                val quantity: Int = binding.etProductQty.text.toString().toInt()
+                val procuPrice: Int = binding.etProcPrice.text.toString().toInt()
+                val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
+                product!!.procPrice = procuPrice.toLong()
+                product!!.sellingPrice = sellPrice.toLong()
+                product!!.quantity = quantity.toLong()
+
+
+
+                ProductUtils.instance(this).addProduct(product!!)
+                updateProducts(ProductUtils.instance(this).productList);
+            }
         }
 
 

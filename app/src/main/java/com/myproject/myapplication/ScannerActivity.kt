@@ -24,6 +24,7 @@ import com.google.zxing.Result
 import com.medfin.Utils
 import com.myproject.myapplication.ZXingScannerView.ResultHandler
 import com.myproject.myapplication.adapters.ProductListAdapter
+import com.myproject.myapplication.inward.InwardProductActivity
 import com.myproject.myapplication.model.*
 import com.myproject.myapplication.network.WebServiceProvider
 import io.reactivex.SingleObserver
@@ -204,7 +205,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                 override fun onClick(product: ProductVariant?) {
 
 
-                    val intent =Intent(this@ScannerActivity,inactivity::class.java)
+                    val intent =Intent(this@ScannerActivity,InwardProductActivity::class.java)
                     intent.putExtra("addProduct", product)
                     startActivity(intent);
                     

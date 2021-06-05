@@ -9,9 +9,7 @@ import java.io.Serializable;
 public class AddProduct implements Serializable
 {
 
-    @SerializedName("productId")
-    @Expose
-    private long productId;
+
     @SerializedName("variantId")
     @Expose
     private long variantId;
@@ -32,13 +30,6 @@ public class AddProduct implements Serializable
     private long quantity;
     private final static long serialVersionUID = 4478176112159785282L;
 
-    public long getProductId() {
-        return productId;
-    }
-
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
 
     public long getVariantId() {
         return variantId;

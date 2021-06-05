@@ -34,6 +34,16 @@
         android:textSize="18sp" />
 
 
+        <TextView
+            android:id="@+id/productName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:gravity="center_vertical"
+            android:text="test"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -44,6 +54,8 @@
             android:layout_width="130dp"
             android:layout_height="90dp"
             android:src="@mipmap/splash_image" />
+
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -64,6 +76,7 @@
                 android:textSize="30sp" />
 
             <EditText
+                android:id="@+id/etProductQty"
                 android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -86,13 +99,13 @@
         </LinearLayout>
 
         <EditText
+            android:id="@+id/etTotalPrice"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="49dp"
             android:layout_marginTop="30dp"
             android:background="@color/white"
             android:padding="10dp"
-
             android:drawableLeft="@drawable/ruppe_ic"
             android:inputType="number"
             android:textAlignment="center"
@@ -117,6 +130,7 @@
             android:textSize="30sp" />
 
         <EditText
+            android:id="@+id/etInputSellPrice"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="49dp"
@@ -150,6 +164,7 @@
             android:textSize="30sp" />
 
         <EditText
+            android:id="@+id/etProcPrice"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -205,7 +220,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/addMoreBtn"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:background="@color/white"
@@ -213,7 +228,7 @@
             android:textSize="@dimen/size_20sp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/updateBtn"
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:background="#730099"
