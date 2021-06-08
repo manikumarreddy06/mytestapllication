@@ -31,7 +31,7 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
     @Override
     public GroceryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         //inflate the layout file
-        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inward_add_product, parent, false);
+        View groceryProductView = LayoutInflater.from(parent.getContext()).inflate(R.layout.inwarddynamic, parent, false);
         GroceryViewHolder gvh = new GroceryViewHolder(groceryProductView);
         return gvh;
     }
@@ -48,12 +48,12 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
 
             }
         });
-//        holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
+        holder.tvProcprice.setText("Price:"+horizontalGrocderyList.get(position).getProcPrice());
 //
 //        holder.tvSellingPrice.setText("Selling Price:"+horizontalGrocderyList.get(position).getSellingPrice());
 //
 //
-//        holder.tvQuantity.setText("Quatity:"+horizontalGrocderyList.get(position).getQuantity());
+        holder.tvQuantity.setText("quantity:"+horizontalGrocderyList.get(position).getQuantity()+"  "+horizontalGrocderyList.get(position).getUnitType());
 
     }
 
@@ -71,10 +71,10 @@ public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAda
         public GroceryViewHolder(View view) {
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
-            txtview=view.findViewById(R.id.idProductName);
-//            tvProcprice=view.findViewById(R.id.tvProcprice);
+            txtview=view.findViewById(R.id.productName);
+            tvProcprice=view.findViewById(R.id.tvPrice);
 //            tvSellingPrice=view.findViewById(R.id.tvSellingPrice);
-//            tvQuantity=view.findViewById(R.id.tvQuantity);
+            tvQuantity=view.findViewById(R.id.tvQty);
 
         }
     }
