@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -47,7 +48,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         //holder.imageView.setImageResource(horizontalGrocderyList.get(position).getProductName());
         holder.txtview.setText(horizontalGrocderyList.get(position).getProductVariantName());
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
+        holder.llContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String productName = horizontalGrocderyList.get(position).getProductVariantName().toString();
@@ -68,8 +69,10 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public class GroceryViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView txtview;
+        LinearLayout llContainer;
         public GroceryViewHolder(View view) {
             super(view);
+            llContainer=view.findViewById(R.id.llContainer);
             imageView=view.findViewById(R.id.idProductImage);
             txtview=view.findViewById(R.id.idProductName);
 

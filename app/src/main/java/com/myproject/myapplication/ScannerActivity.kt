@@ -58,20 +58,19 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
         contentFrame.addView(mScannerView)
         doProductSearch()
 
+        var tvHeaderTitle:TextView=findViewById(R.id.tvHeaderTitle)
+        if(ProductUtils.instance(this).isOutOrderTypeFlag){
+            tvHeaderTitle.text="Billing"
+        }
+        else{
+            tvHeaderTitle.text="Product Addition"
+        }
+
+
 
     }
 
-    private fun populategroceryList() {
-        val potato = ProductDetails("Potato")
-        val onion = ProductDetails("Onion")
-        val cabbage = ProductDetails("Cabbage")
-        val cauliflower = ProductDetails("Cauliflower")
-        productList.add(potato)
-        productList.add(onion)
-        productList.add(cabbage)
-        productList.add(cauliflower)
-        groceryAdapter!!.notifyDataSetChanged()
-    }
+
 
     public override fun onResume() {
         super.onResume()
@@ -125,9 +124,10 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                     Utils.hideDialog()
                     if(response.isIsvalid()) {
 
-                        Toast.makeText(this@ScannerActivity, "suceess", Toast.LENGTH_SHORT).show()
-
-                        showpopup(response!!.productDetails!!.productVariants,response!!.productDetails!!)
+                        Toast.makeText(this@ScannerActivity, "success", Toast.LENGTH_SHORT).show()
+                        val intent =Intent(this@ScannerActivity,InwardProductActivity::class.java)
+                        intent.putExtra("addProduct", response.productVariants[0])
+                        startActivity(intent);
                     }
                     else{
                         Toast.makeText(this@ScannerActivity, "product not found", Toast.LENGTH_SHORT).show()
@@ -215,7 +215,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
             val horizontalLayoutManager =LinearLayoutManager(this@ScannerActivity, LinearLayoutManager.HORIZONTAL, false)
             groceryRecyclerView!!.setLayoutManager(horizontalLayoutManager)
             groceryRecyclerView!!.setAdapter(groceryAdapter)
-            populategroceryList()
+
 
             viewGroup.addView(view)
         }

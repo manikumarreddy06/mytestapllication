@@ -91,8 +91,12 @@ interface WebServiceProvider {
     fun productSearchbyCategory(): Single<CategoryResponseBean>
 
 
-    @POST("api/variant/add")
-    fun productSearch(@Body data:MutableList<AddProduct?>): Single<ProductDetailResponse>
+    @POST("api/add/inventory")
+    fun productAdd(@Body data:MutableList<AddProduct?>): Single<ProductDetailResponse>
+
+
+    @POST("api/update/inventory")
+    fun productOut(@Body data:MutableList<AddProduct?>): Single<ProductDetailResponse>
 
 
     @GET("api/product/{storeId}")

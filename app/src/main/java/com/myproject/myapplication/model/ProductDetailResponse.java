@@ -1,6 +1,8 @@
 package com.myproject.myapplication.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -16,9 +18,9 @@ public class ProductDetailResponse implements Serializable
     @SerializedName("user")
     @Expose
     private Object user;
-    @SerializedName("productDetails")
+    @SerializedName("productVariants")
     @Expose
-    private ProductDetails productDetails;
+    private List<ProductVariant> productVariants = null;
     private final static long serialVersionUID = 1286529609297930646L;
 
     public boolean isIsvalid() {
@@ -45,12 +47,16 @@ public class ProductDetailResponse implements Serializable
         this.user = user;
     }
 
-    public ProductDetails getProductDetails() {
-        return productDetails;
+
+    public List<ProductVariant> getProductVariants() {
+        return productVariants;
     }
 
-    public void setProductDetails(ProductDetails productDetails) {
-        this.productDetails = productDetails;
+    public void setProductVariants(List<ProductVariant> productVariants) {
+        this.productVariants = productVariants;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 }

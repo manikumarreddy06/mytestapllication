@@ -12,6 +12,7 @@ public class ProductUtils {
     private static ProductUtils mInstance = null;
 
 
+    private static boolean outOrderTypeFlag;
     private static List<ProductVariant> list=new ArrayList<ProductVariant>();
     public static ProductUtils instance(Context context) {
         if (mInstance == null)
@@ -38,5 +39,19 @@ public class ProductUtils {
 
     }
 
+    public void clear(){
+        if(list!=null) {
+            list.clear();
+            outOrderTypeFlag=false;
+        }
+    }
 
+
+    public  boolean isOutOrderTypeFlag() {
+        return outOrderTypeFlag;
+    }
+
+    public void setOutOrderTypeFlag(boolean outOrderTypeFlag) {
+        ProductUtils.outOrderTypeFlag = outOrderTypeFlag;
+    }
 }

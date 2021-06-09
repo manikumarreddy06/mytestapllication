@@ -11,7 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
-        android:text="Other Categories "
+        android:text="Other Categories   "
+        android:textStyle="bold"
+        android:textSize="15sp"
         android:textColor="@android:color/black" />
 
     <androidx.recyclerview.widget.RecyclerView
