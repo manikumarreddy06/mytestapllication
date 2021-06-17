@@ -111,21 +111,25 @@
                     android:layout_marginTop="10dp">
 
                     <Button
+                        android:id="@+id/inwardbtn1"
                         android:layout_width="65dp"
                         android:layout_height="45dp"
-                        android:text="btn1"/>
+                        android:text="+10"/>
                     <Button
+                        android:id="@+id/inwardbtn2"
                         android:layout_width="65dp"
                         android:layout_height="45dp"
-                        android:text="btn1"/>
+                        android:text="+25"/>
                     <Button
+                        android:id="@+id/inwardbtn3"
                         android:layout_width="65dp"
                         android:layout_height="45dp"
-                        android:text="btn1"/>
+                        android:text="+50"/>
                     <Button
+                        android:id="@+id/inwardbtn4"
                         android:layout_width="65dp"
                         android:layout_height="45dp"
-                        android:text="btn1"/>
+                        android:text="+100"/>
 
                 </LinearLayout>
             </RelativeLayout>
@@ -227,7 +231,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/tvTitle"
                 android:layout_marginTop="-17dp"
-                android:orientation="vertical"></androidx.recyclerview.widget.RecyclerView>
+                android:orientation="vertical">
+
+            </androidx.recyclerview.widget.RecyclerView>
 
 
 

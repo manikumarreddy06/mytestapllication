@@ -39,7 +39,8 @@ public class InventoryAdapters extends RecyclerView.Adapter<InventoryAdapters.Gr
     @Override
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         //holder.imageView.setImageResource(horizontalGrocderyList.get(position).getProductName());
-        holder.txtview.setText(horizontalGrocderyList.get(position).getProductVariantName());
+        ProductInfo productInfo =horizontalGrocderyList.get(position);
+        holder.txtview.setText(productInfo.getProductVariantName()+"-"+productInfo.getUnits()+""+productInfo.getUnitType());
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -20,4 +20,7 @@
 
 
     <string name="product_inventory">Inventory</string>
+    <string name="exit">test1</string>
+    <string name="cancel">cancel</string>
+    <string name="fire">true</string>
 </resources>

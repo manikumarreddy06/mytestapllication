@@ -4,21 +4,17 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.JsonObject
 import com.medfin.Utils
 import com.myproject.myapplication.HomepageActivity
 import com.myproject.myapplication.ProductUtils
 import com.myproject.myapplication.R
 import com.myproject.myapplication.ScannerActivity
 import com.myproject.myapplication.adapters.ProductInWardAdapters
-import com.myproject.myapplication.databinding.ActivityHomepageBinding
 import com.myproject.myapplication.databinding.InwardAddProductBinding
 import com.myproject.myapplication.model.ProductDetailResponse
 import com.myproject.myapplication.model.ProductVariant
@@ -47,15 +43,20 @@ class InwardProductActivity : AppCompatActivity() {
 
 
         product= intent!!.extras!!.get("addProduct") as ProductVariant
+        var qty:Int =1
+       binding.inwardbtn1.setOnClickListener {
+           qty=binding.etProductQty.text.toString().toInt()+10
+           if(qty>0) {
+               binding.etProductQty.setText(qty.toString());
+           }
 
-
+       }
 
         if(product!=null){
 
 
             var tproductName:TextView= findViewById(R.id.productName)
-            tproductName.text=product!!.productVariantName
-        }
+            tproductName.text=product!!.productVariantName }
 
 
         if(ProductUtils.instance(this).isOutOrderTypeFlag){
@@ -80,6 +81,30 @@ class InwardProductActivity : AppCompatActivity() {
         binding.plus.setOnClickListener(){
             quantity=binding.etProductQty.text.toString().toInt()+1
             binding.etProductQty.setText(quantity.toString());
+        }
+        var qty1: Int = 1
+        binding.inwardbtn1.setOnClickListener() {
+            qty = binding.etProductQty.text.toString().toInt() + 10
+            binding.etProductQty.setText(qty.toString());
+
+        }
+        var qty2: Int = 1
+        binding.inwardbtn2.setOnClickListener() {
+            qty = binding.etProductQty.text.toString().toInt() + 25
+            binding.etProductQty.setText(qty.toString());
+
+        }
+        var qty3: Int = 1
+        binding.inwardbtn3.setOnClickListener() {
+            qty = binding.etProductQty.text.toString().toInt() + 50
+            binding.etProductQty.setText(qty.toString());
+
+        }
+        var qty4: Int = 1
+        binding.inwardbtn4.setOnClickListener() {
+            qty = binding.etProductQty.text.toString().toInt() + 100
+            binding.etProductQty.setText(qty.toString());
+
         }
 
         binding.addMoreBtn!!.setOnClickListener(){
@@ -124,22 +149,20 @@ class InwardProductActivity : AppCompatActivity() {
 
 
         productList=ProductUtils.instance(this).productList
-        if(productList!=null) {
-            groceryAdapter = ProductInWardAdapters(productList, applicationContext)
-            val horizontalLayoutManager =
-                LinearLayoutManager(this@InwardProductActivity, LinearLayoutManager.VERTICAL, false)
-            binding.rvContent!!.setLayoutManager(horizontalLayoutManager)
-            binding.rvContent!!.setAdapter(groceryAdapter)
+        groceryAdapter = ProductInWardAdapters(productList, applicationContext)
+        val horizontalLayoutManager =
+            LinearLayoutManager(this@InwardProductActivity, LinearLayoutManager.VERTICAL, false)
+        binding.rvContent.setLayoutManager(horizontalLayoutManager)
+        binding.rvContent.setAdapter(groceryAdapter)
 
 
 
-            binding.rvContent!!.addItemDecoration(
-                DividerItemDecoration(
-                    this@InwardProductActivity,
-                    LinearLayoutManager.VERTICAL
-                )
+        binding.rvContent.addItemDecoration(
+            DividerItemDecoration(
+                this@InwardProductActivity,
+                LinearLayoutManager.VERTICAL
             )
-        }
+        )
 
         binding.updateBtn!!.setOnClickListener(){
 

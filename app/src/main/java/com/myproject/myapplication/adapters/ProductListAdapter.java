@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.myproject.myapplication.R;
+import com.myproject.myapplication.model.ProductInfo;
 import com.myproject.myapplication.model.ProductVariant;
 
 import java.util.List;
@@ -47,14 +48,17 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public void onBindViewHolder(GroceryViewHolder holder, final int position) {
         //holder.imageView.setImageResource(horizontalGrocderyList.get(position).getProductName());
-        holder.txtview.setText(horizontalGrocderyList.get(position).getProductVariantName());
+        ProductVariant productInfo =horizontalGrocderyList.get(position);
+        String productName = (productInfo.getProductVariantName() + "-" + productInfo.getUnits() + "" + productInfo.getUnitType());
+        holder.txtview.setText(productName);
         holder.llContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String productName = horizontalGrocderyList.get(position).getProductVariantName().toString();
+                String productName=null;
+                String productInfo =horizontalGrocderyList.get(position).getProductVariantName();
                 Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
-
                 mListener.onClick(horizontalGrocderyList.get(position));
+
             }
         });
     }
