@@ -1,5 +1,6 @@
 package com.myproject.myapplication
 
+import android.R
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -20,9 +21,11 @@ class HomepageActivity : AppCompatActivity() {
 
 
 
-        binding.tvUserName.text="Welcome "+PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_NAME,"")
+        binding.tvUserName.text = "Welcome " + PreferenceManager.instance(this@HomepageActivity)
+            .get(PreferenceManager.USER_NAME, "")
 
-        binding.tvStoreName.text=PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.STORE_NAME,"")
+        binding.tvStoreName.text =
+            PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.STORE_NAME, "")
 
         binding.btn1.setOnClickListener {
             ProductUtils.instance(this).clear()
@@ -36,9 +39,9 @@ class HomepageActivity : AppCompatActivity() {
 
             ProductUtils.instance(this).clear()
             ProductUtils.instance(this).isOutOrderTypeFlag = false
-                Intent(this, ScannerActivity::class.java).also {
-                    startActivity(it)
-                }
+            Intent(this, ScannerActivity::class.java).also {
+                startActivity(it)
+            }
         }
         binding.btn3.setOnClickListener {
             Intent(this, InventoryActivity::class.java).also {
@@ -50,25 +53,22 @@ class HomepageActivity : AppCompatActivity() {
             Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
         }
 
-            binding.btnlogout.setOnClickListener{
-                val logout=AlertDialog.Builder(this)
-                    .setTitle("Log out")
-                    .setMessage("Are you sure you want to logout")
-                    .setPositiveButton("yes") { dialogInterface: DialogInterface, i: Int ->
-                        Toast.makeText(this,"logged out successfully",Toast.LENGTH_SHORT).show()
+        binding.btnlogout.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Delete entry")
+                .setMessage("Are you sure you want to log out") // Specifying a listener allows you to take an action before dismissing the dialog.
+                // The dialog is automatically dismissed when a dialog button is clicked.
+                .setPositiveButton(
+                    R.string.yes
+                ) { dialog, which ->
+                    // Continue with delete operation
+                } // A null listener allows the button to dismiss the dialog and take no further action.
 
-                        PreferenceManager.instance(this@HomepageActivity).clearUserSession()
-                        Intent(this, MainActivity::class.java).also {
-                            startActivity(it)
+                .setNegativeButton(R.string.no, null)
+                .setIcon(R.drawable.ic_dialog_alert)
+                .show()
 
-                        }
-                        finish()
-                    }
-                    .setNegativeButton("No") { dialogInterface: DialogInterface, i: Int ->
 
-                    }.create()
-             logout.show()
-
-            }
         }
+    }
 }

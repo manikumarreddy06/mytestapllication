@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
@@ -13,8 +14,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.DialogFragment
 import androidx.media.MediaBrowserServiceCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -39,7 +42,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
     var formt: String? = null
     private val productList: MutableList<ProductDetails> = ArrayList()
     private var groceryRecyclerView: RecyclerView? = null
-    private var groceryAdapter: ProductListAdapter? = null
+    private var groceryAdapter:ProductListAdapter? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
@@ -112,36 +115,57 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
 
 
         var provider: WebServiceProvider =
-            WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
-        provider.productSearch(obj)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<ProductDetailResponse> {
-                override fun onSubscribe(d: Disposable) {
+            WebServiceProvider.retrofit.create(WebServiceProvider::class.java).also {
+                it.productSearch(obj)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(object : SingleObserver<ProductDetailResponse> {
+                        override fun onSubscribe(d: Disposable) {
 
-                }
+                        }
 
-                override fun onSuccess(response: ProductDetailResponse) {
-                    Utils.hideDialog()
-                    if(response.isIsvalid()) {
+                        override fun onSuccess(response: ProductDetailResponse) {
+                            Utils.hideDialog()
+                            if (response.isIsvalid()) {
 
-                        Toast.makeText(this@ScannerActivity, "success", Toast.LENGTH_SHORT).show()
-                        val intent =Intent(this@ScannerActivity,InwardProductActivity::class.java)
-                        intent.putExtra("addProduct", response.productVariants[0])
-                        startActivity(intent);
-                    }
-                    else{
-                        Toast.makeText(this@ScannerActivity, "product not found", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@ScannerActivity, "success", Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this@ScannerActivity, InwardProductActivity::class.java)
+                                intent.putExtra("addProduct", response.productVariants[0])
+                                startActivity(intent);
+                            }
+                           else {
+//                                class FireMissilesDialogFragment : DialogFragment() {
+//
+//                                    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+//                                        return activity?.let {
+//                                            // Use the Builder class for convenient dialog construction
+//                                            val builder = AlertDialog.Builder(it)
+//                                            builder.setMessage(R.string.exit)
+//                                                .setPositiveButton(R.string.fire,
+//                                                    DialogInterface.OnClickListener { dialog, id ->
+//                                                        // FIRE ZE MISSILES!
+//                                                    })
+//                                                .setNegativeButton(R.string.cancel,
+//                                                    DialogInterface.OnClickListener { dialog, id ->
+//                                                        // User cancelled the dialog
+//                                                    })
+//                                            // Create the AlertDialog object and return it
+//                                            builder.create()
+//                                        } ?: throw IllegalStateException("Activity cannot be null")
+//                                    }
+//                                }
+                                Toast.makeText(this@ScannerActivity, "product not found", Toast.LENGTH_LONG).show()
 
-                    }
+                            }
 
-                }
+                        }
 
-                override fun onError(e: Throwable) {
-                    Utils.hideDialog()
-                    e.printStackTrace()
-                    Toast.makeText(this@ScannerActivity, "failure", Toast.LENGTH_SHORT).show()
-                }
-            })
+                        override fun onError(e: Throwable) {
+                            Utils.hideDialog()
+                            e.printStackTrace()
+                            Toast.makeText(this@ScannerActivity, "failure", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+            }
     }
 
     private fun doProductSearch() {

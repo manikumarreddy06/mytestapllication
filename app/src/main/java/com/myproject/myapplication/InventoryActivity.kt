@@ -32,12 +32,12 @@ class InventoryActivity : AppCompatActivity() {
         groceryAdapter = InventoryAdapters(productList, applicationContext)
         val horizontalLayoutManager =
             LinearLayoutManager(this@InventoryActivity, LinearLayoutManager.VERTICAL, false)
-        binding.rvContent!!.setLayoutManager(horizontalLayoutManager)
-        binding.rvContent!!.setAdapter(groceryAdapter)
+        binding.rvContent.setLayoutManager(horizontalLayoutManager)
+        binding.rvContent.setAdapter(groceryAdapter)
 
 
 
-        binding.rvContent!!.addItemDecoration(
+        binding.rvContent.addItemDecoration(
             DividerItemDecoration(
                 this@InventoryActivity,
                 LinearLayoutManager.VERTICAL

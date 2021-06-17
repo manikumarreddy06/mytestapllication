@@ -33,6 +33,7 @@
             android:layout_height="wrap_content"
             android:hint="Enter your mobile number"
             android:layout_marginTop="50dp"
+            android:maxLength="10"
             android:textAlignment="center"
             android:textColor="#10100F"
             android:textColorHint="#151412"
