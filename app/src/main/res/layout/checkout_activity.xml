@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvHeaderTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#730099"
+            android:gravity="center"
+            android:text="@string/product_addition"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="Items in Cart"
+                android:textColor="@android:color/black"
+                android:textSize="15sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTitle"
+                android:layout_marginTop="-17dp"
+                android:orientation="vertical"></androidx.recyclerview.widget.RecyclerView>
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="7dp"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/addMoreBtn"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:background="@color/white"
+            android:text="ADD MORE"
+            android:textSize="@dimen/size_20sp" />
+
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_width="217dp"
+            android:layout_height="60dp"
+            android:background="#730099"
+            android:text="Finish"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_20sp" />
+
+
+    </LinearLayout>
+</RelativeLayout>

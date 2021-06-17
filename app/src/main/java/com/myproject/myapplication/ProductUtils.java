@@ -2,6 +2,7 @@ package com.myproject.myapplication;
 
 import android.content.Context;
 
+import com.myproject.myapplication.model.CategoryItem;
 import com.myproject.myapplication.model.ProductVariant;
 
 import java.util.ArrayList;
@@ -14,6 +15,9 @@ public class ProductUtils {
 
     private static boolean outOrderTypeFlag;
     private static List<ProductVariant> list=new ArrayList<ProductVariant>();
+    private static List<CategoryItem> CategoryList=new ArrayList<CategoryItem>();
+
+
     public static ProductUtils instance(Context context) {
         if (mInstance == null)
             mInstance = new ProductUtils();
@@ -53,5 +57,13 @@ public class ProductUtils {
 
     public void setOutOrderTypeFlag(boolean outOrderTypeFlag) {
         ProductUtils.outOrderTypeFlag = outOrderTypeFlag;
+    }
+
+    public static List<CategoryItem> getCategoryList() {
+        return CategoryList;
+    }
+
+    public static void setCategoryList(List<CategoryItem> categoryList) {
+        CategoryList = categoryList;
     }
 }
