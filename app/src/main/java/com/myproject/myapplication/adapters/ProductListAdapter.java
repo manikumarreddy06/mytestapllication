@@ -54,9 +54,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         holder.llContainer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String productName=null;
-                String productInfo =horizontalGrocderyList.get(position).getProductVariantName();
-                Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
                 mListener.onClick(horizontalGrocderyList.get(position));
 
             }

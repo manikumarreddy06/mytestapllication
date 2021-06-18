@@ -93,11 +93,11 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
     }
 
     override fun handleResult(rawResult: Result) {
-        Toast.makeText(
-            this,
-            "Contents = " + rawResult.text + ", Format = " + rawResult.barcodeFormat.toString(),
-            Toast.LENGTH_LONG
-        ).show()
+//        Toast.makeText(
+//            this,
+//            "Contents = " + rawResult.text + ", Format = " + rawResult.barcodeFormat.toString(),
+//            Toast.LENGTH_LONG
+//        ).show()
         position = rawResult.text
         formt = rawResult.barcodeFormat.toString()
         val intent = Intent()
@@ -133,33 +133,27 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                             Utils.hideDialog()
                             if (response.isIsvalid()) {
 
-                                Toast.makeText(this@ScannerActivity, "success", Toast.LENGTH_SHORT).show()
+                                //Toast.makeText(this@ScannerActivity, "success", Toast.LENGTH_SHORT).show()
                                 val intent = Intent(this@ScannerActivity, InwardProductActivity::class.java)
                                 intent.putExtra("addProduct", response.productVariants[0])
                                 startActivity(intent);
                             }
                            else {
-//                                class FireMissilesDialogFragment : DialogFragment() {
-//
-//                                    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-//                                        return activity?.let {
-//                                            // Use the Builder class for convenient dialog construction
-//                                            val builder = AlertDialog.Builder(it)
-//                                            builder.setMessage(R.string.exit)
-//                                                .setPositiveButton(R.string.fire,
-//                                                    DialogInterface.OnClickListener { dialog, id ->
-//                                                        // FIRE ZE MISSILES!
-//                                                    })
-//                                                .setNegativeButton(R.string.cancel,
-//                                                    DialogInterface.OnClickListener { dialog, id ->
-//                                                        // User cancelled the dialog
-//                                                    })
-//                                            // Create the AlertDialog object and return it
-//                                            builder.create()
-//                                        } ?: throw IllegalStateException("Activity cannot be null")
-//                                    }
-//                                }
-                                Toast.makeText(this@ScannerActivity, "product not found", Toast.LENGTH_LONG).show()
+
+                                AlertDialog.Builder(this@ScannerActivity)
+                                    .setTitle("Info")
+                                    .setMessage("Product is not found") // Specifying a listener allows you to take an action before dismissing the dialog.
+                                    // The dialog is automatically dismissed when a dialog button is clicked.
+                                    .setPositiveButton(
+                                        android.R.string.yes
+                                    ) { dialog, which ->
+                                        mScannerView!!.setResultHandler(this@ScannerActivity)
+                                        mScannerView!!.startCamera()
+                                    }
+
+                                    .setNegativeButton(android.R.string.no, null)
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show()
 
                             }
 

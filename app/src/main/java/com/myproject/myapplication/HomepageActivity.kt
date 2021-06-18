@@ -55,13 +55,21 @@ class HomepageActivity : AppCompatActivity() {
 
         binding.btnlogout.setOnClickListener {
             AlertDialog.Builder(this)
-                .setTitle("Delete entry")
+                .setTitle("Log Out")
                 .setMessage("Are you sure you want to log out") // Specifying a listener allows you to take an action before dismissing the dialog.
                 // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(
                     R.string.yes
                 ) { dialog, which ->
-                    // Continue with delete operation
+                    PreferenceManager.instance(this).clearUserSession()
+
+                    Intent(this,MainActivity::class.java).also {
+                        it.flags=Intent.FLAG_ACTIVITY_NEW_TASK
+                        it.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        
+                        startActivity(it)
+                        finish()
+                    }
                 } // A null listener allows the button to dismiss the dialog and take no further action.
 
 
