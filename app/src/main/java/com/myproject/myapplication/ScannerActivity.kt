@@ -59,7 +59,13 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
         val contentFrame = findViewById<View>(R.id.content_frame) as ViewGroup
         mScannerView = ZXingScannerView(this)
         contentFrame.addView(mScannerView)
-        doProductSearch()
+
+        if(ProductUtils.getCategoryList()!=null && ProductUtils.getCategoryList().size>0){
+           prepareCategoryUI(ProductUtils.getCategoryList())
+        }
+        else{
+            doProductSearch()
+        }
 
         var tvHeaderTitle:TextView=findViewById(R.id.tvHeaderTitle)
         if(ProductUtils.instance(this).isOutOrderTypeFlag){
@@ -188,6 +194,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                         Toast.makeText(this@ScannerActivity, "suceess", Toast.LENGTH_SHORT).show()
                         
                         prepareCategoryUI(response.categoryItems)
+                        ProductUtils.setCategoryList(response.categoryItems)
                     }
                     else{
                         Toast.makeText(this@ScannerActivity, "product not found", Toast.LENGTH_SHORT).show()
