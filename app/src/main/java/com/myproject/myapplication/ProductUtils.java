@@ -32,8 +32,35 @@ public class ProductUtils {
             list.add(p);
         }
         else{
-            list.add(p);
+            long updatedQty=0;
+            boolean itemExists=false;
+            for(ProductVariant product:list){
+                if(product.getVariantId()==p.getVariantId()){
+                    itemExists=true;
+                    updatedQty=product.getQuantity()+p.getQuantity();
+                    product.setQuantity(updatedQty);
+                    product.setProcPrice(p.getProcPrice());
+                    product.setSellingPrice(p.getSellingPrice());
+                    break;
+                }
+
+            }
+            if(!itemExists){
+                list.add(p);
+            }
         }
+
+    }
+
+    public void updateQty(ProductVariant p){
+
+       for(ProductVariant product:list){
+           if(product.getVariantId()==p.getVariantId()){
+               product.setQuantity(p.getQuantity());
+           }
+
+       }
+
 
     }
 
@@ -65,5 +92,20 @@ public class ProductUtils {
 
     public static void setCategoryList(List<CategoryItem> categoryList) {
         CategoryList = categoryList;
+    }
+
+    public long getTotalProcumentPrice(){
+        long totalPrice=0l;
+        for(ProductVariant product:list){
+            totalPrice=totalPrice+(product.getProcPrice()*product.getQuantity());
+        }
+        return totalPrice;
+    }
+    public long getTotalSellingPrice(){
+        long totalPrice=0l;
+        for(ProductVariant product:list){
+            totalPrice=totalPrice+(product.getSellingPrice()*product.getQuantity());
+        }
+        return totalPrice;
     }
 }

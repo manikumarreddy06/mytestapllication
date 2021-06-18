@@ -89,6 +89,7 @@ class MainActivity : AppCompatActivity() {
 
         Intent(this,HomepageActivity::class.java).also {
             startActivity(it)
+            finish()
         }
 
         //remaining fields
