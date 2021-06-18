@@ -99,6 +99,7 @@ class ProfitActivity: AppCompatActivity() {
         binding.btnMonthlyProfit.text="Monthly Profit \n ${response.monthlyProfit}/-"
         binding.btnMonthlySales.text="Monthly Sales \n ${response.monthlySales}/-"
 
+
     }
 
 }
