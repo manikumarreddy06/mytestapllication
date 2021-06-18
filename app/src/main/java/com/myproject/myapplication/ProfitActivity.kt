@@ -95,6 +95,7 @@ class ProfitActivity: AppCompatActivity() {
         binding.btnTodaySales.text=response.salesAmount
         binding.btnTodayProfit.text=response.profitAmount
 
+
     }
 
 }
