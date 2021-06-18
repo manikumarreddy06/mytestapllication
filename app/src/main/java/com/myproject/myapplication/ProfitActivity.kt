@@ -31,21 +31,25 @@ class ProfitActivity: AppCompatActivity() {
 
         binding.btnTodaySales.setOnClickListener {
             Intent(this, ProfitdetailsActivity::class.java).also {
+                it.putExtra("Type","Day")
                 startActivity(it)
             }
         }
         binding.btnTodayProfit.setOnClickListener {
             Intent(this, ProfitdetailsActivity::class.java).also {
+                it.putExtra("Type","Day")
                 startActivity(it)
             }
         }
         binding.btnMonthlySales.setOnClickListener {
             Intent(this, ProfitdetailsActivity::class.java).also {
+                it.putExtra("Type","Month")
                 startActivity(it)
             }
         }
         binding.btnMonthlyProfit.setOnClickListener {
             Intent(this, ProfitdetailsActivity::class.java).also {
+                it.putExtra("Type","Month")
                 startActivity(it)
             }
         }
