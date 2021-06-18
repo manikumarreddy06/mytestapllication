@@ -138,6 +138,7 @@ class InwardProductActivity : AppCompatActivity() {
                 //add product functionlity
                 Intent(this, ScannerActivity::class.java).also {
                     startActivity(it)
+                    finish()
                 }
             }
 
@@ -192,7 +193,12 @@ class InwardProductActivity : AppCompatActivity() {
 
 
                 ProductUtils.instance(this).addProduct(product!!)
-                updateProducts(ProductUtils.instance(this).productList);
+
+                Intent(this, CheckoutActivity::class.java).also {
+                    startActivity(it)
+                    finish()
+                }
+                //updateProducts(ProductUtils.instance(this).productList);
             }
         }
 
@@ -220,80 +226,4 @@ class InwardProductActivity : AppCompatActivity() {
 
     }
 
-    private fun updateProducts(productList: MutableList<ProductVariant>) {
-
-        var list: MutableList<AddProduct?>? = ArrayList()
-
-        val storeId=PreferenceManager.instance(this@InwardProductActivity).get(PreferenceManager.STORE_ID,"1").toLong()
-        for (item in productList!!) {
-            val ite:AddProduct= AddProduct()
-            ite.variantId=item.variantId
-            ite.procPrice=item.procPrice
-            ite.sellingPrice=item.sellingPrice
-            ite.quantity=item.quantity
-            ite.storeId=storeId
-
-            list!!.add(ite)
-        }
-
-        if(ProductUtils.instance(this).isOutOrderTypeFlag){
-            Utils.showDialog(this,"Loading")
-            var provider: WebServiceProvider =
-                WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
-            provider!!.productOut(list!!)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : SingleObserver<ProductDetailResponse> {
-                    override fun onSubscribe(d: Disposable) {
-
-                    }
-
-                    override fun onSuccess(response: ProductDetailResponse) {
-                        Utils.hideDialog()
-                        Toast.makeText(this@InwardProductActivity, "success", Toast.LENGTH_SHORT).show()
-
-                        val intent =Intent(this@InwardProductActivity,HomepageActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        finish()
-
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Utils.hideDialog()
-                        e.printStackTrace()
-                        Toast.makeText(this@InwardProductActivity, "failure", Toast.LENGTH_SHORT).show()
-                    }
-                })
-        }
-        else{
-            Utils.showDialog(this,"Loading")
-            var provider: WebServiceProvider =
-                WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
-            provider!!.productAdd(list!!)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : SingleObserver<ProductDetailResponse> {
-                    override fun onSubscribe(d: Disposable) {
-
-                    }
-
-                    override fun onSuccess(response: ProductDetailResponse) {
-                        Utils.hideDialog()
-                        Toast.makeText(this@InwardProductActivity, "success", Toast.LENGTH_SHORT).show()
-
-                        val intent =Intent(this@InwardProductActivity,HomepageActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        finish()
-
-                    }
-
-                    override fun onError(e: Throwable) {
-                        Utils.hideDialog()
-                        e.printStackTrace()
-                        Toast.makeText(this@InwardProductActivity, "failure", Toast.LENGTH_SHORT).show()
-                    }
-                })
-        }
-
-    }
 }

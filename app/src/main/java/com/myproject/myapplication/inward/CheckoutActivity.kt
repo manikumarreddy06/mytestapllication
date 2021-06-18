@@ -1,25 +1,18 @@
 package com.myproject.myapplication.inward
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.JsonObject
 import com.medfin.Utils
 import com.myproject.myapplication.HomepageActivity
+import com.myproject.myapplication.MainActivity
 import com.myproject.myapplication.ProductUtils
-import com.myproject.myapplication.R
-import com.myproject.myapplication.ScannerActivity
+import com.myproject.myapplication.adapters.CheckoutLineItemAdapter
 import com.myproject.myapplication.adapters.ProductInWardAdapters
-import com.myproject.myapplication.databinding.ActivityHomepageBinding
-import com.myproject.myapplication.databinding.InwardAddProductBinding
+import com.myproject.myapplication.databinding.CheckoutActivityBinding
 import com.myproject.myapplication.model.ProductDetailResponse
 import com.myproject.myapplication.model.ProductVariant
 import com.myproject.myapplication.network.PreferenceManager
@@ -33,30 +26,40 @@ class CheckoutActivity : AppCompatActivity() {
 
 
     private var productList: MutableList<ProductVariant> = ArrayList()
-    private var groceryAdapter: ProductInWardAdapters? = null
-    private val SECOND_ACTIVITY_REQUEST_CODE:Int=100
-
-    var product:ProductVariant?=null
+    private var groceryAdapter: CheckoutLineItemAdapter? = null
 
 
-    private lateinit var binding:InwardAddProductBinding
+    private lateinit var binding:CheckoutActivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = InwardAddProductBinding.inflate(layoutInflater)
+        binding = CheckoutActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-        product= intent!!.extras!!.get("addProduct") as ProductVariant
+
+
+        productList=ProductUtils.instance(this).productList
+        groceryAdapter = CheckoutLineItemAdapter(productList, applicationContext)
+        val horizontalLayoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        binding.rvContent.setLayoutManager(horizontalLayoutManager)
+        binding.rvContent.setAdapter(groceryAdapter)
 
 
 
-        if(product!=null){
+        binding.rvContent.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                LinearLayoutManager.VERTICAL
+            )
+        )
 
-
-            var tproductName:TextView= findViewById(R.id.productName)
-            tproductName.text=product!!.productVariantName
+        binding.checkoutBtn!!.setOnClickListener(){
+            if(groceryAdapter!=null) {
+                productList = groceryAdapter!!.productItems
+                updateProducts(productList);
+            }
         }
-
 
         if(ProductUtils.instance(this).isOutOrderTypeFlag){
             binding.tvHeaderTitle.text="Product Checkout"
@@ -65,135 +68,14 @@ class CheckoutActivity : AppCompatActivity() {
             binding.tvHeaderTitle.text="Product Addition"
         }
 
-        var quantity:Int=1
-        binding.minus.setOnClickListener(){
-
-            quantity=binding.etProductQty.text.toString().toInt()-1
-            if(quantity>0) {
-                binding.etProductQty.setText(quantity.toString());
-            }
-            else{
-                Utils.toast("quantity should be  more than zero",this)
-            }
-        }
-
-        binding.plus.setOnClickListener(){
-            quantity=binding.etProductQty.text.toString().toInt()+1
-            binding.etProductQty.setText(quantity.toString());
-        }
-
-        binding.addMoreBtn!!.setOnClickListener(){
-
-            if(TextUtils.isEmpty(binding.etProductQty.text.toString())){
-                Utils.toast("quantity should be  more than zero",this)
-            }
-            else if(TextUtils.isEmpty(binding.etProcPrice.text.toString())){
-                Utils.toast("procurent Price should be  more than zero",this)
-            }
-
-            else if(TextUtils.isEmpty(binding.etInputSellPrice.text.toString())){
-                Utils.toast("sellPrice should be  more than zero",this)
-            }
-
-            else{
-
-
-                val quantity:Int=binding.etProductQty.text.toString().toInt()
-                val procuPrice:Int=binding.etProcPrice.text.toString().toInt()
-                val sellPrice:Int=binding.etInputSellPrice.text.toString().toInt()
-                product!!.procPrice= procuPrice.toLong()
-                product!!.sellingPrice=sellPrice.toLong()
-                product!!.quantity=quantity.toLong()
-
-
-
-                ProductUtils.instance(this).addProduct(product!!)
-                //add product functionlity
-                Intent(this, ScannerActivity::class.java).also {
-                    startActivity(it)
-                }
-            }
-
-
-
-
-
-        }
-
-
-
-
-        productList=ProductUtils.instance(this).productList
-        if(productList!=null) {
-            groceryAdapter = ProductInWardAdapters(productList, applicationContext)
-            val horizontalLayoutManager =
-                LinearLayoutManager(this@CheckoutActivity, LinearLayoutManager.VERTICAL, false)
-            binding.rvContent!!.setLayoutManager(horizontalLayoutManager)
-            binding.rvContent!!.setAdapter(groceryAdapter)
-
-
-
-            binding.rvContent!!.addItemDecoration(
-                DividerItemDecoration(
-                    this@CheckoutActivity,
-                    LinearLayoutManager.VERTICAL
-                )
-            )
-        }
-
-        binding.updateBtn!!.setOnClickListener(){
-
-            if(TextUtils.isEmpty(binding.etProductQty.text.toString())){
-                Utils.toast("quantity should be  more than zero",this)
-            }
-            else if(TextUtils.isEmpty(binding.etProcPrice.text.toString())){
-                Utils.toast("procurent Price should be  more than zero",this)
-            }
-
-            else if(TextUtils.isEmpty(binding.etInputSellPrice.text.toString())){
-                Utils.toast("sellPrice should be  more than zero",this)
-            }
-
-            else {
-
-
-                val quantity: Int = binding.etProductQty.text.toString().toInt()
-                val procuPrice: Int = binding.etProcPrice.text.toString().toInt()
-                val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
-                product!!.procPrice = procuPrice.toLong()
-                product!!.sellingPrice = sellPrice.toLong()
-                product!!.quantity = quantity.toLong()
-
-
-
-                ProductUtils.instance(this).addProduct(product!!)
-                updateProducts(ProductUtils.instance(this).productList);
-            }
-        }
-
+        binding.TvItemCount.text="Item Count: ${productList.size}"
+        binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalProcumentPrice}"
 
 
     }
 
 
-    // This method is called when the second activity finishes
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
 
-        // Check that it is the SecondActivity with an OK result
-        if (requestCode == SECOND_ACTIVITY_REQUEST_CODE) {
-            if (resultCode == Activity.RESULT_OK) {
-
-
-                var product:ProductVariant = data!!.extras!!.get("addProduct") as ProductVariant
-                productList.add(product)
-                groceryAdapter!!.notifyDataSetChanged()
-
-            }
-        }
-
-
-    }
 
     private fun updateProducts(productList: MutableList<ProductVariant>) {
 
@@ -224,11 +106,6 @@ class CheckoutActivity : AppCompatActivity() {
 
                     override fun onSuccess(response: ProductDetailResponse) {
                         Utils.hideDialog()
-                        Toast.makeText(this@CheckoutActivity, "success", Toast.LENGTH_SHORT).show()
-
-                        val intent =Intent(this@CheckoutActivity,HomepageActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
                         finish()
 
                     }
@@ -253,12 +130,13 @@ class CheckoutActivity : AppCompatActivity() {
 
                     override fun onSuccess(response: ProductDetailResponse) {
                         Utils.hideDialog()
-                        Toast.makeText(this@CheckoutActivity, "success", Toast.LENGTH_SHORT).show()
+                        Intent(this@CheckoutActivity, HomepageActivity::class.java).also {
+                            it.flags=Intent.FLAG_ACTIVITY_NEW_TASK
+                            it.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK
 
-                        val intent =Intent(this@CheckoutActivity,HomepageActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(intent);
-                        finish()
+                            startActivity(it)
+                            finish()
+                        }
 
                     }
 
