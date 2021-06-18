@@ -49,8 +49,9 @@ class HomepageActivity : AppCompatActivity() {
             }
         }
         binding.btn4.setOnClickListener {
-
-            Toast.makeText(this, "Coming Soon", Toast.LENGTH_SHORT).show()
+            Intent(this, ProfitActivity::class.java).also {
+                startActivity(it)
+            }
         }
 
         binding.btnlogout.setOnClickListener {

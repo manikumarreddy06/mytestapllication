@@ -4,10 +4,7 @@ import android.text.TextUtils
 import com.google.gson.JsonObject
 import com.myproject.myapplication.BuildConfig
 import com.myproject.myapplication.inward.AddProduct
-import com.myproject.myapplication.model.CategoryResponseBean
-import com.myproject.myapplication.model.LoginResponseBean
-import com.myproject.myapplication.model.ProductDetailResponse
-import com.myproject.myapplication.model.StoreInvResponseBean
+import com.myproject.myapplication.model.*
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import okhttp3.*
@@ -101,6 +98,11 @@ interface WebServiceProvider {
 
     @GET("api/product/{storeId}")
     fun getInventory(@Path("storeId") storeId: String): Single<StoreInvResponseBean>
+
+
+
+    @POST("api/business")
+    fun getProfictDetails(@Body data: JsonObject): Single<ProfitResponseBean>
 
 }
 

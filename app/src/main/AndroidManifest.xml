@@ -21,9 +21,8 @@
         <activity android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
-        <activity android:name=".plactivity" />
+        <activity android:name=".ProfitActivity" />
         <activity android:name=".outactivity" />
-        <activity android:name=".inactivity" />
         <activity android:name=".InventoryActivity" />
         <activity android:name=".HomepageActivity" />
 
