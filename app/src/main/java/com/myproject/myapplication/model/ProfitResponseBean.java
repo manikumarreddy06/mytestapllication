@@ -16,6 +16,15 @@ public class ProfitResponseBean implements Serializable
     @SerializedName("profitAmount")
     @Expose
     private String profitAmount;
+
+    @SerializedName("monthlySales")
+    @Expose
+    private String monthlySales;
+    @SerializedName("monthlyProfit")
+    @Expose
+    private String monthlyProfit;
+    
+
     private final static long serialVersionUID = -4941892137231056136L;
 
     public boolean isIsvalid() {
@@ -42,4 +51,24 @@ public class ProfitResponseBean implements Serializable
         this.profitAmount = profitAmount;
     }
 
+
+    public String getMonthlySales() {
+        return monthlySales;
+    }
+
+    public void setMonthlySales(String monthlySales) {
+        this.monthlySales = monthlySales;
+    }
+
+    public String getMonthlyProfit() {
+        return monthlyProfit;
+    }
+
+    public void setMonthlyProfit(String monthlyProfit) {
+        this.monthlyProfit = monthlyProfit;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
 }

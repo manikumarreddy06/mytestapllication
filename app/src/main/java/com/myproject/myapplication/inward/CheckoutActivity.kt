@@ -106,7 +106,13 @@ class CheckoutActivity : AppCompatActivity() {
 
                     override fun onSuccess(response: ProductDetailResponse) {
                         Utils.hideDialog()
-                        finish()
+                        Intent(this@CheckoutActivity, HomepageActivity::class.java).also {
+                            it.flags=Intent.FLAG_ACTIVITY_NEW_TASK
+                            it.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                            startActivity(it)
+                            finish()
+                        }
 
                     }
 

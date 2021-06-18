@@ -92,8 +92,12 @@ class ProfitActivity: AppCompatActivity() {
 
     private fun populateUI(response: ProfitResponseBean) {
 
-        binding.btnTodaySales.text=response.salesAmount
-        binding.btnTodayProfit.text=response.profitAmount
+        binding.btnTodaySales.text="Today's Sales \n ${response.salesAmount}/-"
+        binding.btnTodayProfit.text="Today's Profit\n ${response.profitAmount}/-"
+
+
+        binding.btnMonthlyProfit.text="Monthly Profit \n ${response.monthlyProfit}/-"
+        binding.btnMonthlySales.text="Monthly Sales \n ${response.monthlySales}/-"
 
     }
 
