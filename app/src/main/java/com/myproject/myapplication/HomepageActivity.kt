@@ -64,6 +64,7 @@ class HomepageActivity : AppCompatActivity() {
                     // Continue with delete operation
                 } // A null listener allows the button to dismiss the dialog and take no further action.
 
+
                 .setNegativeButton(R.string.no, null)
                 .setIcon(R.drawable.ic_dialog_alert)
                 .show()
