@@ -25,6 +25,7 @@
         <activity android:name=".outactivity" />
         <activity android:name=".InventoryActivity" />
         <activity android:name=".HomepageActivity" />
+        <activity android:name=".ProfitdetailsActivity" />
 
 
         <activity android:name=".inward.InwardProductActivity" />

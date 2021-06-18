@@ -28,8 +28,29 @@ class ProfitActivity: AppCompatActivity() {
         setContentView(binding.root)
 
 
-        getSalesData()
 
+        binding.btnTodaySales.setOnClickListener {
+            Intent(this, ProfitdetailsActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+        binding.btnTodayProfit.setOnClickListener {
+            Intent(this, ProfitdetailsActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+        binding.btnMonthlySales.setOnClickListener {
+            Intent(this, ProfitdetailsActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+        binding.btnMonthlyProfit.setOnClickListener {
+            Intent(this, ProfitdetailsActivity::class.java).also {
+                startActivity(it)
+            }
+        }
+
+        getSalesData()
     }
 
     private fun getSalesData() {
@@ -75,6 +96,5 @@ class ProfitActivity: AppCompatActivity() {
         binding.btnTodayProfit.text=response.profitAmount
 
     }
-
 
 }
