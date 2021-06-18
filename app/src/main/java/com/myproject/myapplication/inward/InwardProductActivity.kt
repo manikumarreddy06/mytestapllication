@@ -56,7 +56,9 @@ class InwardProductActivity : AppCompatActivity() {
 
 
             var tproductName:TextView= findViewById(R.id.productName)
-            tproductName.text=product!!.productVariantName }
+            tproductName.text=product!!.productVariantName+"-"+product!!.getUnits()+""+product!!.getUnitType()
+
+        }
 
 
         if(ProductUtils.instance(this).isOutOrderTypeFlag){
