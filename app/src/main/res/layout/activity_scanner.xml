@@ -6,63 +6,80 @@
     android:layout_height="match_parent"
     android:background="@color/bg_color">
 
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvHeaderTitle"
-            android:layout_width="fill_parent"
-            android:layout_height="50dp"
-            android:background="#730099"
-            android:gravity="center"
-            android:text="@string/product_addition"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Scan the Barcode"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:gravity="center_horizontal"
-            android:textStyle="bold" />
-    <TextView
-        android:padding="5dp"
-        android:text="Place camera above the barcode of the product"
-        android:id="@+id/tv_scan"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"/>
-
-
-    <FrameLayout
-        android:layout_below="@+id/tv_scan"
-        android:id="@+id/content_frame"
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
-    </FrameLayout>
-
-
-        <ScrollView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
         <LinearLayout
-            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tvHeaderTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="#730099"
+                android:gravity="center"
+                android:text="@string/product_addition"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="@string/scan_the_barcode_txt"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_scan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:text="@string/place_camera_above_the_barcode_of_the_product_txt"
+                android:textColor="@color/black" />
+
+            <FrameLayout
+                android:id="@+id/content_frame"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/tv_scan"></FrameLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <LinearLayout
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </ScrollView>
         </LinearLayout>
-        </ScrollView>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/addproduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#730099"
+                android:text="@string/add_product_text"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
+
+
+
 </RelativeLayout>

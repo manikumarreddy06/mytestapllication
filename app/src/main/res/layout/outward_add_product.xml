@@ -11,14 +11,14 @@
         android:layout_height="50dp"
         android:background="#730099"
         android:gravity="center"
-        android:text="PRODUCT ADDITION"
+        android:text="@string/product_addition_txt"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="@dimen/size_18sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CURRENT PRODUCT"
+        android:text="@string/current_product_txt"
         android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:textSize="@dimen/size_18sp"
@@ -89,7 +89,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SELLING PRICE  :"
+            android:text="@string/selling_price_text"
             android:layout_marginStart="50dp"
             android:layout_marginTop="50dp"
             android:textStyle="bold"
@@ -115,7 +115,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Purchase price  :"
+            android:text="@string/purchase_price_txt"
             android:textAllCaps="true"
             android:layout_marginStart="50dp"
             android:layout_marginTop="50dp"
@@ -147,7 +147,7 @@
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:background="@color/white"
-            android:text="ADD MORE"
+            android:text="@string/add_more_txt"
             android:textSize="@dimen/size_20sp" />
 
         <Button
@@ -155,7 +155,7 @@
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:background="#730099"
-            android:text="Finish"
+            android:text="@string/finish_txt"
             android:textColor="@color/white"
             android:textSize="@dimen/size_20sp" />
 
@@ -165,7 +165,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:padding="5dp"
-            android:text="Inward Products"
+            android:text="@string/inward_products_txt"
             android:textColor="@android:color/black"
             android:textSize="15sp"
             tools:layout_editor_absoluteX="-7dp"

@@ -1,0 +1,69 @@
+<resources>
+    <string name="app_name">లభ్యం</string>
+    <string name="outward">Outward</string>
+    <string name="Inward">inward</string>
+
+    <string name="Inventory">Inventory</string>
+    <string name="Logout">లాగ్ అవుట్</string>
+    <string name="username">పేరు:</string>
+    <string name="userstore_name">స్టోర్ పేరు:</string>
+    <string name="type_of_user">వినియోగదారు రకం:</string>
+    <string name="product_addition">ప్రొడక్ట్ జోడింపు</string>
+    <string name="current_product">ప్రస్తుత ఉత్పత్తి</string>
+    <string name="_1">- 1 +</string>
+    <string name="_10">$10</string>
+    <string name="selling_price">అమ్మకపు ధర:</string>
+    <string name="purchase_price">కొనుగోలు ధర:</string>
+    <string name="plus">+</string>
+    <string name="place_your_camera_above_the_bar_code_on_coupon_to_scan">స్కాన్ చేయడం కొరకు మీ కెమెరాను కూపన్ మీద బార్ కోడ్ పైన ఉంచండి.</string>
+    <string name="p_l">p/l</string>
+
+
+    <string name="product_inventory">ప్రొడక్ట్ ఇన్వెంటరీ</string>
+    <string name="exit">test1</string>
+    <string name="cancel">రద్దు</string>
+    <string name="fire">true</string>
+    <string name="labhyam_txt">లభ్యం</string>
+    <string name="buttongradient">Button</string>
+    <string name="products_txt">ఉత్పత్తులు</string>
+    <string name="item_list_txt">ఐటమ్ జాబితా</string>
+    <string name="_1_txt">- 1 +</string>
+    <string name="_10_txt">$10</string>
+    <string name="inward_products_txt">అంతర్గత ఉత్పత్తులు</string>
+    <string name="login_txt">login</string>
+    <string name="enter_your_mobile_number_txt">మీ మొబైల్ నెంబరు నమోదు చేయండి</string>
+    <string name="password_txt">పాస్ వర్డ్</string>
+    <string name="submit_txt">submit</string>
+    <string name="enter_product_name_txt">ప్రొడక్ట్ పేరు నమోదు చేయండి</string>
+    <string name="enter_quantity_here_txt">ఇక్కడ పరిమాణాన్ని నమోదు చేయండి</string>
+    <string name="unit_type_txt">యూనిట్ రకాన్ని</string>
+    <string name="enter_unit_type_txt">యూనిట్ రకాన్ని నమోదు చేయండి</string>
+    <string name="procurment_price_txt">సేకరణ ధర</string>
+    <string name="add_product_txt">ఉత్పత్తిని జోడించు</string>
+    <string name="quantity_txt">పరిమాణం</string>
+    <string name="procurent_price_txt">సేకరించే ధర</string>
+    <string name="enter_procurent_price_here_txt">ఇక్కడ ప్రొక్యూర్ మెంట్ ధరను నమోదు చేయండి</string>
+    <string name="add_txt">add</string>
+    <string name="clear_txt">Clear</string>
+    <string name="scan_the_barcode_txt">బార్ కోడ్ స్కాన్ చేయండి</string>
+    <string name="place_camera_above_the_barcode_of_the_product_txt">ప్రొడక్ట్ యొక్క బార్ కోడ్ పైన కెమెరాను ఉంచండి</string>
+    <string name="add_product_text">ఉత్పత్తిని జోడించు</string>
+    <string name="checchi_sd_dsds_sdsds_txt">checchi sd dsds sdsds</string>
+    <string name="checkout_txt">చెక్ అవుట్</string>
+    <string name="select_variant_txt">వేరియంట్ ఎంచుకోండి</string>
+    <string name="procurement_price_txt">కొనుగోలు ధర:</string>
+    <string name="selling_price_txt">అమ్మకపు ధర</string>
+    <string name="quantity_and_type_txt">పరిమాణం మరియు రకం</string>
+    <string name="test_txt">test</string>
+    <string name="add_more_txt">మరిన్ని జోడించు</string>
+    <string name="finish_txt">పూర్తిచేయు</string>
+    <string name="product_name_txt">ఉత్పత్తి పేరు</string>
+    <string name="price_txt">వెల:</string>
+    <string name="product_addition_txt">ప్రొడక్ట్ జోడింపు</string>
+    <string name="current_product_txt">ప్రస్తుత ఉత్పత్తి</string>
+    <string name="selling_price_text">అమ్మకపు ధర :</string>
+    <string name="purchase_price_txt">>కొనుగోలు ధర:</string>
+
+
+
+</resources>

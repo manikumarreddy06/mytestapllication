@@ -20,7 +20,7 @@ import java.util.List;
  */
 
 public class ProductInWardAdapters extends RecyclerView.Adapter<ProductInWardAdapters.GroceryViewHolder>{
-    private List<ProductVariant> horizontalGrocderyList;
+    private List<ProductVariant>  horizontalGrocderyList;
     Context context;
 
     public ProductInWardAdapters(List<ProductVariant> horizontalGrocderyList, Context context){

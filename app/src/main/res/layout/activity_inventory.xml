@@ -21,10 +21,10 @@
         android:id="@+id/tvTitle"
         android:padding="5dp"
         android:textColor="@android:color/black"
-        android:text="Products"
+        android:text="@string/products_txt"
         android:layout_below="@+id/tvstoreactivity"
         android:textSize="15sp"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 

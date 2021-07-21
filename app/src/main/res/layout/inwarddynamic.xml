@@ -26,7 +26,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:text="product name"
+            android:text="@string/product_name_txt"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -44,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="quantity and type"
+            android:text="@string/quantity_and_type_txt"
             android:gravity="center_vertical"
             android:textColor="@color/black"
             android:textSize="14sp"
@@ -64,7 +64,7 @@
                 android:id="@+id/tvLabelPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price:"
+                android:text="@string/price_txt"
                 android:textColor="@color/black"
                 android:textSize="14sp"
                 android:textStyle="bold" />

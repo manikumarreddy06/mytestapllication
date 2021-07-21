@@ -104,6 +104,10 @@ interface WebServiceProvider {
     @POST("api/profitDashBoard")
     fun getProfictDetails(@Body data: JsonObject): Single<ProfitResponseBean>
 
+
+
+   // @POST("api/product/custom/add")
+    //fun addproduct(@Body data:JsonObject): Single<>
 }
 
 

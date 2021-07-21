@@ -19,10 +19,10 @@
         android:id="@+id/idProductName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="checchi sd dsds sdsds"
+        android:text="@string/checchi_sd_dsds_sdsds_txt"
         android:maxLines="3"
         android:layout_margin="5dp"
         android:textColor="@color/black"
         android:gravity="center"
-        android:textSize="15dp"/>
+        android:textSize="15sp"/>
 </LinearLayout>

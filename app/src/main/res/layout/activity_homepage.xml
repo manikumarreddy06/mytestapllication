@@ -27,7 +27,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Labhyam"
+                android:text="@string/labhyam_txt"
                 android:textColor="@color/white"
                 android:textSize="35sp"
                 android:layout_marginLeft="40dp"/>

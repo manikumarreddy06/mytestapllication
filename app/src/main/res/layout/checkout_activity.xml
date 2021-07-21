@@ -59,7 +59,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="@dimen/margin_10dp"
-                android:background="@color/bg_color"></View>
+                android:background="@color/bg_color">
+
+            </View>
         </LinearLayout>
 
 
@@ -89,7 +91,9 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tvTitle"
 
-                    android:orientation="vertical"></androidx.recyclerview.widget.RecyclerView>
+                    android:orientation="vertical">
+
+                </androidx.recyclerview.widget.RecyclerView>
 
 
             </RelativeLayout>
@@ -108,7 +112,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#730099"
-            android:text="Checkout"
+            android:text="@string/checkout_txt"
             android:textColor="@color/white"
             android:textSize="@dimen/size_20sp" />
 

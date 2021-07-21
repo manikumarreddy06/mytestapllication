@@ -38,7 +38,7 @@ class CheckoutActivity : AppCompatActivity() {
 
 
 
-        productList=ProductUtils.instance(this).productList
+       productList=ProductUtils.instance(this,).productList
         groceryAdapter = CheckoutLineItemAdapter(productList, applicationContext)
         val horizontalLayoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
