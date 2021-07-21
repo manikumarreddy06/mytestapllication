@@ -24,7 +24,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 
 class Productadditionactivity : AppCompatActivity() {
-    private lateinit var binding: ActivityProductadditionactivityBinding
+    private lateinit var binding:ActivityProductadditionactivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductadditionactivityBinding.inflate(layoutInflater)
@@ -35,7 +35,7 @@ class Productadditionactivity : AppCompatActivity() {
 
         binding.btnadd.setOnClickListener {
 
-            var etproductname = binding.tvSelectedVariant.text.toString()
+            var etproductname = binding.etselectvaiant.text.toString()
 
             var etproductqty = binding.etProductQty.text.toString()
 

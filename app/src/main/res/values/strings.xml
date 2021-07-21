@@ -35,7 +35,7 @@
     <string name="password_txt">Password</string>
     <string name="submit_txt">submit</string>
     <string name="enter_product_name_txt">Enter product name</string>
-    <string name="enter_quantity_here_txt">Enter Quantity here</string>
+    <string name="enter_quantity_here_txt">Enter quantity here </string>
     <string name="unit_type_txt">unit type</string>
     <string name="enter_unit_type_txt">Enter unit type</string>
     <string name="procurment_price_txt">Procurment Price</string>
