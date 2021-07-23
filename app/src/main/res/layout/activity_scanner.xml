@@ -81,7 +81,7 @@
             android:background="#730099"
             android:text="@string/add_product_text"
             android:textColor="@color/white"
-            android:textSize="30sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
     </LinearLayout>
 

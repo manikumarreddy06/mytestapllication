@@ -7,7 +7,7 @@
     android:background="@color/cardview_light_background">
     <TextView
         android:id="@+id/tvstoreactivity"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="#730099"
         android:gravity="center"
@@ -36,5 +36,21 @@
         android:orientation="vertical"
         >
     </androidx.recyclerview.widget.RecyclerView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/alter_inventory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#730099"
+            android:layout_marginTop="80dp"
+            android:text="@string/approval_inventory"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </RelativeLayout>

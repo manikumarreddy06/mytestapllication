@@ -64,6 +64,7 @@
     <string name="selling_price_text">SELLING PRICE :</string>
     <string name="purchase_price_txt">Purchase price :</string>
 
+    <string name="approval_inventory">Approval Inventory</string>
 
 
 </resources>

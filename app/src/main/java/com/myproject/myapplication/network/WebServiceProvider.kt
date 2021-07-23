@@ -110,6 +110,11 @@ interface WebServiceProvider {
     @POST("api/business/info")
     fun getProfictDetailsByType(@Body data: JsonObject): Single<ProfitDetailsResponseBean>
 
+
+
+    @POST("api/product/custom/add")
+    fun addCustomeProduct(@Body data: JsonObject): Single<BaseResponse>
+
 }
 
 

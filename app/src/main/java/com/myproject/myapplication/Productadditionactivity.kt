@@ -13,6 +13,7 @@ import com.google.gson.JsonObject
 import com.medfin.Utils
 import com.myproject.myapplication.databinding.ActivityProductadditionactivityBinding
 import com.myproject.myapplication.inward.InwardProductActivity
+import com.myproject.myapplication.model.BaseResponse
 import com.myproject.myapplication.model.ProductDetailResponse
 import com.myproject.myapplication.model.ProductDetails
 import com.myproject.myapplication.model.ProductVariant
@@ -23,7 +24,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 
 class Productadditionactivity : AppCompatActivity() {
-    private lateinit var binding:ActivityProductadditionactivityBinding
+    private lateinit var binding: ActivityProductadditionactivityBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductadditionactivityBinding.inflate(layoutInflater)
@@ -44,7 +45,9 @@ class Productadditionactivity : AppCompatActivity() {
 
             var etInputSellPrice = binding.etInputSellPrice.text.toString()
 
-            if (TextUtils.isEmpty(etproductqty.toString())) {
+            if (TextUtils.isEmpty(etproductname.toString())) {
+                Utils.toast("product name can't be empty", this@Productadditionactivity)
+            } else if (TextUtils.isEmpty(etproductqty.toString())) {
                 Utils.toast("quantity should be  more than zero", this@Productadditionactivity)
             } else if (TextUtils.isEmpty(etproductqty.toString())) {
                 Utils.toast(
@@ -68,47 +71,72 @@ class Productadditionactivity : AppCompatActivity() {
 
                 Utils.showDialog(this@Productadditionactivity, "Loading")
                 val obj = JsonObject()
+
+//                "productName":"Maiyas Puliyogare Powder",
+//                "brandName":"Maiyas",
+//                "unitType":"gm",
+//                "unit":"10",
+//                "productSubCategory":"Spices & Masalas",
+//                "productCategory":"Grocery & Staples",
+//                "productFamily":"Food",
+//                "mrp":"45",
+//                "storeId":"1",
+
+
+                obj.addProperty("productName", etproductname)
+                obj.addProperty("storeId", etproductqty)
+                obj.addProperty("unitType", etunittype)
+                obj.addProperty("unit", etproductqty)
+                obj.addProperty("mrp", etProcPrice)
                 obj.addProperty(
-                    "",
+                    "storeId",
                     PreferenceManager.instance(this).get(PreferenceManager.STORE_ID, "")
                 )
 
+
                 var provider: WebServiceProvider =
                     WebServiceProvider.retrofit.create(WebServiceProvider::class.java).also {
-                        it.productSearch(obj)
+                        it.addCustomeProduct(obj)
                             .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(object : SingleObserver<ProductDetailResponse> {
+                            .subscribe(object : SingleObserver<BaseResponse> {
                                 override fun onSubscribe(d: Disposable) {
 
                                 }
 
-                                override fun onSuccess(t: ProductDetailResponse) {
-                                    //if(response.isIsvalid()) {
+                                override fun onSuccess(t: BaseResponse) {
+
+                                    Utils.hideDialog()
+                                    if (t.isIsvalid()) {
 
                                         Toast.makeText(this@Productadditionactivity, "product added successfully", Toast.LENGTH_SHORT).show()
 
+                                    } else {
 
                                     }
+                                }
 
                                 override fun onError(e: Throwable) {
                                     Utils.hideDialog()
                                     e.printStackTrace()
-                                    Toast.makeText(this@Productadditionactivity, "failure", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(
+                                        this@Productadditionactivity,
+                                        "failure",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
                             })
-                        //api hit
                     }
             }
-          binding.btnCancel.setOnClickListener {
-              Toast.makeText(this@Productadditionactivity,"cancelled",Toast.LENGTH_SHORT).show()
-          }
-
+            binding.btnCancel.setOnClickListener {
+                Toast.makeText(this@Productadditionactivity, "cancelled", Toast.LENGTH_SHORT).show()
             }
 
         }
 
-
     }
+
+
+}
 
 
 
