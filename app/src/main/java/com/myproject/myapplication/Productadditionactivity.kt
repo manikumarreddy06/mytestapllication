@@ -11,7 +11,6 @@ import android.widget.EditText
 import android.widget.Toast
 import com.google.gson.JsonObject
 import com.medfin.Utils
-import com.myproject.myapplication.databinding.ActivityHomepageBinding
 import com.myproject.myapplication.databinding.ActivityProductadditionactivityBinding
 import com.myproject.myapplication.inward.InwardProductActivity
 import com.myproject.myapplication.model.ProductDetailResponse

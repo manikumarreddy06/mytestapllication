@@ -55,31 +55,35 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:id="@+id/container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="100dp"
                     android:orientation="vertical" />
             </ScrollView>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/addproduct"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#730099"
-                android:text="@string/add_product_text"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+
 
     </LinearLayout>
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/addproduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#730099"
+            android:text="@string/add_product_text"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
 </RelativeLayout>
