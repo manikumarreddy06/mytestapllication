@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import com.medfin.Logger;
 
 
-public class PreferenceManager {
+public class  PreferenceManager {
 
     public static final String APP_VERSION = "app_version";
     private static PreferenceManager mInstance = null;

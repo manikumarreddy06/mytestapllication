@@ -2,9 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+     android:id="@+id/llpending"
     android:orientation="vertical">
 
-    <LinearLayout
+ <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,9 +56,9 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/tvQty"
         android:layout_marginTop="20dp"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvLabelPrice"
@@ -72,15 +73,18 @@
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_toLeftOf="@id/tvLabelPrice"
-            android:drawableLeft="@drawable/ruppe_ic"
-            android:text="100"
             android:textColor="@color/black"
             android:textSize="14sp"
             android:textStyle="bold" />
+        <Button
+            android:id="@+id/btnapprove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#730099"
+            android:textColor="@color/white"
+            android:text="Approve"/>
+
     </LinearLayout>
+
     </RelativeLayout>
-
-
 </RelativeLayout>

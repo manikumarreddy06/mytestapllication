@@ -70,6 +70,8 @@ public class ProfitDetailLineAdapters extends RecyclerView.Adapter<ProfitDetailL
             tvQuantity=view.findViewById(R.id.tvQty);
             tvLabelPrice=view.findViewById(R.id.tvLabelPrice);
 
+
+
         }
     }
 

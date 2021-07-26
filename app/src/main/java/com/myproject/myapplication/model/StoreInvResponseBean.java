@@ -43,4 +43,7 @@ public class StoreInvResponseBean implements Serializable
         this.productInfo = productInfo;
     }
 
+
+
+
 }

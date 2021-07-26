@@ -72,3 +72,4 @@ public class ProfitResponseBean implements Serializable
         return serialVersionUID;
     }
 }
+

@@ -23,6 +23,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ProfitActivity" />
         <activity android:name=".outactivity" />
+        <activity android:name=".inventoryapprovalactivity"/>
         <activity android:name=".InventoryActivity" />
         <activity android:name=".HomepageActivity" />
         <activity android:name=".ProfitdetailsActivity" />

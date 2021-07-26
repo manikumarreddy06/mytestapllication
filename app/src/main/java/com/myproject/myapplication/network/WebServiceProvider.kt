@@ -115,6 +115,14 @@ interface WebServiceProvider {
     @POST("api/product/custom/add")
     fun addCustomeProduct(@Body data: JsonObject): Single<BaseResponse>
 
+
+    @GET("/api/negative/products/{storeId}")
+    fun getapproveproduct(@Path("storeId") storeId: String): Single<ApproveResponse>
+
+    @GET("/api/approve/products")
+    fun negvalapprove(@Body data: JsonObject):Single<BaseResponse>
+
+
 }
 
 
