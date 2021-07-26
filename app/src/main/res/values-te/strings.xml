@@ -63,6 +63,8 @@
     <string name="current_product_txt">ప్రస్తుత ఉత్పత్తి</string>
     <string name="selling_price_text">అమ్మకపు ధర :</string>
     <string name="purchase_price_txt">>కొనుగోలు ధర:</string>
+    <string name="approval_inventory">Approval Inventory</string>
+    <string name="approve_txt">approve</string>
 
 
 
