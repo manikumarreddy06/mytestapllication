@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.myproject.myapplication.R;
 import com.myproject.myapplication.model.NegativeValue;
 import com.myproject.myapplication.model.ProductInfo;
+import com.myproject.myapplication.model.ProductVariant;
 
 import java.util.List;
 
@@ -25,9 +26,17 @@ public class PendingInventoryAdapters extends RecyclerView.Adapter<PendingInvent
     private List<NegativeValue> horizontalGrocderyList;
     Context context;
 
-    public PendingInventoryAdapters(List<NegativeValue> horizontalGrocderyList, Context context){
+    PendingInventoryAdapters.RecyclerViewClickListener mListener;
+    public interface RecyclerViewClickListener {
+
+        void onClick(NegativeValue product);
+    }
+
+    public PendingInventoryAdapters(List<NegativeValue> horizontalGrocderyList, Context context, PendingInventoryAdapters.RecyclerViewClickListener listener){
         this.horizontalGrocderyList= horizontalGrocderyList;
         this.context = context;
+
+        mListener=listener;
     }
 
     @Override
@@ -43,14 +52,14 @@ public class PendingInventoryAdapters extends RecyclerView.Adapter<PendingInvent
         //holder.imageView.setImageResource(horizontalGrocderyList.get(position).getProductName());
         NegativeValue productInfo =horizontalGrocderyList.get(position);
         holder.txtview.setText(productInfo.getProductName()+""+productInfo.getCategory());
-        holder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                 String productName = horizontalGrocderyList.get(position).getVariantId().toString();
-                Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
-
-            }
-        });
+//        holder.imageView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                 String productName = horizontalGrocderyList.get(position).getVariantId().toString();
+//                Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
         //holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
 
        //holder.tvSellingPrice.setText(""+horizontalGrocderyList.get(position).getVariantId());
@@ -61,10 +70,7 @@ public class PendingInventoryAdapters extends RecyclerView.Adapter<PendingInvent
             @Override
             public void onClick(View v) {
                 //callback to
-
-                String productName = horizontalGrocderyList.get(position).getVariantId().toString();
-                Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
-
+                mListener.onClick(horizontalGrocderyList.get(position));
             }
         });
 

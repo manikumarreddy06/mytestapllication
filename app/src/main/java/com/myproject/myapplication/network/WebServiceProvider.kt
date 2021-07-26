@@ -84,8 +84,8 @@ interface WebServiceProvider {
     fun productSearch(@Body data: JsonObject): Single<ProductDetailResponse>
 
 
-    @GET("api/product/search")
-    fun productSearchbyCategory(): Single<CategoryResponseBean>
+    @GET("api/product/search/{storeId}")
+    fun productSearchbyCategory(@Path("storeId") storeId: String): Single<CategoryResponseBean>
 
 
     @POST("api/add/inventory")
@@ -119,8 +119,8 @@ interface WebServiceProvider {
     @GET("/api/negative/products/{storeId}")
     fun getapproveproduct(@Path("storeId") storeId: String): Single<ApproveResponse>
 
-    @GET("/api/approve/products")
-    fun negvalapprove(@Body data: JsonObject):Single<BaseResponse>
+    @POST("/api/approve/products")
+    fun approvedProducts(@Body data: JsonObject):Single<BaseResponse>
 
 
 }

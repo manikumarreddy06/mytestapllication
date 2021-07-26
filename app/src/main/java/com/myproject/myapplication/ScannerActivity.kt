@@ -26,6 +26,7 @@ import com.myproject.myapplication.ZXingScannerView.ResultHandler
 import com.myproject.myapplication.adapters.ProductListAdapter
 import com.myproject.myapplication.inward.InwardProductActivity
 import com.myproject.myapplication.model.*
+import com.myproject.myapplication.network.PreferenceManager
 import com.myproject.myapplication.network.WebServiceProvider
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -172,12 +173,12 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
     }
 
     private fun doProductSearch() {
-
-
+        val storeId= PreferenceManager.instance(this).get(
+            PreferenceManager.STORE_ID,"1").toString()
         Utils.showDialog(this@ScannerActivity,"Loading")
         var provider: WebServiceProvider =
             WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
-        provider.productSearchbyCategory()
+        provider.productSearchbyCategory(storeId)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object : SingleObserver<CategoryResponseBean> {
                 override fun onSubscribe(d: Disposable) {
