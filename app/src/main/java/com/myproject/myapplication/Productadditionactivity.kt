@@ -56,7 +56,7 @@ class Productadditionactivity : AppCompatActivity() {
                 )
             } else if (TextUtils.isEmpty(etunittype.toString())) {
                 Utils.toast(
-                    "procurment Price should be  more than zero",
+                    "unit type should be positive ",
                     this@Productadditionactivity
                 )
             } else if (TextUtils.isEmpty(etProcPrice.toString())) {
@@ -72,22 +72,28 @@ class Productadditionactivity : AppCompatActivity() {
                 Utils.showDialog(this@Productadditionactivity, "Loading")
                 val obj = JsonObject()
 
-//                "productName":"Maiyas Puliyogare Powder",
-//                "brandName":"Maiyas",
-//                "unitType":"gm",
-//                "unit":"10",
-//                "productSubCategory":"Spices & Masalas",
-//                "productCategory":"Grocery & Staples",
-//                "productFamily":"Food",
-//                "mrp":"45",
-//                "storeId":"1",
+//                private String productName;//yes
+//                private String brandName;//yes
+//                private String unitType;//yes
+//                private String unit;//yes
+//                private String productSubCategory;
+//                private String productCategory;
+//                private String productFamily;
+//                private String mrp;//yes
+//                private String storeId;//yes
+//                private String productImage;
+//                private String sellingPrice;//yes
+//                private String procPrice;//yes
 
 
                 obj.addProperty("productName", etproductname)
+                obj.addProperty("brandname",etproductname)
                 obj.addProperty("storeId", etproductqty)
                 obj.addProperty("unitType", etunittype)
                 obj.addProperty("unit", etproductqty)
                 obj.addProperty("mrp", etProcPrice)
+                obj.addProperty("procurementprice",etProcPrice)
+                obj.addProperty("selling price",etInputSellPrice)
                 obj.addProperty(
                     "storeId",
                     PreferenceManager.instance(this).get(PreferenceManager.STORE_ID, "")
