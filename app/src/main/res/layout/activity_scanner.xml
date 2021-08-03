@@ -51,7 +51,9 @@
                 android:id="@+id/content_frame"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_below="@+id/tv_scan"></FrameLayout>
+                android:layout_below="@+id/tv_scan">
+
+            </FrameLayout>
 
             <ScrollView
                 android:layout_width="match_parent"

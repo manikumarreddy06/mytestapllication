@@ -66,6 +66,11 @@
 
     <string name="approval_inventory">Approval Inventory</string>
     <string name="approve_txt">approve</string>
-
+<string-array name="unit_types">
+    <item>kilograms</item>
+    <item>grams</item>
+    <item>litres</item>
+    <item>millilitres</item>
+</string-array>
 
 </resources>

@@ -66,7 +66,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
 
         var tvHeaderTitle: TextView = findViewById(R.id.tvHeaderTitle)
         if (ProductUtils.instance(this).isOutOrderTypeFlag) {
-            tvHeaderTitle.text = "Billing"
+            tvHeaderTitle.text = "Add New Product"
         } else {
             tvHeaderTitle.text = "Product Addition"
         }

@@ -140,8 +140,7 @@
                        android:textColor="@color/primaryText"
                        android:textSize="@dimen/size_16sp" />
 
-
-                   <EditText
+                   <Spinner
                        android:id="@+id/etunittype"
                        android:layout_width="match_parent"
                        android:layout_height="wrap_content"
@@ -157,12 +156,12 @@
                        android:minHeight="40dp"
                        android:padding="@dimen/margin_8dp"
                        android:text=""
+                       android:entries="@array/unit_types"
                        android:textColor="@color/primaryText"
                        android:textColorHint="@color/subHeaderText"
                        android:textSize="@dimen/size_14sp" />
-
-
                </LinearLayout>
+
 
                <LinearLayout
                    android:layout_width="match_parent"

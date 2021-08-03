@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -39,7 +40,20 @@ class Productadditionactivity : AppCompatActivity() {
 
             var etproductqty = binding.etProductQty.text.toString()
 
-            var etunittype = binding.etunittype.text.toString()
+           //var etunittype = binding.etunittype.text.toString()
+             binding.etunittype.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
+                 override fun onItemSelected(
+                     parent: AdapterView<*>?,
+                     view: View?,
+                     position: Int,
+                     id: Long
+                 ) {
+                 }
+
+                 override fun onNothingSelected(parent: AdapterView<*>?) {
+                     TODO("Not yet implemented")
+                 }
+             }
 
             var etProcPrice = binding.etProcPrice.text.toString()
 
@@ -54,11 +68,11 @@ class Productadditionactivity : AppCompatActivity() {
                     "procurment Price should be  more than zero",
                     this@Productadditionactivity
                 )
-            } else if (TextUtils.isEmpty(etunittype.toString())) {
-                Utils.toast(
-                    "unit type should be positive ",
-                    this@Productadditionactivity
-                )
+//           } else if (TextUtils.isEmpty(etunittype.toString())) {
+//                Utils.toast(
+//                    "unit type should be positive ",
+//                    this@Productadditionactivity
+//                )
             } else if (TextUtils.isEmpty(etProcPrice.toString())) {
                 Utils.toast(
                     "procurment Price should be  more than zero",
@@ -89,7 +103,7 @@ class Productadditionactivity : AppCompatActivity() {
                 obj.addProperty("productName", etproductname)
                 obj.addProperty("brandname",etproductname)
                 obj.addProperty("storeId", etproductqty)
-                obj.addProperty("unitType", etunittype)
+                //obj.addProperty("unitType", etunittype)
                 obj.addProperty("unit", etproductqty)
                 obj.addProperty("mrp", etProcPrice)
                 obj.addProperty("procurementprice",etProcPrice)

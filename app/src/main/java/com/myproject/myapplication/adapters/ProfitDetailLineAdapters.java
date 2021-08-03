@@ -51,7 +51,7 @@ public class ProfitDetailLineAdapters extends RecyclerView.Adapter<ProfitDetailL
     }
 
     @Override
-    public int getItemCount() {
+     public int getItemCount() {
         return horizontalGrocderyList.size();
     }
 

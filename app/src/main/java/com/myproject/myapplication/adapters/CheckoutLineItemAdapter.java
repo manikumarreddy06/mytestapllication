@@ -57,7 +57,6 @@ public class CheckoutLineItemAdapter extends RecyclerView.Adapter<CheckoutLineIt
             }
         });
 
-        holder.tvSellingPrice.setText(""+horizontalGrocderyList.get(position).getSellingPrice());
 
         holder.tvQuantity.setText(horizontalGrocderyList.get(position).getQuantity()+"");
 
@@ -102,8 +101,6 @@ public class CheckoutLineItemAdapter extends RecyclerView.Adapter<CheckoutLineIt
     public class GroceryViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView txtview;
-        TextView tvProcprice;
-        TextView tvSellingPrice;
         TextView tvQuantity;
 
         TextView tvMinus;
@@ -112,7 +109,6 @@ public class CheckoutLineItemAdapter extends RecyclerView.Adapter<CheckoutLineIt
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
             txtview=view.findViewById(R.id.inwardproductname);
-            tvSellingPrice=view.findViewById(R.id.tvPrice);
             tvQuantity=view.findViewById(R.id.etProductQty);
 
 
