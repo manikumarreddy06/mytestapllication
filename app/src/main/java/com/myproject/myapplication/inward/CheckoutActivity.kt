@@ -47,6 +47,9 @@ class CheckoutActivity : AppCompatActivity() {
 
 
 
+        binding.backButton.setOnClickListener(){
+            finish()
+        }
         binding.rvContent.addItemDecoration(
             DividerItemDecoration(
                 this,

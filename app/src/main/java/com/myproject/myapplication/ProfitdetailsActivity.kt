@@ -37,7 +37,9 @@ class ProfitdetailsActivity:AppCompatActivity() {
 
         type=intent!!.extras!!.getString("Type")
         getSalesData()
-
+        binding.backButton.setOnClickListener(){
+            finish()
+        }
 
     }
 
@@ -111,7 +113,6 @@ class ProfitdetailsActivity:AppCompatActivity() {
 
 
 
-        binding.tvHeaderTitle.text = "P/L Details"
 
 
         binding.TvItemCount.text = "Item Count: ${response.sumofQuatity}"

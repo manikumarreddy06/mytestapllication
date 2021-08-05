@@ -2,6 +2,7 @@ package com.myproject.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.ActionMode
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -23,6 +24,13 @@ class InventoryActivity : AppCompatActivity() {
     private var groceryAdapter: InventoryAdapters? = null
 
     private val productList: MutableList<ProductInfo> = ArrayList()
+
+    override fun onResume() {
+        super.onResume()
+
+        getInventory();
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInventoryBinding.inflate(layoutInflater)
@@ -45,7 +53,10 @@ class InventoryActivity : AppCompatActivity() {
                 LinearLayoutManager.VERTICAL
             )
         )
-        getInventory();
+
+        binding.backButton.setOnClickListener(){
+            finish()
+        }
 
     }
 
@@ -66,8 +77,6 @@ class InventoryActivity : AppCompatActivity() {
                 override fun onSuccess(response: StoreInvResponseBean) {
                     Utils.hideDialog()
                     if(response.isIsvalid()) {
-
-                        Toast.makeText(this@InventoryActivity, "success", Toast.LENGTH_SHORT).show()
                         updateAdapaters(response.productInfo)
                     }
                     else{

@@ -61,6 +61,10 @@ class InwardProductActivity : AppCompatActivity() {
         }
 
 
+
+        binding.backButton.setOnClickListener(){
+            finish()
+        }
         if(ProductUtils.instance(this).isOutOrderTypeFlag){
             binding.tvHeaderTitle.text="Product Checkout"
         }

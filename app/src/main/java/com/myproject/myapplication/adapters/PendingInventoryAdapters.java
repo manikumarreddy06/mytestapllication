@@ -103,6 +103,10 @@ public class PendingInventoryAdapters extends RecyclerView.Adapter<PendingInvent
         this.horizontalGrocderyList= horizontalGrocderyList;
     }
 
+    public void clearData(){
+        this.horizontalGrocderyList.clear();
+    }
+
 
 
 }
