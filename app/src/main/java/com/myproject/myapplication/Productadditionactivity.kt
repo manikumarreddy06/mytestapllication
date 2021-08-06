@@ -6,10 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.AdapterView
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import com.google.gson.JsonObject
 import com.medfin.Utils
 import com.myproject.myapplication.databinding.ActivityProductadditionactivityBinding
@@ -26,34 +23,31 @@ import io.reactivex.disposables.Disposable
 
 class Productadditionactivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductadditionactivityBinding
+
+    private var selectedPosition=-1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProductadditionactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
+        binding.etunittype?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
 
+            }
 
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                selectedPosition=position
+            }
+
+        }
         binding.btnadd.setOnClickListener {
 
             var etproductname = binding.etselectvaiant.text.toString()
 
             var etproductqty = binding.etProductQty.text.toString()
 
-           //var etunittype = binding.etunittype.text.toString()
-             binding.etunittype.onItemSelectedListener = object :AdapterView.OnItemSelectedListener{
-                 override fun onItemSelected(
-                     parent: AdapterView<*>?,
-                     view: View?,
-                     position: Int,
-                     id: Long
-                 ) {
-                 }
 
-                 override fun onNothingSelected(parent: AdapterView<*>?) {
-                     TODO("Not yet implemented")
-                 }
-             }
 
             var etProcPrice = binding.etProcPrice.text.toString()
 
@@ -67,12 +61,12 @@ class Productadditionactivity : AppCompatActivity() {
                 Utils.toast(
                     "procurment Price should be  more than zero",
                     this@Productadditionactivity
-                )
-//           } else if (TextUtils.isEmpty(etunittype.toString())) {
-//                Utils.toast(
-//                    "unit type should be positive ",
-//                    this@Productadditionactivity
-//                )
+                )}
+                else if(selectedPosition==-1) {
+                    Utils.toast(
+                        "unit type should be selected ",
+                        this@Productadditionactivity
+                    )
             } else if (TextUtils.isEmpty(etProcPrice.toString())) {
                 Utils.toast(
                     "procurment Price should be  more than zero",
@@ -83,6 +77,8 @@ class Productadditionactivity : AppCompatActivity() {
 
             } else {
 
+                val themes = resources.getStringArray(R.array.unit_types)
+                var etunittype = themes[selectedPosition]
                 Utils.showDialog(this@Productadditionactivity, "Loading")
                 val obj = JsonObject()
 
@@ -101,17 +97,19 @@ class Productadditionactivity : AppCompatActivity() {
 
 
                 obj.addProperty("productName", etproductname)
-                obj.addProperty("brandname",etproductname)
+                obj.addProperty("brandname", etproductname)
                 obj.addProperty("storeId", etproductqty)
                 //obj.addProperty("unitType", etunittype)
                 obj.addProperty("unit", etproductqty)
                 obj.addProperty("mrp", etProcPrice)
-                obj.addProperty("procurementprice",etProcPrice)
-                obj.addProperty("selling price",etInputSellPrice)
+                obj.addProperty("procurementprice", etProcPrice)
+                obj.addProperty("selling price", etInputSellPrice)
                 obj.addProperty(
                     "storeId",
                     PreferenceManager.instance(this).get(PreferenceManager.STORE_ID, "")
                 )
+
+
 
 
                 var provider: WebServiceProvider =
@@ -151,12 +149,15 @@ class Productadditionactivity : AppCompatActivity() {
                 Toast.makeText(this@Productadditionactivity, "cancelled", Toast.LENGTH_SHORT).show()
             }
 
+
         }
+
 
     }
 
 
 }
+
 
 
 

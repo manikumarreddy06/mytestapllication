@@ -46,6 +46,11 @@ class InventoryActivity : AppCompatActivity() {
             )
         )
         getInventory();
+        binding.alterInventory.setOnClickListener {
+            Intent(this, inventoryapprovalactivity::class.java).also {
+                startActivity(it)
+            }
+        }
 
     }
 
@@ -90,11 +95,7 @@ class InventoryActivity : AppCompatActivity() {
 
         groceryAdapter!!.setData(productInfo);
         groceryAdapter!!.notifyDataSetChanged()
-        binding.alterInventory.setOnClickListener {
-            Intent(this, inventoryapprovalactivity::class.java).also {
-                startActivity(it)
-            }
-        }
+
     }
 
 
