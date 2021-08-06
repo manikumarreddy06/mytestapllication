@@ -23,6 +23,13 @@ class InventoryActivity : AppCompatActivity() {
     private var groceryAdapter: InventoryAdapters? = null
 
     private val productList: MutableList<ProductInfo> = ArrayList()
+
+    override fun onResume() {
+        super.onResume()
+
+        getInventory();
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityInventoryBinding.inflate(layoutInflater)
@@ -45,6 +52,10 @@ class InventoryActivity : AppCompatActivity() {
                 LinearLayoutManager.VERTICAL
             )
         )
+
+        binding.backButton.setOnClickListener(){
+            finish()
+        }
         getInventory();
         binding.alterInventory.setOnClickListener {
             Intent(this, inventoryapprovalactivity::class.java).also {

@@ -53,6 +53,10 @@ class inventoryapprovalactivity: AppCompatActivity() {
         )
         getInventory()
 
+        binding.backButton.setOnClickListener(){
+            finish()
+        }
+
     }
     private fun getInventory() {
 
@@ -77,7 +81,7 @@ class inventoryapprovalactivity: AppCompatActivity() {
                     }
                     else{
                         Toast.makeText(this@inventoryapprovalactivity, "product not found", Toast.LENGTH_SHORT).show()
-
+                        updateAdapaters(response.negativeValues)
                     }
 
                 }
@@ -94,11 +98,16 @@ class inventoryapprovalactivity: AppCompatActivity() {
 
     private fun updateAdapaters(productInfo: List<NegativeValue>?) {
 
-        groceryAdapter!!.setData(productInfo!!);
+        if(productInfo!=null) {
+            groceryAdapter!!.setData(productInfo!!);
+        }
+        else{
+            groceryAdapter!!.clearData();
+        }
         groceryAdapter!!.notifyDataSetChanged()
 
 
-         }
+    }
 
 
 

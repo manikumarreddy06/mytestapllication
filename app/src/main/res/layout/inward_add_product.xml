@@ -12,17 +12,33 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvHeaderTitle"
-            android:layout_width="match_parent"
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
             android:layout_height="50dp"
-            android:background="#730099"
-            android:gravity="center"
-            android:text="@string/product_addition"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:background="#730099">
+
+            <ImageView
+                android:id="@+id/backButton"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/back_arrow"/>
+
+
+            <TextView
+                android:id="@+id/tvHeaderTitle"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="@string/product_addition"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
 
 
         <TextView

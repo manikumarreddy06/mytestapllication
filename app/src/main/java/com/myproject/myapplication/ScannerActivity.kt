@@ -78,6 +78,11 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
             }
         }
 
+        val backButton: ImageView = findViewById(R.id.backButton)
+
+        backButton.setOnClickListener(){
+            finish()
+        }
 
     }
 

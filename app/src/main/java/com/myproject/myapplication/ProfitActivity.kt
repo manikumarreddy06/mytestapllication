@@ -53,6 +53,9 @@ class ProfitActivity: AppCompatActivity() {
                 startActivity(it)
             }
         }
+        binding.backButton.setOnClickListener(){
+            finish()
+        }
 
         getSalesData()
     }
