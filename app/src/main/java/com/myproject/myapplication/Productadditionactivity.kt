@@ -47,8 +47,6 @@ class Productadditionactivity : AppCompatActivity() {
 
             var etproductqty = binding.etProductQty.text.toString()
 
-
-
             var etProcPrice = binding.etProcPrice.text.toString()
 
             var etInputSellPrice = binding.etInputSellPrice.text.toString()
@@ -77,7 +75,7 @@ class Productadditionactivity : AppCompatActivity() {
 
             } else {
 
-                val themes = resources.getStringArray(R.array.unit_types)
+                var themes = this@Productadditionactivity.resources.getStringArray(R.array.unit_types)
                 var etunittype = themes[selectedPosition]
                 Utils.showDialog(this@Productadditionactivity, "Loading")
                 val obj = JsonObject()
@@ -98,8 +96,8 @@ class Productadditionactivity : AppCompatActivity() {
 
                 obj.addProperty("productName", etproductname)
                 obj.addProperty("brandname", etproductname)
-                obj.addProperty("storeId", etproductqty)
-                //obj.addProperty("unitType", etunittype)
+                 obj.addProperty("storeId", etproductqty)
+                obj.addProperty("unitType", etunittype)
                 obj.addProperty("unit", etproductqty)
                 obj.addProperty("mrp", etProcPrice)
                 obj.addProperty("procurementprice", etProcPrice)
@@ -129,7 +127,7 @@ class Productadditionactivity : AppCompatActivity() {
                                         Toast.makeText(this@Productadditionactivity, "product added successfully", Toast.LENGTH_SHORT).show()
 
                                     } else {
-
+                                        Toast.makeText(this@Productadditionactivity, "product already available", Toast.LENGTH_SHORT).show()
                                     }
                                 }
 

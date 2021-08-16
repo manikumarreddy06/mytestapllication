@@ -1,4 +1,4 @@
-package com.myproject.myapplication.inward
+ package com.myproject.myapplication.inward
 
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.JsonObject
 import com.medfin.Utils
 import com.myproject.myapplication.HomepageActivity
 import com.myproject.myapplication.ProductUtils
@@ -16,8 +17,7 @@ import com.myproject.myapplication.R
 import com.myproject.myapplication.ScannerActivity
 import com.myproject.myapplication.adapters.ProductInWardAdapters
 import com.myproject.myapplication.databinding.InwardAddProductBinding
-import com.myproject.myapplication.model.ProductDetailResponse
-import com.myproject.myapplication.model.ProductVariant
+import com.myproject.myapplication.model.*
 import com.myproject.myapplication.network.PreferenceManager
 import com.myproject.myapplication.network.WebServiceProvider
 import io.reactivex.SingleObserver
@@ -27,65 +27,68 @@ import io.reactivex.disposables.Disposable
 class InwardProductActivity : AppCompatActivity() {
 
 
-
     private var productList: MutableList<ProductVariant> = ArrayList()
     private var groceryAdapter: ProductInWardAdapters? = null
-    private val SECOND_ACTIVITY_REQUEST_CODE:Int=100
+    private val SECOND_ACTIVITY_REQUEST_CODE: Int = 100
 
-    var product:ProductVariant?=null
+    var product: ProductVariant? = null
 
 
-    private lateinit var binding:InwardAddProductBinding
+    private lateinit var binding: InwardAddProductBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = InwardAddProductBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val storeId = PreferenceManager.instance(this).get(
+            PreferenceManager.STORE_ID, "1"
+        ).toString()
 
 
-        product= intent!!.extras!!.get("addProduct") as ProductVariant
-        var qty:Int =1
-       binding.inwardbtn1.setOnClickListener {
-           qty=binding.etProductQty.text.toString().toInt()+10
-           if(qty>0) {
-               binding.etProductQty.setText(qty.toString());
-           }
 
-       }
+        product = intent!!.extras!!.get("addProduct") as ProductVariant
+        var qty: Int = 1
+        binding.inwardbtn1.setOnClickListener {
+            qty = binding.etProductQty.text.toString().toInt() + 10
+            if (qty > 0) {
+                binding.etProductQty.setText(qty.toString());
+            }
 
-        if(product!=null){
-
-
-            var tproductName:TextView= findViewById(R.id.productName)
-            tproductName.text=product!!.productVariantName+"-"+product!!.getUnits()+""+product!!.getUnitType()
 
         }
 
 
+        if (product != null) {
 
-        binding.backButton.setOnClickListener(){
+
+            var tproductName: TextView = findViewById(R.id.productName)
+            tproductName.text =
+                product!!.productVariantName + "-" + product!!.getUnits() + "" + product!!.getUnitType()
+
+        }
+
+
+        binding.backButton.setOnClickListener() {
             finish()
         }
-        if(ProductUtils.instance(this).isOutOrderTypeFlag){
-            binding.tvHeaderTitle.text="Product Checkout"
-        }
-        else{
-            binding.tvHeaderTitle.text="Product Addition"
+        if (ProductUtils.instance(this).isOutOrderTypeFlag) {
+            binding.tvHeaderTitle.text = "Product Checkout"
+        } else {
+            binding.tvHeaderTitle.text = "Product Addition"
         }
 
-        var quantity:Int=1
-        binding.minus.setOnClickListener(){
+        var quantity: Int = 1
+        binding.minus.setOnClickListener() {
 
-            quantity=binding.etProductQty.text.toString().toInt()-1
-            if(quantity>0) {
+            quantity = binding.etProductQty.text.toString().toInt() - 1
+            if (quantity > 0) {
                 binding.etProductQty.setText(quantity.toString());
-            }
-            else{
-                Utils.toast("quantity should be  more than zero",this)
+            } else {
+                Utils.toast("quantity should be  more than zero", this)
             }
         }
 
-        binding.plus.setOnClickListener(){
-            quantity=binding.etProductQty.text.toString().toInt()+1
+        binding.plus.setOnClickListener() {
+            quantity = binding.etProductQty.text.toString().toInt() + 1
             binding.etProductQty.setText(quantity.toString());
         }
         var qty1: Int = 1
@@ -113,28 +116,24 @@ class InwardProductActivity : AppCompatActivity() {
 
         }
 
-        binding.addMoreBtn!!.setOnClickListener(){
 
-            if(TextUtils.isEmpty(binding.etProductQty.text.toString())){
-                Utils.toast("quantity should be  more than zero",this)
-            }
-            else if(TextUtils.isEmpty(binding.etProcPrice.text.toString())){
-                Utils.toast("procurent Price should be  more than zero",this)
-            }
+        binding.addMoreBtn!!.setOnClickListener() {
 
-            else if(TextUtils.isEmpty(binding.etInputSellPrice.text.toString())){
-                Utils.toast("sellPrice should be  more than zero",this)
-            }
-
-            else{
+            if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
+                Utils.toast("quantity should be  more than zero", this)
+            } else if (TextUtils.isEmpty(binding.etProcPrice.text.toString())) {
+                Utils.toast("procurment Price should be  more than zero", this)
+            } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
+                Utils.toast("sellPrice should be  more than zero", this)
+            } else {
 
 
-                val quantity:Int=binding.etProductQty.text.toString().toInt()
-                val procuPrice:Int=binding.etProcPrice.text.toString().toInt()
-                val sellPrice:Int=binding.etInputSellPrice.text.toString().toInt()
-                product!!.procPrice= procuPrice.toLong()
-                product!!.sellingPrice=sellPrice.toLong()
-                product!!.quantity=quantity.toLong()
+                val quantity: Int = binding.etProductQty.text.toString().toInt()
+                val procuPrice: Int = binding.etProcPrice.text.toString().toInt()
+                val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
+                product!!.procPrice = procuPrice.toLong()
+                product!!.sellingPrice = sellPrice.toLong()
+                product!!.quantity = quantity.toLong()
 
 
 
@@ -144,10 +143,8 @@ class InwardProductActivity : AppCompatActivity() {
                     startActivity(it)
                     finish()
                 }
+
             }
-
-
-
 
 
         }
@@ -155,7 +152,7 @@ class InwardProductActivity : AppCompatActivity() {
 
 
 
-        productList=ProductUtils.instance(this).productList
+        productList = ProductUtils.instance(this).productList
         groceryAdapter = ProductInWardAdapters(productList, applicationContext)
         val horizontalLayoutManager =
             LinearLayoutManager(this@InwardProductActivity, LinearLayoutManager.VERTICAL, false)
@@ -171,20 +168,15 @@ class InwardProductActivity : AppCompatActivity() {
             )
         )
 
-        binding.updateBtn!!.setOnClickListener(){
+        binding.updateBtn!!.setOnClickListener() {
 
-            if(TextUtils.isEmpty(binding.etProductQty.text.toString())){
-                Utils.toast("quantity should be  more than zero",this)
-            }
-            else if(TextUtils.isEmpty(binding.etProcPrice.text.toString())){
-                Utils.toast("procurent Price should be  more than zero",this)
-            }
-
-            else if(TextUtils.isEmpty(binding.etInputSellPrice.text.toString())){
-                Utils.toast("sellPrice should be  more than zero",this)
-            }
-
-            else {
+            if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
+                Utils.toast("quantity should be  more than zero", this)
+            } else if (TextUtils.isEmpty(binding.etProcPrice.text.toString())) {
+                Utils.toast("procurent Price should be  more than zero", this)
+            } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
+                Utils.toast("sellPrice should be  more than zero", this)
+            } else {
 
 
                 val quantity: Int = binding.etProductQty.text.toString().toInt()
@@ -207,7 +199,6 @@ class InwardProductActivity : AppCompatActivity() {
         }
 
 
-
     }
 
 
@@ -220,7 +211,7 @@ class InwardProductActivity : AppCompatActivity() {
             if (resultCode == Activity.RESULT_OK) {
 
 
-                var product:ProductVariant = data!!.extras!!.get("addProduct") as ProductVariant
+                var product: ProductVariant = data!!.extras!!.get("addProduct") as ProductVariant
                 productList.add(product)
                 groceryAdapter!!.notifyDataSetChanged()
 
@@ -230,4 +221,7 @@ class InwardProductActivity : AppCompatActivity() {
 
     }
 
-}
+
+            }
+
+

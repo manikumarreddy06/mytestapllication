@@ -175,7 +175,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                         }
                     })
             }
-    }
+     }
 
     private fun doProductSearch() {
         val storeId= PreferenceManager.instance(this).get(
@@ -242,6 +242,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
                     val intent =Intent(this@ScannerActivity,InwardProductActivity::class.java)
                     intent.putExtra("addProduct", product)
                     startActivity(intent)
+
                     
                 }
             });

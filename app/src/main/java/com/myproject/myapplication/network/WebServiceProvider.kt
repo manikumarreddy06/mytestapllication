@@ -123,6 +123,10 @@ interface WebServiceProvider {
     fun approvedProducts(@Body data: JsonObject):Single<BaseResponse>
 
 
+    @GET("/api/product/price/{storeId}")
+    fun gettingvariantprice(@Path("storeId") storeId: String): Single<GettingvariantResponsebean>
+
+
 }
 
 
