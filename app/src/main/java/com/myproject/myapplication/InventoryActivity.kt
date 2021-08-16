@@ -82,8 +82,6 @@ class InventoryActivity : AppCompatActivity() {
                 override fun onSuccess(response: StoreInvResponseBean) {
                     Utils.hideDialog()
                     if(response.isIsvalid()) {
-
-                        Toast.makeText(this@InventoryActivity, "success", Toast.LENGTH_SHORT).show()
                         updateAdapaters(response.productInfo)
                     }
                     else{

@@ -1,6 +1,5 @@
 package com.myproject.myapplication.network
 
-import android.text.TextUtils
 import com.google.gson.JsonObject
 import com.myproject.myapplication.BuildConfig
 import com.myproject.myapplication.inward.AddProduct
@@ -123,8 +122,8 @@ interface WebServiceProvider {
     fun approvedProducts(@Body data: JsonObject):Single<BaseResponse>
 
 
-    @GET("/api/product/price/{storeId}")
-    fun gettingvariantprice(@Path("storeId") storeId: String): Single<GettingvariantResponsebean>
+    @POST("/api/product/price")
+    fun getProductPrice(@Body data: JsonObject): Single<ProductPriceResponseBean>
 
 
 }

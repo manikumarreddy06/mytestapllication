@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -72,6 +73,8 @@ class InwardProductActivity : AppCompatActivity() {
         }
         if (ProductUtils.instance(this).isOutOrderTypeFlag) {
             binding.tvHeaderTitle.text = "Product Checkout"
+            getProductPrice(product!!.variantId)
+            binding.llPurchaseContainer.visibility= View.GONE
         } else {
             binding.tvHeaderTitle.text = "Product Addition"
         }
@@ -119,31 +122,58 @@ class InwardProductActivity : AppCompatActivity() {
 
         binding.addMoreBtn!!.setOnClickListener() {
 
-            if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
-                Utils.toast("quantity should be  more than zero", this)
-            } else if (TextUtils.isEmpty(binding.etProcPrice.text.toString())) {
-                Utils.toast("procurment Price should be  more than zero", this)
-            } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
-                Utils.toast("sellPrice should be  more than zero", this)
-            } else {
+            if(ProductUtils.instance(this).isOutOrderTypeFlag) {
+                if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
+                    Utils.toast("quantity should be  more than zero", this)
+                } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
+                    Utils.toast("sellPrice should be  more than zero", this)
+                } else {
 
 
-                val quantity: Int = binding.etProductQty.text.toString().toInt()
-                val procuPrice: Int = binding.etProcPrice.text.toString().toInt()
-                val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
-                product!!.procPrice = procuPrice.toLong()
-                product!!.sellingPrice = sellPrice.toLong()
-                product!!.quantity = quantity.toLong()
+                    val quantity: Int = binding.etProductQty.text.toString().toInt()
+                    val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
+                    product!!.sellingPrice = sellPrice.toLong()
+                    product!!.quantity = quantity.toLong()
 
 
 
-                ProductUtils.instance(this).addProduct(product!!)
-                //add product functionlity
-                Intent(this, ScannerActivity::class.java).also {
-                    startActivity(it)
-                    finish()
+                    ProductUtils.instance(this).addProduct(product!!)
+                    //add product functionlity
+                    Intent(this, ScannerActivity::class.java).also {
+                        startActivity(it)
+                        finish()
+                    }
+
                 }
+            }
+            else{
 
+                if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
+                    Utils.toast("quantity should be  more than zero", this)
+                } else if (TextUtils.isEmpty(binding.etProcPrice.text.toString())) {
+                    Utils.toast("procurment Price should be  more than zero", this)
+                } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
+                    Utils.toast("sellPrice should be  more than zero", this)
+                } else {
+
+
+                    val quantity: Int = binding.etProductQty.text.toString().toInt()
+                    val procuPrice: Int = binding.etProcPrice.text.toString().toInt()
+                    val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
+                    product!!.procPrice = procuPrice.toLong()
+                    product!!.sellingPrice = sellPrice.toLong()
+                    product!!.quantity = quantity.toLong()
+
+
+
+                    ProductUtils.instance(this).addProduct(product!!)
+                    //add product functionlity
+                    Intent(this, ScannerActivity::class.java).also {
+                        startActivity(it)
+                        finish()
+                    }
+
+                }
             }
 
 
@@ -170,31 +200,58 @@ class InwardProductActivity : AppCompatActivity() {
 
         binding.updateBtn!!.setOnClickListener() {
 
-            if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
-                Utils.toast("quantity should be  more than zero", this)
-            } else if (TextUtils.isEmpty(binding.etProcPrice.text.toString())) {
-                Utils.toast("procurent Price should be  more than zero", this)
-            } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
-                Utils.toast("sellPrice should be  more than zero", this)
-            } else {
+
+            if(ProductUtils.instance(this).isOutOrderTypeFlag) {
+                if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
+                    Utils.toast("quantity should be  more than zero", this)
+                } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
+                    Utils.toast("sellPrice should be  more than zero", this)
+                } else {
 
 
-                val quantity: Int = binding.etProductQty.text.toString().toInt()
-                val procuPrice: Int = binding.etProcPrice.text.toString().toInt()
-                val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
-                product!!.procPrice = procuPrice.toLong()
-                product!!.sellingPrice = sellPrice.toLong()
-                product!!.quantity = quantity.toLong()
+                    val quantity: Int = binding.etProductQty.text.toString().toInt()
+                    val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
+                    product!!.sellingPrice = sellPrice.toLong()
+                    product!!.quantity = quantity.toLong()
 
 
 
-                ProductUtils.instance(this).addProduct(product!!)
+                    ProductUtils.instance(this).addProduct(product!!)
 
-                Intent(this, CheckoutActivity::class.java).also {
-                    startActivity(it)
-                    finish()
+                    Intent(this, CheckoutActivity::class.java).also {
+                        startActivity(it)
+                        finish()
+                    }
+                    //updateProducts(ProductUtils.instance(this).productList);
                 }
-                //updateProducts(ProductUtils.instance(this).productList);
+            }
+            else{
+                if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
+                    Utils.toast("quantity should be  more than zero", this)
+                } else if (TextUtils.isEmpty(binding.etProcPrice.text.toString())) {
+                    Utils.toast("procurent Price should be  more than zero", this)
+                } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
+                    Utils.toast("sellPrice should be  more than zero", this)
+                } else {
+
+
+                    val quantity: Int = binding.etProductQty.text.toString().toInt()
+                    val procuPrice: Int = binding.etProcPrice.text.toString().toInt()
+                    val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
+                    product!!.procPrice = procuPrice.toLong()
+                    product!!.sellingPrice = sellPrice.toLong()
+                    product!!.quantity = quantity.toLong()
+
+
+
+                    ProductUtils.instance(this).addProduct(product!!)
+
+                    Intent(this, CheckoutActivity::class.java).also {
+                        startActivity(it)
+                        finish()
+                    }
+                    //updateProducts(ProductUtils.instance(this).productList);
+                }
             }
         }
 
@@ -221,7 +278,50 @@ class InwardProductActivity : AppCompatActivity() {
 
     }
 
+    private fun getProductPrice(variantId:Long) {
 
-            }
+        val storeId=PreferenceManager.instance(this).get(PreferenceManager.STORE_ID,"1").toString()
+
+        val obj = JsonObject()
+        obj.addProperty("storeId", storeId)
+
+        obj.addProperty("variantId", variantId)
+        Utils.showDialog(this,"Loading")
+        var provider: WebServiceProvider =
+            WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
+        provider.getProductPrice(obj)
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<ProductPriceResponseBean> {
+                override fun onSubscribe(d: Disposable) {
+
+                }
+
+                override fun onSuccess(response: ProductPriceResponseBean) {
+                    Utils.hideDialog()
+                    if(response.isIsvalid()) {
+                        updateSellingPrice(response)
+                    }
+                    else{
+                        Toast.makeText(this@InwardProductActivity, "product not found", Toast.LENGTH_SHORT).show()
+
+                    }
+
+                }
+
+                override fun onError(e: Throwable) {
+                    Utils.hideDialog()
+                    e.printStackTrace()
+                    Toast.makeText(this@InwardProductActivity, "failure", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+    }
+
+    private fun updateSellingPrice(response: ProductPriceResponseBean) {
+        if(!TextUtils.isEmpty(response.sellingPrice))
+        binding.etInputSellPrice.setText(response.sellingPrice)
+    }
+
+}
 
 
