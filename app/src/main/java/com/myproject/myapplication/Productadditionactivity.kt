@@ -150,6 +150,17 @@ class Productadditionactivity : AppCompatActivity() {
 
         }
 
+        binding.btnCancel.setOnClickListener(){
+            finish()
+        }
+
+        binding.btnCancel.setOnClickListener(){
+            finish()
+        }
+        binding.imCancel.setOnClickListener(){
+            finish()
+        }
+
 
     }
 
