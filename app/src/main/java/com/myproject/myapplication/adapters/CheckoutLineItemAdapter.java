@@ -87,6 +87,13 @@ public class CheckoutLineItemAdapter extends RecyclerView.Adapter<CheckoutLineIt
             }
         });
 
+        if(ProductUtils.instance(context).isOutOrderTypeFlag()){
+            holder.tvLabelPrice.setText(productInfo.getSellingPrice()+"");
+        }
+        else{
+            holder.tvLabelPrice.setText(productInfo.getProcPrice()+"");
+        }
+
     }
 
     @Override
@@ -105,6 +112,7 @@ public class CheckoutLineItemAdapter extends RecyclerView.Adapter<CheckoutLineIt
 
         TextView tvMinus;
         TextView tvPlus;
+        TextView tvLabelPrice;
         public GroceryViewHolder(View view) {
             super(view);
             imageView=view.findViewById(R.id.idProductImage);
@@ -114,6 +122,7 @@ public class CheckoutLineItemAdapter extends RecyclerView.Adapter<CheckoutLineIt
 
             tvMinus=view.findViewById(R.id.minus);
             tvPlus=view.findViewById(R.id.plus);
+            tvLabelPrice=view.findViewById(R.id.tvLabelPrice);
 
         }
 

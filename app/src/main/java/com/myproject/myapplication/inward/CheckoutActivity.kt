@@ -66,13 +66,14 @@ class CheckoutActivity : AppCompatActivity() {
 
         if(ProductUtils.instance(this).isOutOrderTypeFlag){
             binding.tvHeaderTitle.text="Product Checkout"
+            binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalSellingPrice}"
         }
         else{
             binding.tvHeaderTitle.text="Product Addition"
+            binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalProcumentPrice}"
         }
 
         binding.TvItemCount.text="Item Count: ${productList.size}"
-        binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalProcumentPrice}"
 
 
     }
