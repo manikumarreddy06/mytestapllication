@@ -354,6 +354,7 @@ class InwardProductActivity : AppCompatActivity() {
     private fun updateSellingPrice(response: ProductPriceResponseBean) {
         if(!TextUtils.isEmpty(response.sellingPrice)) {
             binding.etInputSellPrice.setText(response.sellingPrice)
+            binding.etProcPrice.setText(response.procurementPrice)
             isPriceAvailble=true
         }
         else{

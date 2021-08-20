@@ -16,6 +16,11 @@ public class ProductPriceResponseBean implements Serializable {
     @Expose
     private String sellingPrice;
 
+
+    @SerializedName("procurementPrice")
+    @Expose
+    private String procurementPrice;
+
     public boolean isIsvalid() {
         return isvalid;
     }
@@ -38,5 +43,13 @@ public class ProductPriceResponseBean implements Serializable {
 
     public void setSellingPrice(String sellingPrice) {
         this.sellingPrice = sellingPrice;
+    }
+
+    public String getProcurementPrice() {
+        return procurementPrice;
+    }
+
+    public void setProcurementPrice(String procurementPrice) {
+        this.procurementPrice = procurementPrice;
     }
 }
