@@ -35,7 +35,7 @@ class inventoryapprovalactivity: AppCompatActivity() {
                 confirmationDialog(product!!)
 
             }
-        });
+        })
         val horizontalLayoutManager =
             LinearLayoutManager(
                 this@inventoryapprovalactivity,
