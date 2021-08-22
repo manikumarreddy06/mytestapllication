@@ -52,17 +52,9 @@ public class PendingInventoryAdapters extends RecyclerView.Adapter<PendingInvent
         //holder.imageView.setImageResource(horizontalGrocderyList.get(position).getProductName());
         NegativeValue productInfo =horizontalGrocderyList.get(position);
         holder.txtview.setText(productInfo.getProductName()+""+productInfo.getCategory());
-//        holder.imageView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                 String productName = horizontalGrocderyList.get(position).getVariantId().toString();
-//                Toast.makeText(context, productName + " is selected", Toast.LENGTH_SHORT).show();
-//
-//            }
-//        });
-        //holder.tvProcprice.setText("Procument Price:"+horizontalGrocderyList.get(position).getProcPrice());
 
-       //holder.tvSellingPrice.setText(""+horizontalGrocderyList.get(position).getVariantId());
+       // holder.tvSellingPrice.setText("Procument Price:"+horizontalGrocderyList.get(position).getQuantity());
+
 
         holder.tvQuantity.setText("Quantity:"+horizontalGrocderyList.get(position).getQuantity());
 
@@ -84,7 +76,6 @@ public class PendingInventoryAdapters extends RecyclerView.Adapter<PendingInvent
     public class GroceryViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView txtview;
-        TextView tvProcprice;
         TextView tvSellingPrice;
         TextView tvQuantity;
         Button approvebButton;

@@ -10,6 +10,7 @@ import com.medfin.Utils
 import com.myproject.myapplication.HomepageActivity
 import com.myproject.myapplication.MainActivity
 import com.myproject.myapplication.ProductUtils
+import com.myproject.myapplication.ShareActivity
 import com.myproject.myapplication.adapters.CheckoutLineItemAdapter
 import com.myproject.myapplication.adapters.ProductInWardAdapters
 import com.myproject.myapplication.databinding.CheckoutActivityBinding
@@ -110,9 +111,8 @@ class CheckoutActivity : AppCompatActivity() {
 
                     override fun onSuccess(response: ProductDetailResponse) {
                         Utils.hideDialog()
-                        Intent(this@CheckoutActivity, HomepageActivity::class.java).also {
-                            it.flags=Intent.FLAG_ACTIVITY_NEW_TASK
-                            it.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK
+                        Intent(this@CheckoutActivity, ShareActivity::class.java).also {
+                            it.putExtra("orderId",response.orderId)
 
                             startActivity(it)
                             finish()
@@ -141,8 +141,7 @@ class CheckoutActivity : AppCompatActivity() {
                     override fun onSuccess(response: ProductDetailResponse) {
                         Utils.hideDialog()
                         Intent(this@CheckoutActivity, HomepageActivity::class.java).also {
-                            it.flags=Intent.FLAG_ACTIVITY_NEW_TASK
-                            it.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            it.flags=Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                             startActivity(it)
                             finish()

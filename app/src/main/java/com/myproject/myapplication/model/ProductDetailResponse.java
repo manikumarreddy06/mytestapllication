@@ -21,6 +21,10 @@ public class ProductDetailResponse implements Serializable
     @SerializedName("productVariants")
     @Expose
     private List<ProductVariant> productVariants = null;
+
+    @SerializedName("orderId")
+    @Expose
+    private String orderId;
     private final static long serialVersionUID = 1286529609297930646L;
 
     public boolean isIsvalid() {
@@ -58,5 +62,13 @@ public class ProductDetailResponse implements Serializable
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 }

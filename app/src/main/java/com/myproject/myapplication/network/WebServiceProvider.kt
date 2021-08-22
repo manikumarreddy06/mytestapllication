@@ -126,6 +126,13 @@ interface WebServiceProvider {
     fun getProductPrice(@Body data: JsonObject): Single<ProductPriceResponseBean>
 
 
+
+    @GET("api/order/export/pdf/11")
+    fun pdfGenerator(): Single<ResponseBody>
+
+
+
+
 }
 
 
