@@ -54,6 +54,7 @@
 
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/llStoreUser"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:orientation="vertical"
@@ -121,6 +122,53 @@
                     android:text="@string/p_l"
                     android:textColor="@color/white"
                     android:textSize="25sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/margin_10dp"
+            android:layout_marginRight="@dimen/margin_10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="60dp"
+            android:visibility="gone"
+            android:background="@drawable/homepagebackgroundscreen"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:padding="5dp"
+                android:orientation="horizontal"
+                android:layout_weight="2">
+                <Button
+                    android:id="@+id/btnStoreOnboard"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/androidhomepageoutward"
+                    android:text="@string/outward"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    />
+
+                <Button
+                    android:id="@+id/btnStoreList"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/homepageinward"
+                    android:text="@string/Inward"
+                    android:textColor="@color/white"
+                    android:textSize="30sp"
+                    />
             </LinearLayout>
 
         </LinearLayout>
