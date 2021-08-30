@@ -131,6 +131,10 @@ interface WebServiceProvider {
     fun pdfGenerator(): Single<ResponseBody>
 
 
+    @POST("api/search/variant")
+    fun productSearchbyName(@Body data: JsonObject): Single<ProductDetailResponse>
+
+
 
 
 }

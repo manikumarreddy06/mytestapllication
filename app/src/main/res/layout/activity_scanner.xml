@@ -39,6 +39,50 @@
 
 
 
+
+
+        <RelativeLayout
+            android:id="@+id/tbSearchView"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/search_background"
+            android:orientation="horizontal"
+            android:visibility="visible"
+            app:layout_scrollFlags="scroll|enterAlways">
+
+            <AutoCompleteTextView
+                android:id="@+id/tvSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:hint="Search Product"
+                android:textColor="#aeaeae"
+                android:textSize="14sp" />
+
+            <ImageView
+                android:id="@+id/imClearIcon"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:contentDescription="@string/app_name"
+                android:padding="6dp"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"/>
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvTitle"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+        </androidx.recyclerview.widget.RecyclerView>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -67,13 +111,13 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp">
 
                 <LinearLayout
                     android:id="@+id/container"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="100dp"
                     android:orientation="vertical" />
             </ScrollView>
         </LinearLayout>
