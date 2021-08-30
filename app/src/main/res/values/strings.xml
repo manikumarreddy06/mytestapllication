@@ -86,5 +86,24 @@
     <item>cans</item>
 
 </string-array>
-
+    <string-array name="city">
+        <item>Mumbai</item>
+        <item>Chennai</item>
+        <item>Hyderabad</item>
+        <item>Vishakapatnam</item>
+        <item>vijayawada</item>
+        <item>Guntur</item>
+        <item>Ongole</item>
+        <item>Nellore</item>
+    </string-array>
+    <string-array name="storetype">
+        <item>kirana stores</item>
+        <item>pan wala</item>
+        <item>Sweet shop</item>
+        <item>general stores</item>
+        <item>cloth store</item>
+        <item>Guntur</item>
+        <item>Ongole</item>
+        <item>Nellore</item>
+    </string-array>
 </resources>
