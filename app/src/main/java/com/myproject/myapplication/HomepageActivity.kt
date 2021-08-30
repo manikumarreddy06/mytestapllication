@@ -14,22 +14,21 @@ import com.myproject.myapplication.network.PreferenceManager
 
 
 class HomepageActivity : AppCompatActivity() {
-    private lateinit var binding:ActivityHomepageBinding
+    private lateinit var binding: ActivityHomepageBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
-
-        var userType=PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_TYPE, null)
-        if(!TextUtils.isEmpty(userType) && userType.equals("admin",true) ){
-            binding.llStoreUser.visibility= View.GONE
-            binding.llAdmin.visibility= View.VISIBLE
-        }
-        else{
-            binding.llStoreUser.visibility= View.VISIBLE
-            binding.llAdmin.visibility= View.GONE
+        var userType =
+            PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_TYPE, null)
+        if (!TextUtils.isEmpty(userType) && userType.equals("admin", true)) {
+            binding.llStoreUser.visibility = View.GONE
+            binding.llAdmin.visibility = View.VISIBLE
+        } else {
+            binding.llStoreUser.visibility = View.VISIBLE
+            binding.llAdmin.visibility = View.GONE
         }
 
         binding.tvUserName.text = "Welcome " + PreferenceManager.instance(this@HomepageActivity)
@@ -75,10 +74,10 @@ class HomepageActivity : AppCompatActivity() {
                 ) { dialog, which ->
                     PreferenceManager.instance(this).clearUserSession()
 
-                    Intent(this,MainActivity::class.java).also {
-                        it.flags=Intent.FLAG_ACTIVITY_NEW_TASK
-                        it.flags= Intent.FLAG_ACTIVITY_CLEAR_TASK
-                        
+                    Intent(this, MainActivity::class.java).also {
+                        it.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        it.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK
+
                         startActivity(it)
                         finish()
                     }
@@ -93,14 +92,20 @@ class HomepageActivity : AppCompatActivity() {
         }
 
         binding.btnStoreOnboard.setOnClickListener {
-           //store on board
+            //store on boardIn
+            Intent(this, StorecreationActivity::class.java).also {
+                startActivity(it)
+            }
+
+
+            binding.btnStoreList.setOnClickListener {
+
+                //store list
+                Intent(this,StorelistActivity::class.java).also{
+                    startActivity(it)
+                }
+            }
+
         }
-
-
-        binding.btnStoreList.setOnClickListener {
-
-            //store list
-        }
-
     }
 }

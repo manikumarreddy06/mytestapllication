@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,12 +6,14 @@
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical">
+
+
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:background="#730099"
         android:gravity="center"
-        android:text="Store onboard"
+        android:text="Store list"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -46,4 +47,9 @@
         android:textColor="@color/primaryText"
         android:textColorHint="@color/subHeaderText"
         android:textSize="@dimen/size_14sp" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/etstorelist"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
 </LinearLayout>

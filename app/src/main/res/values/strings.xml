@@ -66,26 +66,26 @@
 
     <string name="approval_inventory">Approval Inventory</string>
     <string name="approve_txt">approve</string>
-<string-array name="unit_types">
-    <item>grams</item>
-    <item>ltr</item>
-    <item>pc</item>
-    <item>packs</item>
-    <item>ml</item>
-    <item>kg</item>
-    <item>unit</item>
-    <item>nos</item>
-    <item>Bags</item>
-    <item>Set</item>
-    <item>mm</item>
-    <item>bottles</item>
-    <item>Bunch</item>
-    <item>Pcs</item>
-    <item>milligrams</item>
-    <item>mtr</item>
-    <item>cans</item>
+    <string-array name="unit_types">
+        <item>grams</item>
+        <item>ltr</item>
+        <item>pc</item>
+        <item>packs</item>
+        <item>ml</item>
+        <item>kg</item>
+        <item>unit</item>
+        <item>nos</item>
+        <item>Bags</item>
+        <item>Set</item>
+        <item>mm</item>
+        <item>bottles</item>
+        <item>Bunch</item>
+        <item>Pcs</item>
+        <item>milligrams</item>
+        <item>mtr</item>
+        <item>cans</item>
 
-</string-array>
+    </string-array>
     <string-array name="city">
         <item>Mumbai</item>
         <item>Chennai</item>
