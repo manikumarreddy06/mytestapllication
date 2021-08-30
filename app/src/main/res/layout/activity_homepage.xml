@@ -153,7 +153,7 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/androidhomepageoutward"
-                    android:text="@string/outward"
+                    android:text="Store Onboard"
                     android:textColor="@color/white"
                     android:textSize="28sp"
                     />
@@ -165,7 +165,7 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/homepageinward"
-                    android:text="@string/Inward"
+                    android:text="Store List"
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     />
