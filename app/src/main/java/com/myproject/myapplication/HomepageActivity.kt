@@ -4,6 +4,8 @@ import android.R
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,16 @@ class HomepageActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
+        var userType=PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.USER_TYPE, null)
+        if(!TextUtils.isEmpty(userType) && userType.equals("admin",true) ){
+            binding.llStoreUser.visibility= View.GONE
+            binding.llAdmin.visibility= View.VISIBLE
+        }
+        else{
+            binding.llStoreUser.visibility= View.VISIBLE
+            binding.llAdmin.visibility= View.GONE
+        }
 
         binding.tvUserName.text = "Welcome " + PreferenceManager.instance(this@HomepageActivity)
             .get(PreferenceManager.USER_NAME, "")
@@ -79,5 +91,16 @@ class HomepageActivity : AppCompatActivity() {
 
 
         }
+
+        binding.btnStoreOnboard.setOnClickListener {
+           //store on board
+        }
+
+
+        binding.btnStoreList.setOnClickListener {
+
+            //store list
+        }
+
     }
 }
