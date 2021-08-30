@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StorecreationActivity"></activity>
+        <activity android:name=".StorelistActivity"></activity>
+        <activity android:name=".StorecreationActivity" />
         <activity android:name=".Productadditionactivity" />
         <activity
             android:name=".MainActivity"
