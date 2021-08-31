@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.media.MediaBrowserServiceCompat
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonObject
@@ -86,7 +87,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
 
         val btnaddproduct: Button = findViewById(R.id.addproduct)
         btnaddproduct.setOnClickListener {
-            Intent(this,Productadditionactivity::class.java).also {
+            Intent(this,ProductAdditionActivity::class.java).also {
                 startActivity(it)
             }
         }
@@ -126,6 +127,12 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
         val horizontalLayoutManager =LinearLayoutManager(this@ScannerActivity, LinearLayoutManager.VERTICAL, false)
         searchRecyclerView!!.setLayoutManager(horizontalLayoutManager)
         searchRecyclerView!!.setAdapter(searchListAdapter)
+        searchRecyclerView!!.addItemDecoration(
+            DividerItemDecoration(
+                this@ScannerActivity,
+                LinearLayoutManager.VERTICAL
+            )
+        )
 
         autoCompleteTextView!!.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {}
@@ -344,7 +351,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
 //                                startActivity(intent)
                             }
                             else {
-
+                                updateEmptyAdapters()
                                 AlertDialog.Builder(this@ScannerActivity)
                                     .setTitle("Info")
                                     .setMessage("Product is not found") // Specifying a listener allows you to take an action before dismissing the dialog.
@@ -385,6 +392,13 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
             searchRecyclerView!!.visibility=View.GONE
         }
 
+    }
+
+    private fun updateEmptyAdapters() {
+
+        searchList.isEmpty()
+        searchListAdapter!!.setData(searchList )
+        searchRecyclerView!!.visibility=View.GONE
     }
 
 

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llContainer"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/tvStoreName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/checchi_sd_dsds_sdsds_txt"
+        android:maxLines="3"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:gravity="left"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/tvType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/checchi_sd_dsds_sdsds_txt"
+        android:maxLines="3"
+        android:layout_margin="5dp"
+        android:textColor="@color/black"
+        android:gravity="left"
+        android:textSize="15sp"/>
+</LinearLayout>

@@ -148,6 +148,11 @@ interface WebServiceProvider {
 
 
 
+    @GET("/api/stores/{storeId}")
+    fun getStoresBycity(@Path("storeId") storeId: String): Single<BaseResponse>
+
+
+
 
 
 

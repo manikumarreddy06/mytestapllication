@@ -21,7 +21,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import java.util.ArrayList
 
-class StorecreationActivity : AppCompatActivity() {
+class StoreCreationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStorecreationBinding
     private var selectedCityPosition = -1
     private var selectedUserTypePosition = -1
@@ -51,45 +51,45 @@ class StorecreationActivity : AppCompatActivity() {
             if (selectedCityPosition == 0) {
                 Utils.toast(
                     "city should be selected ",
-                    this@StorecreationActivity
+                    this@StoreCreationActivity
                 )
             }
             else if (TextUtils.isEmpty(etstorename.toString())) {
-                Utils.toast("storename name can't be empty", this@StorecreationActivity)
+                Utils.toast("storename name can't be empty", this@StoreCreationActivity)
             }  else if (TextUtils.isEmpty(etphonenumber.toString())) {
                 Utils.toast(
                     "phone number can't be empty",
-                    this@StorecreationActivity
+                    this@StoreCreationActivity
                 )
             }
 
             else if (!TextUtils.isEmpty(etphonenumber.toString()) && etphonenumber.length<10) {
                 Utils.toast(
                     "phone number can't be 10 digits",
-                    this@StorecreationActivity
+                    this@StoreCreationActivity
                 )
             }
             else if (TextUtils.isEmpty(etpassword.toString())) {
                 Utils.toast(
                     "password can't be empty",
-                    this@StorecreationActivity
+                    this@StoreCreationActivity
                 )
             } else if (TextUtils.isEmpty(etownername.toString())) {
                 Utils.toast(
                     "owner name can't be empty",
-                    this@StorecreationActivity
+                    this@StoreCreationActivity
                 )
             }
             else  if (selectedUserTypePosition == 0) {
                 Utils.toast(
                     "user type should be selected ",
-                    this@StorecreationActivity
+                    this@StoreCreationActivity
                 )
             }
             else if (TextUtils.isEmpty(etStoreType.toString())) {
                 Utils.toast(
                     "Store type can't be empty",
-                    this@StorecreationActivity
+                    this@StoreCreationActivity
                 )
             }
 
@@ -99,7 +99,7 @@ class StorecreationActivity : AppCompatActivity() {
 
                 var userType = mUserList!![selectedUserTypePosition-1].userId
 
-                Utils.showDialog(this@StorecreationActivity, "Loading")
+                Utils.showDialog(this@StoreCreationActivity, "Loading")
                 val obj = JsonObject()
                 obj.addProperty("storeName", etstorename)
                 obj.addProperty("cityId", cityId)
@@ -124,10 +124,15 @@ class StorecreationActivity : AppCompatActivity() {
                                 override fun onSuccess(t: BaseResponse) {
                                    Utils.hideDialog()
                                     if (t.isIsvalid()){
-                                        Toast.makeText(this@StorecreationActivity, "store created successfully", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this@StoreCreationActivity, "store created successfully", Toast.LENGTH_SHORT).show()
+                                    }
+                                    else if (!TextUtils.isEmpty(t.message)){
+                                        Toast.makeText(this@StoreCreationActivity, t.message, Toast.LENGTH_SHORT).show()
+
                                     }
                                     else{
-                                        Toast.makeText(this@StorecreationActivity, "store already available", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this@StoreCreationActivity, "results not found", Toast.LENGTH_SHORT).show()
+
                                     }
                                 }
 
@@ -135,7 +140,7 @@ class StorecreationActivity : AppCompatActivity() {
                                     Utils.hideDialog()
                                     e.printStackTrace()
                                     Toast.makeText(
-                                        this@StorecreationActivity,
+                                        this@StoreCreationActivity,
                                         "failure",
                                         Toast.LENGTH_SHORT
                                     ).show()
@@ -146,7 +151,7 @@ class StorecreationActivity : AppCompatActivity() {
 
                 }
             binding.btnCancel.setOnClickListener {
-                Toast.makeText(this@StorecreationActivity, "cancelled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@StoreCreationActivity, "failure", Toast.LENGTH_SHORT).show()
             }
             }
         binding.btnCancel.setOnClickListener(){
@@ -159,7 +164,7 @@ class StorecreationActivity : AppCompatActivity() {
 
     private fun getUserTypes() {
 
-        val storeId=PreferenceManager.instance(this@StorecreationActivity).get(PreferenceManager.STORE_ID,"1").toString()
+        val storeId=PreferenceManager.instance(this@StoreCreationActivity).get(PreferenceManager.STORE_ID,"1").toString()
 
         Utils.showDialog(this,"Loading")
         var provider: WebServiceProvider =
@@ -176,8 +181,11 @@ class StorecreationActivity : AppCompatActivity() {
                     if(response.isIsvalid()) {
                         updateTypeList(response.userTypes)
                     }
+                    else if (!TextUtils.isEmpty(response.message)){
+                        Toast.makeText(this@StoreCreationActivity, response.message, Toast.LENGTH_SHORT).show()
+                    }
                     else{
-                        Toast.makeText(this@StorecreationActivity, "product not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@StoreCreationActivity, "results not found", Toast.LENGTH_SHORT).show()
 
                     }
 
@@ -186,7 +194,7 @@ class StorecreationActivity : AppCompatActivity() {
                 override fun onError(e: Throwable) {
                     Utils.hideDialog()
                     e.printStackTrace()
-                    Toast.makeText(this@StorecreationActivity, "failure", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@StoreCreationActivity, "failure", Toast.LENGTH_SHORT).show()
                 }
             })
 
@@ -194,7 +202,7 @@ class StorecreationActivity : AppCompatActivity() {
 
     private fun getCityList() {
 
-        val storeId=PreferenceManager.instance(this@StorecreationActivity).get(PreferenceManager.STORE_ID,"1").toString()
+        val storeId=PreferenceManager.instance(this@StoreCreationActivity).get(PreferenceManager.STORE_ID,"1").toString()
 
         Utils.showDialog(this,"Loading")
         var provider: WebServiceProvider =
@@ -211,8 +219,12 @@ class StorecreationActivity : AppCompatActivity() {
                     if(response.isIsvalid()) {
                         updatedcitylist(response.cityList)
                     }
+                    else if (!TextUtils.isEmpty(response.message)){
+                        Toast.makeText(this@StoreCreationActivity, response.message, Toast.LENGTH_SHORT).show()
+
+                    }
                     else{
-                        Toast.makeText(this@StorecreationActivity, "product not found", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@StoreCreationActivity, "results not found", Toast.LENGTH_SHORT).show()
 
                     }
 
@@ -221,7 +233,7 @@ class StorecreationActivity : AppCompatActivity() {
                 override fun onError(e: Throwable) {
                     Utils.hideDialog()
                     e.printStackTrace()
-                    Toast.makeText(this@StorecreationActivity, "failure", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@StoreCreationActivity, "failure", Toast.LENGTH_SHORT).show()
                 }
             })
 
@@ -235,7 +247,7 @@ class StorecreationActivity : AppCompatActivity() {
             for (item in cityList)
                 outlet.add(item.cityName!!)
 
-            val adapter = ArrayAdapter<String>(this@StorecreationActivity, android.R.layout.simple_spinner_dropdown_item, outlet)
+            val adapter = ArrayAdapter<String>(this@StoreCreationActivity, android.R.layout.simple_spinner_dropdown_item, outlet)
             binding.etCityList.adapter=adapter
             binding.etCityList?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -264,7 +276,7 @@ class StorecreationActivity : AppCompatActivity() {
             for (item in usertypeList)
                 outlet.add(item.userType!!)
 
-            val adapter = ArrayAdapter<String>(this@StorecreationActivity, android.R.layout.simple_spinner_dropdown_item, outlet)
+            val adapter = ArrayAdapter<String>(this@StoreCreationActivity, android.R.layout.simple_spinner_dropdown_item, outlet)
             binding.etUsertype.adapter=adapter
             binding.etUsertype?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onNothingSelected(parent: AdapterView<*>?) {
