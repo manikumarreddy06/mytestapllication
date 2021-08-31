@@ -27,6 +27,7 @@ class StorecreationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStorecreationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
         binding.etstoretype?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
 

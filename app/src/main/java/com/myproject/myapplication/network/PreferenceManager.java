@@ -10,7 +10,7 @@ public class  PreferenceManager {
 
     public static final String APP_VERSION = "app_version";
     private static PreferenceManager mInstance = null;
-    private final String PREFERENCE_NAME = "labhkhati";
+    private final String PREFERENCE_NAME = "labhyam";
 
     private SharedPreferences mPreference;
     public static final String USER_ID = "USER_ID";

@@ -56,7 +56,6 @@
                     android:background="@drawable/shape_outline_rect_gray"
                     android:focusedByDefault="false"
                     android:hint="Enter store name"
-                    android:inputType="number"
                     android:maxLength="30"
                     android:maxLines="1"
                     android:minHeight="40dp"
@@ -86,7 +85,6 @@
                     android:background="@drawable/shape_outline_rect_gray"
                     android:focusedByDefault="false"
                     android:hint="Enter city id"
-                    android:inputType="number"
                     android:maxLength="30"
                     android:maxLines="1"
                     android:minHeight="40dp"
@@ -147,7 +145,6 @@
                     android:minHeight="40dp"
                     android:padding="@dimen/margin_8dp"
                     android:text=""
-                    android:inputType="numberDecimal"
                     android:textColor="@color/primaryText"
                     android:textColorHint="@color/subHeaderText"
                     android:textSize="@dimen/size_14sp" />
@@ -176,7 +173,6 @@
                     android:minHeight="40dp"
                     android:padding="@dimen/margin_8dp"
                     android:text=""
-                    android:inputType="numberDecimal"
                     android:textColor="@color/primaryText"
                     android:textColorHint="@color/subHeaderText"
                     android:textSize="@dimen/size_14sp" />
@@ -251,4 +247,5 @@
 
         </LinearLayout>
     </LinearLayout>
+
 
