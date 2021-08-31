@@ -109,7 +109,7 @@ class StoreCreationActivity : AppCompatActivity() {
                 obj.addProperty("storeType", etStoreType)
                 obj.addProperty("userType", userType)
                 obj.addProperty("createdby",""+PreferenceManager.instance(this).get(PreferenceManager.USER_ID,0L))
-                Intent(this, HomepageActivity::class.java).also {
+                 Intent(this, HomepageActivity::class.java).also {
                     startActivity(it)
 
                     var provider:WebServiceProvider
