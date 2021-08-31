@@ -1,14 +1,16 @@
 package com.myproject.myapplication
 
 import android.Manifest
-import android.app.Activity
-import android.app.Dialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.text.Editable
 import android.text.TextUtils
+import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +26,7 @@ import com.google.zxing.Result
 import com.medfin.Utils
 import com.myproject.myapplication.ZXingScannerView.ResultHandler
 import com.myproject.myapplication.adapters.ProductListAdapter
+import com.myproject.myapplication.adapters.SearchListAdapter
 import com.myproject.myapplication.inward.InwardProductActivity
 import com.myproject.myapplication.model.*
 import com.myproject.myapplication.network.PreferenceManager
@@ -33,6 +36,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import java.util.*
 
+
 class ScannerActivity : AppCompatActivity(), ResultHandler {
     private var mScannerView: ZXingScannerView? = null
     var CAMERA = 0
@@ -41,6 +45,15 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
     private val productList: MutableList<ProductDetails> = ArrayList()
     private var groceryRecyclerView: RecyclerView? = null
     private var groceryAdapter: ProductListAdapter? = null
+    var autoCompleteTextView:AutoCompleteTextView??=null
+
+
+
+    private var searchRecyclerView: RecyclerView? = null
+    var searchList:List<ProductVariant> = ArrayList()
+    var searchListAdapter: SearchListAdapter?=null
+    var clearIcon:ImageView?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
@@ -82,6 +95,53 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
 
         backButton.setOnClickListener(){
             finish()
+        }
+
+
+
+
+
+
+        searchListAdapter = SearchListAdapter(searchList!!, applicationContext,object : SearchListAdapter.RecyclerViewClickListener {
+            override fun onClick(product: ProductVariant?) {
+                searchRecyclerView!!.visibility=View.GONE
+                autoCompleteTextView!!.setText("")
+                val intent =Intent(this@ScannerActivity,InwardProductActivity::class.java)
+                intent.putExtra("addProduct", product)
+                startActivity(intent)
+
+
+            }
+        });
+        //Getting the instance of AutoCompleteTextView
+        //Getting the instance of AutoCompleteTextView
+        clearIcon= findViewById<View>(R.id.imClearIcon) as ImageView
+        searchRecyclerView = findViewById<View>(R.id.rvContent) as RecyclerView
+        autoCompleteTextView = findViewById<View>(R.id.tvSearch) as AutoCompleteTextView
+        autoCompleteTextView!!.threshold = 1 //will start working from first character
+         //setting the adapter data into the AutoCompleteTextView
+
+        autoCompleteTextView!!.setTextColor(Color.RED)
+
+        val horizontalLayoutManager =LinearLayoutManager(this@ScannerActivity, LinearLayoutManager.VERTICAL, false)
+        searchRecyclerView!!.setLayoutManager(horizontalLayoutManager)
+        searchRecyclerView!!.setAdapter(searchListAdapter)
+
+        autoCompleteTextView!!.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                Log.d("onTextChanged",s.toString()+"--->"+s.length)
+                if(s.length>3){
+                    doProductSearchbyName(s.toString())
+                }
+            }
+        })
+        clearIcon!!.setOnClickListener(){
+            searchRecyclerView!!.visibility=View.GONE
+            autoCompleteTextView!!.setText("")
         }
 
     }
@@ -256,6 +316,76 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
         }
     }
 
+
+
+
+    private fun doProductSearchbyName(productCode: String) {
+        Utils.showDialog(this@ScannerActivity,"Loading")
+        val obj = JsonObject()
+        obj.addProperty("searchString", productCode)
+
+
+        var provider: WebServiceProvider =
+            WebServiceProvider.retrofit.create(WebServiceProvider::class.java).also {
+                it.productSearchbyName(obj)
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(object : SingleObserver<ProductDetailResponse> {
+                        override fun onSubscribe(d: Disposable) {
+
+                        }
+
+                        override fun onSuccess(response: ProductDetailResponse) {
+                            Utils.hideDialog()
+                            if (response.isIsvalid()) {
+
+                                  updateAutoCompleteAdapters(response.productVariants)
+//                                val intent = Intent(this@ScannerActivity, InwardProductActivity::class.java)
+//                                intent.putExtra("addProduct", response.productVariants[0])
+//                                startActivity(intent)
+                            }
+                            else {
+
+                                AlertDialog.Builder(this@ScannerActivity)
+                                    .setTitle("Info")
+                                    .setMessage("Product is not found") // Specifying a listener allows you to take an action before dismissing the dialog.
+                                    // The dialog is automatically dismissed when a dialog button is clicked.
+                                    .setPositiveButton(
+                                        android.R.string.yes
+                                    ) { dialog, which ->
+                                        mScannerView!!.setResultHandler(this@ScannerActivity)
+                                        mScannerView!!.startCamera()
+                                    }
+
+                                    .setNegativeButton(android.R.string.no, null)
+                                    .setIcon(android.R.drawable.ic_dialog_alert)
+                                    .show()
+
+                            }
+
+                        }
+
+                        override fun onError(e: Throwable) {
+                            Utils.hideDialog()
+                            e.printStackTrace()
+                            Toast.makeText(this@ScannerActivity, "failure", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+            }
+    }
+
+    private fun updateAutoCompleteAdapters(productVariants: List<ProductVariant>) {
+
+        if(productVariants!=null && productVariants!!.size>0){
+            searchListAdapter!!.setData(productVariants!!)
+            searchRecyclerView!!.visibility=View.VISIBLE
+        }
+        else {
+            searchList.isEmpty()
+            searchListAdapter!!.setData(searchList )
+            searchRecyclerView!!.visibility=View.GONE
+        }
+
+    }
 
 
 }

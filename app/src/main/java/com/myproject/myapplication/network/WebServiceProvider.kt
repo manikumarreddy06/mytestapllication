@@ -134,6 +134,10 @@ interface WebServiceProvider {
     fun addcustomerstore(@Body data: JsonObject):Single<BaseResponse>
 
 
+    @POST("api/search/variant")
+    fun productSearchbyName(@Body data: JsonObject): Single<ProductDetailResponse>
+
+
 
 
 }
