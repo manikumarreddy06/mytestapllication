@@ -130,6 +130,9 @@ interface WebServiceProvider {
     @GET("api/order/export/pdf/11")
     fun pdfGenerator(): Single<ResponseBody>
 
+    @POST("/api/add/store")
+    fun addcustomerstore(@Body data: JsonObject):Single<BaseResponse>
+
 
 
 

@@ -7,11 +7,18 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.AdapterView
+import android.widget.Toast
 import com.google.gson.JsonObject
 import com.medfin.Utils
 import com.myproject.myapplication.databinding.ActivityApprovalinventoryBinding
 import com.myproject.myapplication.databinding.ActivityStorecreationBinding
+import com.myproject.myapplication.model.BaseResponse
 import com.myproject.myapplication.network.PreferenceManager
+import com.myproject.myapplication.network.WebServiceProvider
+import io.reactivex.Single
+import io.reactivex.SingleObserver
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 
 class StorecreationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStorecreationBinding
@@ -93,10 +100,46 @@ class StorecreationActivity : AppCompatActivity() {
                 Intent(this, HomepageActivity::class.java).also {
                     startActivity(it)
 
+                    var provider:WebServiceProvider
+                    WebServiceProvider.retrofit.create(WebServiceProvider::class.java).also {
+                        it.addcustomerstore(obj)
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(object :SingleObserver<BaseResponse>{
+                                override fun onSubscribe(d: Disposable) {
+
+                                }
+
+                                override fun onSuccess(t: BaseResponse) {
+                                   Utils.hideDialog()
+                                    if (t.isIsvalid()){
+                                        Toast.makeText(this@StorecreationActivity, "store created successfully", Toast.LENGTH_SHORT).show()
+                                    }
+                                    else{
+                                        Toast.makeText(this@StorecreationActivity, "store already available", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+
+                                override fun onError(e: Throwable) {
+                                    Utils.hideDialog()
+                                    e.printStackTrace()
+                                    Toast.makeText(
+                                        this@StorecreationActivity,
+                                        "failure",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                                })
+                            }
+                    }
 
                 }
+            binding.btnCancel.setOnClickListener {
+                Toast.makeText(this@StorecreationActivity, "cancelled", Toast.LENGTH_SHORT).show()
             }
+            }
+        binding.btnCancel.setOnClickListener(){
+            finish()
+        }
 
         }
     }
-}
