@@ -22,7 +22,8 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".StorelistActivity"></activity>
 
-        <activity android:name=".StorecreationActivity"></activity>
+        <activity android:name=".StorecreationActivity">
+        </activity>
 
         <activity android:name=".Productadditionactivity" />
         <activity
