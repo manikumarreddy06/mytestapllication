@@ -112,6 +112,7 @@ class StoreCreationActivity : AppCompatActivity() {
                  Intent(this, HomepageActivity::class.java).also {
                     startActivity(it)
 
+
                     var provider:WebServiceProvider
                     WebServiceProvider.retrofit.create(WebServiceProvider::class.java).also {
                         it.addcustomerstore(obj)
@@ -125,15 +126,20 @@ class StoreCreationActivity : AppCompatActivity() {
                                    Utils.hideDialog()
                                     if (t.isIsvalid()){
                                         Toast.makeText(this@StoreCreationActivity, "store created successfully", Toast.LENGTH_SHORT).show()
+
                                     }
                                     else if (!TextUtils.isEmpty(t.message)){
                                         Toast.makeText(this@StoreCreationActivity, t.message, Toast.LENGTH_SHORT).show()
 
                                     }
                                     else{
-                                        Toast.makeText(this@StoreCreationActivity, "results not found", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this@StoreCreationActivity, "results not found", Toast.LENGTH_SHORT).show().also {
+
+                                        }
 
                                     }
+
+
                                 }
 
                                 override fun onError(e: Throwable) {
@@ -186,7 +192,6 @@ class StoreCreationActivity : AppCompatActivity() {
                     }
                     else{
                         Toast.makeText(this@StoreCreationActivity, "results not found", Toast.LENGTH_SHORT).show()
-
                     }
 
                 }
@@ -223,6 +228,7 @@ class StoreCreationActivity : AppCompatActivity() {
                         Toast.makeText(this@StoreCreationActivity, response.message, Toast.LENGTH_SHORT).show()
 
                     }
+
                     else{
                         Toast.makeText(this@StoreCreationActivity, "results not found", Toast.LENGTH_SHORT).show()
 
