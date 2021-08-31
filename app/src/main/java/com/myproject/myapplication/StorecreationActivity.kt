@@ -1,53 +1,44 @@
 package com.myproject.myapplication
 
 import android.content.Intent
-import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
 import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.gson.JsonObject
 import com.medfin.Utils
-import com.myproject.myapplication.databinding.ActivityApprovalinventoryBinding
 import com.myproject.myapplication.databinding.ActivityStorecreationBinding
 import com.myproject.myapplication.model.BaseResponse
+import com.myproject.myapplication.model.City
+import com.myproject.myapplication.model.UserType
 import com.myproject.myapplication.network.PreferenceManager
 import com.myproject.myapplication.network.WebServiceProvider
-import io.reactivex.Single
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import java.util.ArrayList
 
 class StorecreationActivity : AppCompatActivity() {
     private lateinit var binding: ActivityStorecreationBinding
-    private var selectedPosition = -1
+    private var selectedCityPosition = -1
+    private var selectedUserTypePosition = -1
+
+    var mCityList: MutableList<City>?=null
+    var mUserList: MutableList<UserType>?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStorecreationBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getCityList()
+        getUserTypes()
 
-        binding.etstoretype?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                selectedPosition = position
-            }
-
-        }
         binding.btnadd.setOnClickListener {
 
             var etstorename = binding.etStorename.text.toString()
 
-            var etcityid = binding.etcityid.text.toString()
 
             var etphonenumber = binding.etphonenum.text.toString()
 
@@ -55,19 +46,30 @@ class StorecreationActivity : AppCompatActivity() {
 
             var etownername = binding.etownername.text.toString()
 
-            if (TextUtils.isEmpty(etstorename.toString())) {
-                Utils.toast("storename name can't be empty", this@StorecreationActivity)
-            } else if (TextUtils.isEmpty(etcityid.toString())) {
+            var etStoreType = binding.etStoreType.text.toString()
+
+            if (selectedCityPosition == 0) {
                 Utils.toast(
-                    "city id cannot be empty",
+                    "city should be selected ",
                     this@StorecreationActivity
                 )
-            } else if (TextUtils.isEmpty(etphonenumber.toString())) {
+            }
+            else if (TextUtils.isEmpty(etstorename.toString())) {
+                Utils.toast("storename name can't be empty", this@StorecreationActivity)
+            }  else if (TextUtils.isEmpty(etphonenumber.toString())) {
                 Utils.toast(
                     "phone number can't be empty",
                     this@StorecreationActivity
                 )
-            } else if (TextUtils.isEmpty(etpassword.toString())) {
+            }
+
+            else if (!TextUtils.isEmpty(etphonenumber.toString()) && etphonenumber.length<10) {
+                Utils.toast(
+                    "phone number can't be 10 digits",
+                    this@StorecreationActivity
+                )
+            }
+            else if (TextUtils.isEmpty(etpassword.toString())) {
                 Utils.toast(
                     "password can't be empty",
                     this@StorecreationActivity
@@ -77,27 +79,36 @@ class StorecreationActivity : AppCompatActivity() {
                     "owner name can't be empty",
                     this@StorecreationActivity
                 )
-            } else if (selectedPosition == -1) {
+            }
+            else  if (selectedUserTypePosition == 0) {
                 Utils.toast(
-                    "unit type should be selected ",
+                    "user type should be selected ",
                     this@StorecreationActivity
                 )
-            } else {
+            }
+            else if (TextUtils.isEmpty(etStoreType.toString())) {
+                Utils.toast(
+                    "Store type can't be empty",
+                    this@StorecreationActivity
+                )
+            }
 
-                var themes = this@StorecreationActivity.resources.getStringArray(R.array.storetype)
-                var etstoretype = themes[selectedPosition]
+            else {
+                var cityId = mCityList!![selectedCityPosition-1].cityId
+
+
+                var userType = mUserList!![selectedUserTypePosition-1].userId
+
                 Utils.showDialog(this@StorecreationActivity, "Loading")
                 val obj = JsonObject()
-                obj.addProperty("storename", etstorename)
-                obj.addProperty("cityid", etcityid)
-                obj.addProperty("phonenumber", etphonenumber)
+                obj.addProperty("storeName", etstorename)
+                obj.addProperty("cityId", cityId)
+                obj.addProperty("phoneNumber", etphonenumber)
                 obj.addProperty("password", etpassword)
-                obj.addProperty("ownername", etownername)
-                obj.addProperty("store type", etstoretype)
-                obj.addProperty(
-                    "storeId",
-                    PreferenceManager.instance(this).get(PreferenceManager.STORE_ID, "")
-                )
+                obj.addProperty("ownerName", etownername)
+                obj.addProperty("storeType", etStoreType)
+                obj.addProperty("userType", userType)
+                obj.addProperty("createdby",""+PreferenceManager.instance(this).get(PreferenceManager.USER_ID,0L))
                 Intent(this, HomepageActivity::class.java).also {
                     startActivity(it)
 
@@ -143,4 +154,133 @@ class StorecreationActivity : AppCompatActivity() {
         }
 
         }
+
+
+
+    private fun getUserTypes() {
+
+        val storeId=PreferenceManager.instance(this@StorecreationActivity).get(PreferenceManager.STORE_ID,"1").toString()
+
+        Utils.showDialog(this,"Loading")
+        var provider: WebServiceProvider =
+            WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
+        provider.getUserTypeList()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<BaseResponse> {
+                override fun onSubscribe(d: Disposable) {
+
+                }
+
+                override fun onSuccess(response: BaseResponse) {
+                    Utils.hideDialog()
+                    if(response.isIsvalid()) {
+                        updateTypeList(response.userTypes)
+                    }
+                    else{
+                        Toast.makeText(this@StorecreationActivity, "product not found", Toast.LENGTH_SHORT).show()
+
+                    }
+
+                }
+
+                override fun onError(e: Throwable) {
+                    Utils.hideDialog()
+                    e.printStackTrace()
+                    Toast.makeText(this@StorecreationActivity, "failure", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+    }
+
+    private fun getCityList() {
+
+        val storeId=PreferenceManager.instance(this@StorecreationActivity).get(PreferenceManager.STORE_ID,"1").toString()
+
+        Utils.showDialog(this,"Loading")
+        var provider: WebServiceProvider =
+            WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
+        provider.getCityList()
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<BaseResponse> {
+                override fun onSubscribe(d: Disposable) {
+
+                }
+
+                override fun onSuccess(response: BaseResponse) {
+                    Utils.hideDialog()
+                    if(response.isIsvalid()) {
+                        updatedcitylist(response.cityList)
+                    }
+                    else{
+                        Toast.makeText(this@StorecreationActivity, "product not found", Toast.LENGTH_SHORT).show()
+
+                    }
+
+                }
+
+                override fun onError(e: Throwable) {
+                    Utils.hideDialog()
+                    e.printStackTrace()
+                    Toast.makeText(this@StorecreationActivity, "failure", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+    }
+
+    fun updatedcitylist(cityList: MutableList<City>) {
+        mCityList=cityList
+        val outlet: MutableList<String> = ArrayList()
+        outlet.add("Select")
+        if(cityList !=null && cityList.size>0) {
+            for (item in cityList)
+                outlet.add(item.cityName!!)
+
+            val adapter = ArrayAdapter<String>(this@StorecreationActivity, android.R.layout.simple_spinner_dropdown_item, outlet)
+            binding.etCityList.adapter=adapter
+            binding.etCityList?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    selectedCityPosition = position
+                }
+
+            }
+        }
+    }
+
+
+    fun updateTypeList(usertypeList: MutableList<UserType>) {
+        mUserList=usertypeList
+        val outlet: MutableList<String> = ArrayList()
+        outlet.add("Select")
+        if(usertypeList !=null && usertypeList.size>0) {
+            for (item in usertypeList)
+                outlet.add(item.userType!!)
+
+            val adapter = ArrayAdapter<String>(this@StorecreationActivity, android.R.layout.simple_spinner_dropdown_item, outlet)
+            binding.etUsertype.adapter=adapter
+            binding.etUsertype?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+
+                }
+
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    selectedUserTypePosition = position
+                }
+
+            }
+        }
+    }
     }

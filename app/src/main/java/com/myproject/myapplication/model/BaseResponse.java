@@ -1,6 +1,8 @@
 package com.myproject.myapplication.model;
 
 import java.io.Serializable;
+import java.util.List;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,6 +15,15 @@ public class BaseResponse implements Serializable
     @SerializedName("message")
     @Expose
     private String message;
+
+    @SerializedName("cityList")
+    @Expose
+    private List<City> cityList = null;
+
+
+    @SerializedName("userTypes")
+    @Expose
+    private List<UserType> userTypes = null;
     private final static long serialVersionUID = 4613383490004428039L;
 
     public boolean isIsvalid() {
@@ -31,4 +42,19 @@ public class BaseResponse implements Serializable
         this.message = message;
     }
 
+    public List<City> getCityList() {
+        return cityList;
+    }
+
+    public void setCityList(List<City> cityList) {
+        this.cityList = cityList;
+    }
+
+    public List<UserType> getUserTypes() {
+        return userTypes;
+    }
+
+    public void setUserTypes(List<UserType> userTypes) {
+        this.userTypes = userTypes;
+    }
 }

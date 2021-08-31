@@ -41,6 +41,36 @@
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/margin_8dp"
                     android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="City id"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+
+                <Spinner
+                    android:id="@+id/etCityList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="Enter type of store"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:text=""
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
                     android:text="Store name"
                     android:textColor="@color/primaryText"
                     android:textSize="@dimen/size_16sp" />
@@ -56,6 +86,7 @@
                     android:background="@drawable/shape_outline_rect_gray"
                     android:focusedByDefault="false"
                     android:hint="Enter store name"
+                    android:inputType="text"
                     android:maxLength="30"
                     android:maxLines="1"
                     android:minHeight="40dp"
@@ -64,39 +95,14 @@
                     android:textColorHint="@color/subHeaderText"
                     android:textSize="@dimen/size_14sp" />
 
+
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/margin_8dp"
-                    android:layout_marginRight="@dimen/activity_vertical_margin"
-                    android:text="City id"
-                    android:textColor="@color/primaryText"
-                    android:textSize="@dimen/size_16sp" />
-
-
-                <EditText
-                    android:id="@+id/etcityid"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_vertical_margin"
-                    android:layout_marginTop="@dimen/margin_12dp"
-                    android:layout_marginRight="@dimen/activity_vertical_margin"
-                    android:background="@drawable/shape_outline_rect_gray"
-                    android:focusedByDefault="false"
-                    android:hint="Enter city id"
-                    android:maxLength="30"
-                    android:maxLines="1"
-                    android:minHeight="40dp"
-                    android:padding="@dimen/margin_8dp"
-                    android:textColor="@color/primaryText"
-                    android:textColorHint="@color/subHeaderText"
-                    android:textSize="@dimen/size_14sp" />
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/activity_vertical_margin"
-                    android:layout_marginRight="@dimen/activity_vertical_margin"
                     android:text="phone number"
                     android:textColor="@color/primaryText"
                     android:textSize="@dimen/size_16sp" />
@@ -126,6 +132,7 @@
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
                     android:layout_marginRight="@dimen/activity_vertical_margin"
                     android:text="password"
+                    android:layout_marginTop="@dimen/margin_8dp"
                     android:textColor="@color/primaryText"
                     android:textSize="@dimen/size_16sp" />
 
@@ -145,6 +152,7 @@
                     android:minHeight="40dp"
                     android:padding="@dimen/margin_8dp"
                     android:text=""
+                    android:inputType="text"
                     android:textColor="@color/primaryText"
                     android:textColorHint="@color/subHeaderText"
                     android:textSize="@dimen/size_14sp" />
@@ -154,6 +162,7 @@
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
                     android:layout_marginRight="@dimen/activity_vertical_margin"
                     android:text="Owner"
+                    android:layout_marginTop="@dimen/margin_8dp"
                     android:textColor="@color/primaryText"
                     android:textSize="@dimen/size_16sp" />
 
@@ -173,6 +182,7 @@
                     android:minHeight="40dp"
                     android:padding="@dimen/margin_8dp"
                     android:text=""
+                    android:inputType="text"
                     android:textColor="@color/primaryText"
                     android:textColorHint="@color/subHeaderText"
                     android:textSize="@dimen/size_14sp" />
@@ -181,12 +191,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
                     android:layout_marginRight="@dimen/activity_vertical_margin"
-                    android:text="store type"
+                    android:text="user type"
+                    android:layout_marginTop="@dimen/margin_8dp"
                     android:textColor="@color/primaryText"
                     android:textSize="@dimen/size_16sp" />
 
                 <Spinner
-                    android:id="@+id/etstoretype"
+                    android:id="@+id/etUsertype"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/activity_vertical_margin"
@@ -201,7 +212,39 @@
                     android:minHeight="40dp"
                     android:padding="@dimen/margin_8dp"
                     android:text=""
-                    android:entries="@array/storetype"
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="Store Type"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+
+                <EditText
+                    android:id="@+id/etStoreType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="Enter StoreType"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:text=""
+                    android:inputType="text"
                     android:textColor="@color/primaryText"
                     android:textColorHint="@color/subHeaderText"
                     android:textSize="@dimen/size_14sp" />
@@ -247,5 +290,4 @@
 
         </LinearLayout>
     </LinearLayout>
-
 
