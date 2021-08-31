@@ -139,6 +139,18 @@ interface WebServiceProvider {
 
 
 
+    @GET("api/user/cityList")
+    fun getCityList(): Single<BaseResponse>
+
+
+    @GET("api/user/types")
+    fun getUserTypeList(): Single<BaseResponse>
+
+
+
+
+
+
 
 }
 

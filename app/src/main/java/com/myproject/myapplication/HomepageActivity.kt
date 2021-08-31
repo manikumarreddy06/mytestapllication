@@ -96,16 +96,16 @@ class HomepageActivity : AppCompatActivity() {
             Intent(this, StorecreationActivity::class.java).also {
                 startActivity(it)
             }
+        }
 
 
-            binding.btnStoreList.setOnClickListener {
+        binding.btnStoreList.setOnClickListener {
 
                 //store list
                 Intent(this,StorelistActivity::class.java).also{
                     startActivity(it)
                 }
-            }
-
         }
+
     }
 }
