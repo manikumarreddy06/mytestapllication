@@ -24,6 +24,10 @@ public class BaseResponse implements Serializable
     @SerializedName("userTypes")
     @Expose
     private List<UserType> userTypes = null;
+
+    @SerializedName("listOfStores")
+    @Expose
+    private List<Store> listOfStores = null;
     private final static long serialVersionUID = 4613383490004428039L;
 
     public boolean isIsvalid() {
@@ -56,5 +60,13 @@ public class BaseResponse implements Serializable
 
     public void setUserTypes(List<UserType> userTypes) {
         this.userTypes = userTypes;
+    }
+
+    public List<Store> getListOfStores() {
+        return listOfStores;
+    }
+
+    public void setListOfStores(List<Store> listOfStores) {
+        this.listOfStores = listOfStores;
     }
 }

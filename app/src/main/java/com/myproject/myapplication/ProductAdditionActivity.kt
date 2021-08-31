@@ -1,7 +1,5 @@
 package com.myproject.myapplication
 
-import android.app.Dialog
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
@@ -10,18 +8,14 @@ import android.widget.*
 import com.google.gson.JsonObject
 import com.medfin.Utils
 import com.myproject.myapplication.databinding.ActivityProductadditionactivityBinding
-import com.myproject.myapplication.inward.InwardProductActivity
 import com.myproject.myapplication.model.BaseResponse
-import com.myproject.myapplication.model.ProductDetailResponse
-import com.myproject.myapplication.model.ProductDetails
-import com.myproject.myapplication.model.ProductVariant
 import com.myproject.myapplication.network.PreferenceManager
 import com.myproject.myapplication.network.WebServiceProvider
 import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 
-class Productadditionactivity : AppCompatActivity() {
+class ProductAdditionActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductadditionactivityBinding
 
     private var selectedPosition=-1
@@ -52,32 +46,32 @@ class Productadditionactivity : AppCompatActivity() {
             var etInputSellPrice = binding.etInputSellPrice.text.toString()
 
             if (TextUtils.isEmpty(etproductname.toString())) {
-                Utils.toast("product name can't be empty", this@Productadditionactivity)
+                Utils.toast("product name can't be empty", this@ProductAdditionActivity)
             } else if (TextUtils.isEmpty(etproductqty.toString())) {
-                Utils.toast("quantity should be  more than zero", this@Productadditionactivity)
+                Utils.toast("quantity should be  more than zero", this@ProductAdditionActivity)
             } else if (TextUtils.isEmpty(etproductqty.toString())) {
                 Utils.toast(
                     "procurment Price should be  more than zero",
-                    this@Productadditionactivity
+                    this@ProductAdditionActivity
                 )}
                 else if(selectedPosition==-1) {
                     Utils.toast(
                         "unit type should be selected ",
-                        this@Productadditionactivity
+                        this@ProductAdditionActivity
                     )
             } else if (TextUtils.isEmpty(etProcPrice.toString())) {
                 Utils.toast(
                     "procurment Price should be  more than zero",
-                    this@Productadditionactivity
+                    this@ProductAdditionActivity
                 )
             } else if (TextUtils.isEmpty(etInputSellPrice.toString())) {
-                Utils.toast("sellPrice should be  more than zero", this@Productadditionactivity)
+                Utils.toast("sellPrice should be  more than zero", this@ProductAdditionActivity)
 
             } else {
 
-                var themes = this@Productadditionactivity.resources.getStringArray(R.array.unit_types)
+                var themes = this@ProductAdditionActivity.resources.getStringArray(R.array.unit_types)
                 var etunittype = themes[selectedPosition]
-                Utils.showDialog(this@Productadditionactivity, "Loading")
+                Utils.showDialog(this@ProductAdditionActivity, "Loading")
                 val obj = JsonObject()
 
 //                private String productName;//yes
@@ -124,10 +118,10 @@ class Productadditionactivity : AppCompatActivity() {
                                     Utils.hideDialog()
                                     if (t.isIsvalid()) {
 
-                                        Toast.makeText(this@Productadditionactivity, "product added successfully", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this@ProductAdditionActivity, "product added successfully", Toast.LENGTH_SHORT).show()
 
                                     } else {
-                                        Toast.makeText(this@Productadditionactivity, "product already available", Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this@ProductAdditionActivity, "product already available", Toast.LENGTH_SHORT).show()
                                     }
                                 }
 
@@ -135,7 +129,7 @@ class Productadditionactivity : AppCompatActivity() {
                                     Utils.hideDialog()
                                     e.printStackTrace()
                                     Toast.makeText(
-                                        this@Productadditionactivity,
+                                        this@ProductAdditionActivity,
                                         "failure",
                                         Toast.LENGTH_SHORT
                                     ).show()
@@ -144,7 +138,7 @@ class Productadditionactivity : AppCompatActivity() {
                     }
             }
             binding.btnCancel.setOnClickListener {
-                Toast.makeText(this@Productadditionactivity, "cancelled", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@ProductAdditionActivity, "cancelled", Toast.LENGTH_SHORT).show()
             }
 
 

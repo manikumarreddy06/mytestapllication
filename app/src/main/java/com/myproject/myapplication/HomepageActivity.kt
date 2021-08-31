@@ -1,12 +1,10 @@
 package com.myproject.myapplication
 
 import android.R
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.myproject.myapplication.databinding.ActivityHomepageBinding
@@ -93,7 +91,7 @@ class HomepageActivity : AppCompatActivity() {
 
         binding.btnStoreOnboard.setOnClickListener {
             //store on boardIn
-            Intent(this, StorecreationActivity::class.java).also {
+            Intent(this, StoreCreationActivity::class.java).also {
                 startActivity(it)
             }
         }
