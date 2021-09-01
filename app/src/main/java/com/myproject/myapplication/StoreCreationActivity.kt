@@ -96,7 +96,6 @@ class StoreCreationActivity : AppCompatActivity() {
             else {
                 var cityId = mCityList!![selectedCityPosition-1].cityId
 
-
                 var userType = mUserList!![selectedUserTypePosition-1].userId
 
                 Utils.showDialog(this@StoreCreationActivity, "Loading")
@@ -109,11 +108,8 @@ class StoreCreationActivity : AppCompatActivity() {
                 obj.addProperty("storeType", etStoreType)
                 obj.addProperty("userType", userType)
                 obj.addProperty("createdby",""+PreferenceManager.instance(this).get(PreferenceManager.USER_ID,0L))
-                Intent(this, HomepageActivity::class.java).also {
-                    startActivity(it)
-
-                    var provider:WebServiceProvider
-                    WebServiceProvider.retrofit.create(WebServiceProvider::class.java).also {
+                var provider:WebServiceProvider
+                WebServiceProvider.retrofit.create(WebServiceProvider::class.java).also {
                         it.addcustomerstore(obj)
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(object :SingleObserver<BaseResponse>{
@@ -125,6 +121,12 @@ class StoreCreationActivity : AppCompatActivity() {
                                    Utils.hideDialog()
                                     if (t.isIsvalid()){
                                         Toast.makeText(this@StoreCreationActivity, "store created successfully", Toast.LENGTH_SHORT).show()
+                                        Intent(this@StoreCreationActivity, HomepageActivity::class.java).also {
+                                            it.flags= Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                                            startActivity(it)
+                                            finish()
+                                        }
                                     }
                                     else if (!TextUtils.isEmpty(t.message)){
                                         Toast.makeText(this@StoreCreationActivity, t.message, Toast.LENGTH_SHORT).show()
@@ -148,17 +150,11 @@ class StoreCreationActivity : AppCompatActivity() {
                                 })
                             }
                     }
-
-                }
-            binding.btnCancel.setOnClickListener {
-                Toast.makeText(this@StoreCreationActivity, "failure", Toast.LENGTH_SHORT).show()
-            }
             }
         binding.btnCancel.setOnClickListener(){
             finish()
         }
-
-        }
+    }
 
 
 
