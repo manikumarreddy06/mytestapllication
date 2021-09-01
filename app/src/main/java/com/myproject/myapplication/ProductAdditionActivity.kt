@@ -123,6 +123,7 @@ class ProductAdditionActivity : AppCompatActivity() {
                                     } else {
                                         Toast.makeText(this@ProductAdditionActivity, "product already available", Toast.LENGTH_SHORT).show()
                                     }
+
                                 }
 
                                 override fun onError(e: Throwable) {

@@ -24,7 +24,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginTop="60dp"
             android:paddingBottom="@dimen/margin_4dp">
 
             <LinearLayout
@@ -147,7 +146,7 @@
                     android:background="@drawable/shape_outline_rect_gray"
                     android:focusedByDefault="false"
                     android:hint="Enter your password"
-                    android:maxLength="10"
+                    android:maxLength="30"
                     android:maxLines="1"
                     android:minHeight="40dp"
                     android:padding="@dimen/margin_8dp"
@@ -177,7 +176,7 @@
                     android:background="@drawable/shape_outline_rect_gray"
                     android:focusedByDefault="false"
                     android:hint="Enter owner name"
-                    android:maxLength="10"
+                    android:maxLength="30"
                     android:maxLines="1"
                     android:minHeight="40dp"
                     android:padding="@dimen/margin_8dp"
@@ -239,7 +238,7 @@
                     android:background="@drawable/shape_outline_rect_gray"
                     android:focusedByDefault="false"
                     android:hint="Enter StoreType"
-                    android:maxLength="10"
+                    android:maxLength="30"
                     android:maxLines="1"
                     android:minHeight="40dp"
                     android:padding="@dimen/margin_8dp"
