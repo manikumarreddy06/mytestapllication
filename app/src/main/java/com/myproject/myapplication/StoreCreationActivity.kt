@@ -44,7 +44,12 @@ class StoreCreationActivity : AppCompatActivity() {
 
             var etpassword = binding.etPassword1.text.toString()
 
+
             var etownername = binding.etownername.text.toString()
+
+             var etaadahrnum=binding.etAadharnum.text.toString()
+
+            var etlocation=binding.etlocation.toString()
 
             var etStoreType = binding.etStoreType.text.toString()
 
@@ -56,30 +61,43 @@ class StoreCreationActivity : AppCompatActivity() {
             }
             else if (TextUtils.isEmpty(etstorename.toString())) {
                 Utils.toast("storename name can't be empty", this@StoreCreationActivity)
-            }  else if (TextUtils.isEmpty(etphonenumber.toString())) {
+            }
+            else if (TextUtils.isEmpty(etphonenumber.toString())) {
                 Utils.toast(
                     "phone number can't be empty",
                     this@StoreCreationActivity
                 )
             }
 
-            else if (!TextUtils.isEmpty(etphonenumber.toString()) && etphonenumber.length<10) {
-                Utils.toast(
-                    "phone number can't be 10 digits",
-                    this@StoreCreationActivity
-                )
-            }
             else if (TextUtils.isEmpty(etpassword.toString())) {
                 Utils.toast(
                     "password can't be empty",
                     this@StoreCreationActivity
                 )
-            } else if (TextUtils.isEmpty(etownername.toString())) {
+
+            }
+            else if (TextUtils.isEmpty(etownername.toString())) {
                 Utils.toast(
                     "owner name can't be empty",
                     this@StoreCreationActivity
                 )
+
             }
+            else if (TextUtils.isEmpty(etaadahrnum.toString())) {
+                Utils.toast(
+                    "aadhar number name can't be empty",
+                    this@StoreCreationActivity
+                )
+
+            }
+            else if (TextUtils.isEmpty(etlocation.toString())) {
+                Utils.toast(
+                    "Location required",
+                    this@StoreCreationActivity
+                )
+
+            }
+
             else  if (selectedUserTypePosition == 0) {
                 Utils.toast(
                     "user type should be selected ",
@@ -105,6 +123,8 @@ class StoreCreationActivity : AppCompatActivity() {
                 obj.addProperty("phoneNumber", etphonenumber)
                 obj.addProperty("password", etpassword)
                 obj.addProperty("ownerName", etownername)
+                obj.addProperty("aadharNumber",etaadahrnum)
+                obj.addProperty("location",etlocation)
                 obj.addProperty("storeType", etStoreType)
                 obj.addProperty("userType", userType)
                 obj.addProperty("createdby",""+PreferenceManager.instance(this).get(PreferenceManager.USER_ID,0L))

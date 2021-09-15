@@ -12,6 +12,8 @@ public class City implements Serializable
     @SerializedName("cityName")
     @Expose
     private String cityName;
+
+
     private final static long serialVersionUID = -761908380255622180L;
 
     public String getCityId() {
@@ -29,5 +31,6 @@ public class City implements Serializable
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
+
 
 }
