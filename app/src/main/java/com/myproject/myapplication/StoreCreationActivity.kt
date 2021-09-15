@@ -49,7 +49,7 @@ class StoreCreationActivity : AppCompatActivity() {
 
              var etaadahrnum=binding.etAadharnum.text.toString()
 
-            var etlocation=binding.etlocation.toString()
+            var etlocation=binding.etlocation.text.toString()
 
             var etStoreType = binding.etStoreType.text.toString()
 
@@ -124,7 +124,7 @@ class StoreCreationActivity : AppCompatActivity() {
                 obj.addProperty("password", etpassword)
                 obj.addProperty("ownerName", etownername)
                 obj.addProperty("aadharNumber",etaadahrnum)
-                obj.addProperty("location",etlocation)
+                obj.addProperty("storeLocation",etlocation)
                 obj.addProperty("storeType", etStoreType)
                 obj.addProperty("userType", userType)
                 obj.addProperty("createdby",""+PreferenceManager.instance(this).get(PreferenceManager.USER_ID,0L))

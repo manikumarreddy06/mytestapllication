@@ -243,7 +243,7 @@
                 android:minHeight="40dp"
                 android:padding="@dimen/margin_8dp"
                 android:text=""
-                android:inputType="number"
+                android:inputType="text"
                 android:textColor="@color/primaryText"
                 android:textColorHint="@color/subHeaderText"
                 android:textSize="@dimen/size_14sp" />
