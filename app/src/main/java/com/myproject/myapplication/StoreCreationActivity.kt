@@ -49,7 +49,7 @@ class StoreCreationActivity : AppCompatActivity() {
 
              var etaadahrnum=binding.etAadharnum.text.toString()
 
-            var etlocation=binding.etlocation.toString()
+            var etlocation=binding.etlocation.text.toString()
 
             var etStoreType = binding.etStoreType.text.toString()
 
