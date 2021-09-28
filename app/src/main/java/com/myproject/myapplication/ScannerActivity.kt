@@ -140,7 +140,7 @@ class ScannerActivity : AppCompatActivity(), ResultHandler {
 
             override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
                 Log.d("onTextChanged",s.toString()+"--->"+s.length)
-                if(s.length>3){
+                if(s.length>2){
                     doProductSearchbyName(s.toString())
                 }
             }

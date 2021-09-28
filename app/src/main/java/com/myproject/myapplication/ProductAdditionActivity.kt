@@ -46,6 +46,8 @@ class ProductAdditionActivity : AppCompatActivity() {
 
             var barcode = binding.etbarcode.text.toString()
 
+            var brandName = binding.etBrandName.text.toString()
+
 
 
             if (TextUtils.isEmpty(etproductname.toString())) {
@@ -94,7 +96,7 @@ class ProductAdditionActivity : AppCompatActivity() {
 
                 obj.addProperty("barcode", barcode)
                 obj.addProperty("productName", etproductname)
-                obj.addProperty("brandname", etproductname)
+                obj.addProperty("brandname", brandName)
                  obj.addProperty("storeId", etproductqty)
                 obj.addProperty("unitType", etunittype)
                 obj.addProperty("unit", etproductqty)
