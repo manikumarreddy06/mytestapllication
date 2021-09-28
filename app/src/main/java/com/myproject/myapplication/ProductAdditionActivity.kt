@@ -44,6 +44,10 @@ class ProductAdditionActivity : AppCompatActivity() {
 
             var etInputSellPrice = binding.etInputSellPrice.text.toString()
 
+            var barcode = binding.etbarcode.text.toString()
+
+
+
             if (TextUtils.isEmpty(etproductname.toString())) {
                 Utils.toast("product name can't be empty", this@ProductAdditionActivity)
             } else if (TextUtils.isEmpty(etproductqty.toString())) {
@@ -87,6 +91,8 @@ class ProductAdditionActivity : AppCompatActivity() {
 //                private String procPrice;//yes
 
 
+
+                obj.addProperty("barcode", barcode)
                 obj.addProperty("productName", etproductname)
                 obj.addProperty("brandname", etproductname)
                  obj.addProperty("storeId", etproductqty)
@@ -118,6 +124,7 @@ class ProductAdditionActivity : AppCompatActivity() {
                                     if (t.isIsvalid()) {
 
                                         Toast.makeText(this@ProductAdditionActivity, "product added successfully", Toast.LENGTH_SHORT).show()
+                                        finish()
 
                                     } else {
                                         Toast.makeText(this@ProductAdditionActivity, "product already available", Toast.LENGTH_SHORT).show()

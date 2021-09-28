@@ -67,5 +67,8 @@
     <string name="approve_txt">approve</string>
 
 
+    <string name="barcode_txt">Barcode</string>
+
+
 
 </resources>

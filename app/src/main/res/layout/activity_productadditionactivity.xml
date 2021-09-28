@@ -93,6 +93,36 @@
                    android:textColorHint="@color/subHeaderText"
                    android:textSize="@dimen/size_14sp" />
 
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="@dimen/activity_vertical_margin"
+                   android:layout_marginRight="@dimen/activity_vertical_margin"
+                   android:text="@string/barcode_txt"
+                   android:textColor="@color/primaryText"
+                   android:textSize="@dimen/size_16sp" />
+
+
+               <EditText
+                   android:id="@+id/etbarcode"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="@dimen/activity_vertical_margin"
+                   android:layout_marginTop="@dimen/margin_12dp"
+                   android:layout_marginRight="@dimen/activity_vertical_margin"
+                   android:background="@drawable/shape_outline_rect_gray"
+                   android:focusedByDefault="false"
+                   android:hint="enter barCode"
+                   android:inputType="text"
+                   android:maxLength="30"
+                   android:maxLines="1"
+                   android:minHeight="40dp"
+                   android:padding="@dimen/margin_8dp"
+                   android:text=""
+                   android:textColor="@color/primaryText"
+                   android:textColorHint="@color/subHeaderText"
+                   android:textSize="@dimen/size_14sp" />
+
 
                <TextView
                    android:layout_width="match_parent"

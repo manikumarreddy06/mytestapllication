@@ -106,4 +106,7 @@
         <item>Ongole</item>
         <item>Nellore</item>
     </string-array>
+
+
+    <string name="barcode_txt">Barcode</string>
 </resources>
