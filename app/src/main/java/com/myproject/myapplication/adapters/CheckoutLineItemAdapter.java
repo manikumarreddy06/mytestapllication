@@ -10,9 +10,9 @@ import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.medfin.Utils;
 import com.myproject.myapplication.ProductUtils;
 import com.myproject.myapplication.R;
+import com.myproject.myapplication.Utils;
 import com.myproject.myapplication.model.ProductDetails;
 import com.myproject.myapplication.model.ProductVariant;
 

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.JsonObject
-import com.medfin.Utils
 import com.myproject.myapplication.adapters.CheckoutLineItemAdapter
 import com.myproject.myapplication.adapters.ProfitDetailLineAdapters
 import com.myproject.myapplication.databinding.CheckoutActivityBinding

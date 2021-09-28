@@ -9,7 +9,6 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.google.gson.JsonObject
-import com.medfin.Utils
 import com.myproject.myapplication.databinding.ActivityStorecreationBinding
 import com.myproject.myapplication.model.BaseResponse
 import com.myproject.myapplication.model.City

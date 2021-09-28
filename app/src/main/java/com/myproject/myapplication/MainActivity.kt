@@ -3,7 +3,9 @@ package com.myproject.myapplication
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.text.Editable
+import android.text.InputType
 import android.text.TextUtils
 import android.widget.Toast
 import com.google.gson.JsonObject
@@ -33,41 +35,61 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+
+
+
+
     }
 
     private fun doLogin(usernumber: Editable, userpassword: Editable) {
-        val obj = JsonObject()
-        obj.addProperty("userPhoneNumber", usernumber.toString())
-        obj.addProperty("password", userpassword.toString())
+
+        var mobileNumber = binding.etMobilenum.text.toString()
 
 
-        var provider: WebServiceProvider =
-            WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
-        provider.login(obj)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<LoginResponseBean> {
-                override fun onSubscribe(d: Disposable) {
+        var password = binding.etPassword.text.toString()
 
-                }
+        if(TextUtils.isEmpty(mobileNumber)){
+            Utils.toast("mobile number can't be empty",this@MainActivity)
+        }
+        else if(TextUtils.isEmpty(password)){
+            Utils.toast("password can't be empty",this@MainActivity)
+        }
+        else {
 
-                override fun onSuccess(response: LoginResponseBean) {
 
-                    if (response.isIsvalid) {
-                        onsaveData(response.user)
+            Utils.showDialog(this, "loading",)
+            val obj = JsonObject()
+            obj.addProperty("userPhoneNumber", usernumber.toString())
+            obj.addProperty("password", userpassword.toString())
+
+
+            var provider: WebServiceProvider =
+                WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
+            provider.login(obj)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : SingleObserver<LoginResponseBean> {
+                    override fun onSubscribe(d: Disposable) {
+
                     }
-                    else if(!TextUtils.isEmpty(response.message)){
-                        Toast.makeText(this@MainActivity, "message-->"+response.message, Toast.LENGTH_SHORT).show()
-                    }
-                    else {
-                        Toast.makeText(this@MainActivity, "error", Toast.LENGTH_SHORT).show()
-                    }
-                }
 
-                override fun onError(e: Throwable) {
-                    e.printStackTrace()
-                    Toast.makeText(this@MainActivity, "failure", Toast.LENGTH_SHORT).show()
-                }
-            })
+                    override fun onSuccess(response: LoginResponseBean) {
+                        Utils.hideDialog()
+                        if (response.isIsvalid) {
+                            onsaveData(response.user)
+                        } else if (!TextUtils.isEmpty(response.message)) {
+                            Utils.toast(response.message, this@MainActivity)
+                        } else {
+                            Utils.toast("error ", this@MainActivity)
+                        }
+                    }
+
+                    override fun onError(e: Throwable) {
+                        Utils.hideDialog()
+                        e.printStackTrace()
+                        Utils.toast("error ", this@MainActivity)
+                    }
+                })
+        }
     }
 
     private fun onsaveData(response: User) {

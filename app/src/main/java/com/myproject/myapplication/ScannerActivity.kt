@@ -24,7 +24,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.JsonObject
 import com.google.zxing.Result
-import com.medfin.Utils
 import com.myproject.myapplication.ZXingScannerView.ResultHandler
 import com.myproject.myapplication.adapters.ProductListAdapter
 import com.myproject.myapplication.adapters.SearchListAdapter

@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.JsonObject
-import com.medfin.Utils
 import com.myproject.myapplication.adapters.PendingInventoryAdapters
 import com.myproject.myapplication.databinding.ActivityApprovalinventoryBinding
 import com.myproject.myapplication.model.*

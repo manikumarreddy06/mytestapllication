@@ -6,7 +6,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.medfin.Utils
 import com.myproject.myapplication.adapters.InventoryAdapters
 import com.myproject.myapplication.databinding.ActivityInventoryBinding
 import com.myproject.myapplication.model.ProductInfo

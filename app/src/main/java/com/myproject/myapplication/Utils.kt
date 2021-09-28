@@ -1,4 +1,4 @@
-package com.medfin;
+package com.myproject.myapplication;
 
 import android.Manifest
 import android.animation.ArgbEvaluator

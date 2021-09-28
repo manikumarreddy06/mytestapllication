@@ -6,7 +6,6 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.*
 import com.google.gson.JsonObject
-import com.medfin.Utils
 import com.myproject.myapplication.databinding.ActivityProductadditionactivityBinding
 import com.myproject.myapplication.model.BaseResponse
 import com.myproject.myapplication.network.PreferenceManager

@@ -8,7 +8,6 @@ import android.widget.*
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.medfin.Utils
 import com.myproject.myapplication.adapters.StoreListAdapter
 import com.myproject.myapplication.databinding.ActivityStorelist2Binding
 import com.myproject.myapplication.model.BaseResponse

@@ -6,11 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.medfin.Utils
-import com.myproject.myapplication.HomepageActivity
-import com.myproject.myapplication.MainActivity
-import com.myproject.myapplication.ProductUtils
-import com.myproject.myapplication.ShareActivity
+import com.myproject.myapplication.*
 import com.myproject.myapplication.adapters.CheckoutLineItemAdapter
 import com.myproject.myapplication.adapters.ProductInWardAdapters
 import com.myproject.myapplication.databinding.CheckoutActivityBinding

@@ -11,11 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.JsonObject
-import com.medfin.Utils
-import com.myproject.myapplication.HomepageActivity
-import com.myproject.myapplication.ProductUtils
-import com.myproject.myapplication.R
-import com.myproject.myapplication.ScannerActivity
+import com.myproject.myapplication.*
 import com.myproject.myapplication.adapters.ProductInWardAdapters
 import com.myproject.myapplication.databinding.InwardAddProductBinding
 import com.myproject.myapplication.model.*
