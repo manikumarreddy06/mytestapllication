@@ -29,7 +29,7 @@
     <string name="item_list_txt">Item list</string>
     <string name="_1_txt">- 1 +</string>
     <string name="_10_txt">$10</string>
-    <string name="inward_products_txt">Inward Products</string>
+    <string name="inward_products_txt">inward_products</string>
     <string name="login_txt">login</string>
     <string name="enter_your_mobile_number_txt">Enter your mobile number</string>
     <string name="password_txt">Password</string>
@@ -109,4 +109,5 @@
 
 
     <string name="barcode_txt">Barcode</string>
+    <string name="inventor_entry">Inventor_entry</string>
 </resources>
