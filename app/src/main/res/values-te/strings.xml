@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">లభ్యం</string>
     <string name="outward">అమ్ము</string>
-    <string name="Inward">Inward</string>
+    <string name="Inward">inventory entry</string>
 
     <string name="Inventory">Inventory</string>
     <string name="Logout">లాగ్ అవుట్</string>
