@@ -90,7 +90,7 @@
                     android:layout_margin="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/homepageinward"
-                    android:text="Inventory_Entry"
+                    android:text="Inventory Entry"
                     android:textColor="@color/white"
                     android:textSize="25sp"
                     />
