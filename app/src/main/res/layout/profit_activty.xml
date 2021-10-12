@@ -54,7 +54,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/plbuttonborderdesign"
-            tools:text="@string/outward"
+            tools:text="Sell"
             android:textAlignment="center"
             android:gravity="center"
             android:textColor="@color/black"
@@ -68,7 +68,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/plbuttondesign2"
-            tools:text="@string/Inward"
+            tools:text="inventory entry"
             android:textColor="@color/black"
             android:textSize="20sp"
             />
