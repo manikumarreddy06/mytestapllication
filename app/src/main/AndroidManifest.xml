@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.myproject.myapplication">
+    package="com.labhyam.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
@@ -20,31 +20,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".StorelistActivity"></activity>
+        <activity android:name="com.labhyam.app.StorelistActivity"></activity>
 
-        <activity android:name=".StoreCreationActivity"></activity>
+        <activity android:name="com.labhyam.app.StoreCreationActivity"></activity>
 
-        <activity android:name=".ProductAdditionActivity" />
+        <activity android:name="com.labhyam.app.ProductAdditionActivity" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.labhyam.app.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".ProfitActivity" />
-        <activity android:name=".outactivity" />
-        <activity android:name=".inventoryapprovalactivity" />
-        <activity android:name=".InventoryActivity" />
-        <activity android:name=".HomepageActivity" />
-        <activity android:name=".ProfitdetailsActivity" />
-        <activity android:name=".inward.InwardProductActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name="com.labhyam.app.ProfitActivity" />
+        <activity android:name="com.labhyam.app.outactivity" />
+        <activity android:name="com.labhyam.app.inventoryapprovalactivity" />
+        <activity android:name="com.labhyam.app.InventoryActivity" />
+        <activity android:name="com.labhyam.app.HomepageActivity" />
+        <activity android:name="com.labhyam.app.ProfitdetailsActivity" />
+        <activity android:name="com.labhyam.app.inward.InwardProductActivity" />
+        <activity android:name="com.labhyam.app.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ScannerActivity" />
-        <activity android:name=".inward.CheckoutActivity" />
-        <activity android:name=".ShareActivity" />
+        <activity android:name="com.labhyam.app.ScannerActivity" />
+        <activity android:name="com.labhyam.app.inward.CheckoutActivity" />
+        <activity android:name="com.labhyam.app.ShareActivity" />
     </application>
 
 </manifest>
