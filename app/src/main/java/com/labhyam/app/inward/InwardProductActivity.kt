@@ -124,24 +124,24 @@ class InwardProductActivity : AppCompatActivity() {
             if(ProductUtils.instance(this).isOutOrderTypeFlag) {
                 if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
                     Utils.toast("quantity should be  more than zero", this)
-                }else if (!isPriceAvailble && TextUtils.isEmpty(binding.etProcPrice.text.toString())) {
+                }else if (!isPriceAvailble && TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())) {
                     Utils.toast("procurment should be  more than zero", this)
                 }
-                else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
+                else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString().toFloat().toString())) {
                     Utils.toast("sellPrice should be  more than zero", this)
                 } else {
 
 
 
-                    var procuPrice:Int=0
+                    var procuPrice:Float= 0F
                     val quantity: Int = binding.etProductQty.text.toString().toInt()
-                    if(!TextUtils.isEmpty(binding.etProcPrice.text.toString())){
+                    if(!TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())){
 
-                        procuPrice = binding.etProcPrice.text.toString().toInt()
+                        procuPrice = binding.etProcPrice.text.toString().toFloat()
                     }
-                    val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
-                    product!!.procPrice = procuPrice.toLong()
-                    product!!.sellingPrice = sellPrice.toLong()
+                    val sellPrice: Float = binding.etInputSellPrice.text.toString().toFloat()
+                    product!!.procPrice = procuPrice.toLong().toFloat().toLong()//changed
+                    product!!.sellingPrice = sellPrice.toLong().toFloat().toLong()//changed
                     product!!.quantity = quantity.toLong()
 
 
@@ -167,15 +167,15 @@ class InwardProductActivity : AppCompatActivity() {
 
 
 
-                    var procuPrice:Int=0
+                    var procuPrice:Float= 0F
                     val quantity: Int = binding.etProductQty.text.toString().toInt()
-                    if(!TextUtils.isEmpty(binding.etProcPrice.text.toString())){
+                    if(!TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())){
 
-                        procuPrice = binding.etProcPrice.text.toString().toInt()
+                        procuPrice = binding.etProcPrice.text.toString().toFloat()
                     }
-                    val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
-                    product!!.procPrice = procuPrice.toLong()
-                    product!!.sellingPrice = sellPrice.toLong()
+                    val sellPrice: Float = binding.etInputSellPrice.text.toString().toFloat()
+                    product!!.procPrice = procuPrice.toLong().toFloat().toLong()//changed
+                    product!!.sellingPrice = sellPrice.toLong().toFloat().toLong()//changed
                     product!!.quantity = quantity.toLong()
 
 
@@ -218,24 +218,23 @@ class InwardProductActivity : AppCompatActivity() {
             if(ProductUtils.instance(this).isOutOrderTypeFlag) {
                 if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
                     Utils.toast("quantity should be  more than zero", this)
-                } else if (!isPriceAvailble && TextUtils.isEmpty(binding.etProcPrice.text.toString())) {
+                } else if (!isPriceAvailble && TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())) {//
                     Utils.toast("procurment should be  more than zero", this)
                 }
-                else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
+                else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString().toFloat().toString())) {//
                     Utils.toast("sellPrice should be  more than zero", this)
                 }
                 else {
 
 
-                    var procuPrice:Int=0
+                    var procuPrice:Float=0F
                     val quantity: Int = binding.etProductQty.text.toString().toInt()
-                    if(!TextUtils.isEmpty(binding.etProcPrice.text.toString())){
-
-                        procuPrice = binding.etProcPrice.text.toString().toInt()
+                    if(!TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())){//changed
+                        procuPrice = binding.etProcPrice.text.toString().toFloat()//changed
                     }
-                    val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
-                    product!!.procPrice = procuPrice.toLong()
-                    product!!.sellingPrice = sellPrice.toLong()
+                    val sellPrice: Float = binding.etInputSellPrice.text.toString().toFloat()//changed
+                    product!!.procPrice = procuPrice.toLong().toFloat().toLong()//changed
+                    product!!.sellingPrice = sellPrice.toLong().toFloat().toLong()//changed
                     product!!.quantity = quantity.toLong()
 
 
@@ -252,23 +251,23 @@ class InwardProductActivity : AppCompatActivity() {
             else{
                 if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
                     Utils.toast("quantity should be  more than zero", this)
-                } else if (TextUtils.isEmpty(binding.etProcPrice.text.toString())) {
+                } else if (TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())) {
                     Utils.toast("procurment Price should be  more than zero", this)
-                } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {
+                } else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString().toFloat().toString())) {
                     Utils.toast("sellPrice should be  more than zero", this)
                 } else {
 
 
 
-                    var procuPrice:Int=0
+                    var procuPrice:Float=0F
                     val quantity: Int = binding.etProductQty.text.toString().toInt()
-                    if(!TextUtils.isEmpty(binding.etProcPrice.text.toString())){
+                    if(!TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())){
 
-                        procuPrice = binding.etProcPrice.text.toString().toInt()
+                        procuPrice = binding.etProcPrice.text.toString().toFloat()
                     }
-                    val sellPrice: Int = binding.etInputSellPrice.text.toString().toInt()
-                    product!!.procPrice = procuPrice.toLong()
-                    product!!.sellingPrice = sellPrice.toLong()
+                    val sellPrice: Float = binding.etInputSellPrice.text.toString().toFloat()
+                    product!!.procPrice = procuPrice.toLong().toFloat().toLong()//changed
+                    product!!.sellingPrice = sellPrice.toLong().toFloat().toLong()//changed
                     product!!.quantity = quantity.toLong()
 
 

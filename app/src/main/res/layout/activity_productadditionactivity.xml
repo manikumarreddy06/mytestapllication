@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
 
     <TextView
         android:layout_width="fill_parent"
@@ -108,7 +114,6 @@
                        android:hint="Brand Name"
                        android:layout_marginTop="50dp"
                        android:maxLength="10"
-
                        android:minHeight="40dp"
                        android:padding="@dimen/margin_8dp"
                        android:background="@drawable/shape_outline_rect_gray"
@@ -180,6 +185,44 @@
                    android:textColor="@color/primaryText"
                    android:textColorHint="@color/subHeaderText"
                    android:textSize="@dimen/size_14sp" />
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="@dimen/margin_6dp"
+                   android:orientation="vertical"
+                   android:paddingBottom="@dimen/margin_4dp">
+
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="@dimen/activity_vertical_margin"
+                       android:layout_marginRight="@dimen/activity_vertical_margin"
+                       android:text="manufactured type"
+                       android:textColor="@color/primaryText"
+                       android:textSize="@dimen/size_16sp" />
+
+                   <Spinner
+                       android:id="@+id/etmanufacturedtype"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginLeft="@dimen/activity_vertical_margin"
+                       android:layout_marginTop="@dimen/margin_6dp"
+                       android:layout_marginRight="@dimen/activity_vertical_margin"
+                       android:background="@drawable/shape_outline_rect_gray"
+                       android:focusedByDefault="false"
+                       android:hint="@string/enter_unit_type_txt"
+                       android:inputType="text"
+                       android:maxLength="10"
+                       android:maxLines="1"
+                       android:minHeight="40dp"
+                       android:padding="@dimen/margin_8dp"
+                       android:text=""
+                       android:entries="@array/manufactured_type"
+                       android:textColor="@color/primaryText"
+                       android:textColorHint="@color/subHeaderText"
+                       android:textSize="@dimen/size_14sp" />
+               </LinearLayout>
 
                <LinearLayout
                    android:layout_width="match_parent"
@@ -355,4 +398,5 @@
 </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

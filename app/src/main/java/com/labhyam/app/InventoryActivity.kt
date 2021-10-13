@@ -16,7 +16,7 @@ import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 
-class InventoryActivity : AppCompatActivity() {
+class  InventoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivityInventoryBinding
 
     private var groceryAdapter: InventoryAdapters? = null

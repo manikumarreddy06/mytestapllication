@@ -111,7 +111,7 @@ class ProfitdetailsActivity:AppCompatActivity() {
 
 
         binding.TvItemCount.text = "Item Count: ${response.sumofQuatity}"
-        binding.TvItemPrice.text = "Profit : ${response.sumofProfit}"
+        binding.TvItemPrice.text = "Profit : ${response.sumofProfit.toFloat()}"
         binding.TvSales.text = "Sales : ${response.sumofSales}"
     }
 }

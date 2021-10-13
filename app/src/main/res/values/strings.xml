@@ -107,6 +107,14 @@
         <item>Nellore</item>
     </string-array>
 
+    <string-array name="manufactured_type">
+        <item>Buyer</item>
+        <item>Seller</item>
+        <item>Manufactured</item>
+
+
+    </string-array>
+
 
     <string name="barcode_txt">Barcode</string>
     <string name="inventor_entry">Inventor_entry</string>

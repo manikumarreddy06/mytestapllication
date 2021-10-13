@@ -24,29 +24,43 @@ class ProductAdditionActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        binding.etunittype?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+      binding.etunittype?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+           override fun onNothingSelected(parent: AdapterView<*>?) {
+
+           }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+               selectedPosition=position
+        }
+
+        }
+        binding.etmanufacturedtype?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                selectedPosition=position
+                selectedPosition = position
             }
-
-        }
+       }
         binding.btnadd.setOnClickListener {
 
             var etproductname = binding.etselectvaiant.text.toString()
 
             var etproductqty = binding.etProductQty.text.toString()
 
-            var etProcPrice = binding.etProcPrice.text.toString()
+            var etProcPrice = binding.etProcPrice.text.toString().toFloat()
 
-            var etInputSellPrice = binding.etInputSellPrice.text.toString()
+            var etInputSellPrice = binding.etInputSellPrice.text.toString().toFloat()
 
             var barcode = binding.etbarcode.text.toString()
 
             var brandName = binding.etBrandName.text.toString()
+
+
+
+
+
 
 
 
@@ -59,23 +73,43 @@ class ProductAdditionActivity : AppCompatActivity() {
                     "procurment Price should be  more than zero",
                     this@ProductAdditionActivity
                 )}
-                else if(selectedPosition==-1) {
-                    Utils.toast(
-                        "unit type should be selected ",
-                        this@ProductAdditionActivity
-                    )
-            } else if (TextUtils.isEmpty(etProcPrice.toString())) {
+            else if(selectedPosition==-1) {
                 Utils.toast(
-                    "procurment Price should be  more than zero",
+                    " type should be selected ",
                     this@ProductAdditionActivity
                 )
-            } else if (TextUtils.isEmpty(etInputSellPrice.toString())) {
+           }
+            else if(selectedPosition==-1) {
+                   Utils.toast(
+                       "unit type should be selected ",
+                       this@ProductAdditionActivity
+                   )
+            }
+            else if (TextUtils.isEmpty(etProcPrice.toString().toFloat().toString())) {
+                Utils.toast(
+                    "procurement Price should be  more than zero",
+                    this@ProductAdditionActivity
+                )
+            } else if (TextUtils.isEmpty(etInputSellPrice.toString().toFloat().toString())) {
                 Utils.toast("sellPrice should be  more than zero", this@ProductAdditionActivity)
 
             } else {
+                var themes =
+                    this@ProductAdditionActivity.resources.getStringArray(R.array.unit_types)
+               var etunittype = themes[selectedPosition]
 
-                var themes = this@ProductAdditionActivity.resources.getStringArray(R.array.unit_types)
-                var etunittype = themes[selectedPosition]
+
+                this@ProductAdditionActivity.resources.getStringArray(R.array.manufactured_type)
+                var etmanufacturedtype =themes[selectedPosition]
+
+
+
+
+
+
+
+
+
                 Utils.showDialog(this@ProductAdditionActivity, "Loading")
                 val obj = JsonObject()
 
@@ -99,6 +133,7 @@ class ProductAdditionActivity : AppCompatActivity() {
                 obj.addProperty("brandname", brandName)
                  obj.addProperty("storeId", etproductqty)
                 obj.addProperty("unitType", etunittype)
+                obj.addProperty("manufacturedtype",etmanufacturedtype)
                 obj.addProperty("unit", etproductqty)
                 obj.addProperty("mrp", etProcPrice)
                 obj.addProperty("procurementprice", etProcPrice)

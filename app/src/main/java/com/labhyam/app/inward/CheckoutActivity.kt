@@ -2,6 +2,7 @@ package com.labhyam.app.inward
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -62,11 +63,11 @@ class CheckoutActivity : AppCompatActivity() {
 
         if(ProductUtils.instance(this).isOutOrderTypeFlag){
             binding.tvHeaderTitle.text="Product Checkout"
-            binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalSellingPrice}"
+            binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalSellingPrice.toFloat()}"
         }
         else{
             binding.tvHeaderTitle.text="Product Addition"
-            binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalProcumentPrice}"
+            binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalProcumentPrice.toFloat()}"
         }
 
         binding.TvItemCount.text="Item Count: ${productList.size}"
@@ -81,12 +82,12 @@ class CheckoutActivity : AppCompatActivity() {
 
         var list: MutableList<AddProduct?>? = ArrayList()
 
-        val storeId=PreferenceManager.instance(this@CheckoutActivity).get(PreferenceManager.STORE_ID,"1").toLong()
+        val storeId=PreferenceManager.instance(this@CheckoutActivity).get(PreferenceManager.STORE_ID,"1").toFloat().toLong()
         for (item in productList!!) {
             val ite:AddProduct= AddProduct()
             ite.variantId=item.variantId
-            ite.procPrice=item.procPrice
-            ite.sellingPrice=item.sellingPrice
+            ite.procPrice=item.procPrice.toFloat().toLong() //changed
+            ite.sellingPrice= item.sellingPrice.toFloat().toLong()//changed
             ite.quantity=item.quantity
             ite.storeId=storeId
 
