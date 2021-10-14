@@ -36,7 +36,11 @@ class CheckoutActivity : AppCompatActivity() {
 
 
        productList=ProductUtils.instance(this,).productList
-        groceryAdapter = CheckoutLineItemAdapter(productList, applicationContext)
+        groceryAdapter = CheckoutLineItemAdapter(productList, applicationContext,object : CheckoutLineItemAdapter.RecyclerViewClickListener {
+            override fun updateTotalPrice() {
+                priceUpdate()
+            }
+        })
         val horizontalLayoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rvContent.setLayoutManager(horizontalLayoutManager)
@@ -86,8 +90,8 @@ class CheckoutActivity : AppCompatActivity() {
         for (item in productList!!) {
             val ite:AddProduct= AddProduct()
             ite.variantId=item.variantId
-            ite.procPrice=item.procPrice.toFloat().toLong() //changed
-            ite.sellingPrice= item.sellingPrice.toFloat().toLong()//changed
+            ite.procPrice=item.procPrice.toFloat() //changed
+            ite.sellingPrice= item.sellingPrice.toFloat()//changed
             ite.quantity=item.quantity
             ite.storeId=storeId
 
@@ -153,5 +157,16 @@ class CheckoutActivity : AppCompatActivity() {
                 })
         }
 
+    }
+
+    fun priceUpdate(){
+        if(ProductUtils.instance(this).isOutOrderTypeFlag){
+            binding.tvHeaderTitle.text="Product Checkout"
+            binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalSellingPrice.toFloat()}"
+        }
+        else{
+            binding.tvHeaderTitle.text="Product Addition"
+            binding.TvItemPrice.text="Total Price: ${ProductUtils.instance(this).totalProcumentPrice.toFloat()}"
+        }
     }
 }

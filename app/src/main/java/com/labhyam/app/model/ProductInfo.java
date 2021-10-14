@@ -43,16 +43,16 @@ public class ProductInfo implements Serializable
     private String imageUrl;
     @SerializedName("procPrice")
     @Expose
-    private long procPrice;
+    private double procPrice;
     @SerializedName("sellingPrice")
     @Expose
-    private long sellingPrice;
+    private double sellingPrice;
     @SerializedName("storeId")
     @Expose
     private String storeId;
     @SerializedName("quantity")
     @Expose
-    private long quantity;
+    private double quantity;
 
     public long getVariantId() {
         return variantId;
@@ -142,19 +142,19 @@ public class ProductInfo implements Serializable
         this.imageUrl = imageUrl;
     }
 
-    public long getProcPrice() {
+    public double getProcPrice() {
         return procPrice;
     }
 
-    public void setProcPrice(long procPrice) {
+    public void setProcPrice(double procPrice) {
         this.procPrice = procPrice;
     }
 
-    public long getSellingPrice() {
+    public double getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(long sellingPrice) {
+    public void setSellingPrice(double sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 
@@ -166,11 +166,11 @@ public class ProductInfo implements Serializable
         this.storeId = storeId;
     }
 
-    public long getQuantity() {
+    public double getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(long quantity) {
+    public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 }

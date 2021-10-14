@@ -18,16 +18,16 @@ public class AddProduct implements Serializable
     private String price;
     @SerializedName("procPrice")
     @Expose
-    private long procPrice;
+    private float procPrice;
     @SerializedName("sellingPrice")
     @Expose
-    private long sellingPrice;
+    private float sellingPrice;
     @SerializedName("storeId")
     @Expose
     private long storeId;
     @SerializedName("quantity")
     @Expose
-    private long quantity;
+    private float quantity;
     private final static long serialVersionUID = 4478176112159785282L;
 
 
@@ -47,19 +47,19 @@ public class AddProduct implements Serializable
         this.price = price;
     }
 
-    public long getProcPrice() {
+    public float getProcPrice() {
         return procPrice;
     }
 
-    public void setProcPrice(long procPrice) {
+    public void setProcPrice(float procPrice) {
         this.procPrice = procPrice;
     }
 
-    public long getSellingPrice() {
+    public float getSellingPrice() {
         return sellingPrice;
     }
 
-    public void setSellingPrice(long sellingPrice) {
+    public void setSellingPrice(float sellingPrice) {
         this.sellingPrice = sellingPrice;
     }
 
@@ -71,11 +71,11 @@ public class AddProduct implements Serializable
         this.storeId = storeId;
     }
 
-    public long getQuantity() {
+    public float getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(long quantity) {
+    public void setQuantity(float quantity) {
         this.quantity = quantity;
     }
 

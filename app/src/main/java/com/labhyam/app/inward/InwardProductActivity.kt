@@ -45,15 +45,7 @@ class InwardProductActivity : AppCompatActivity() {
 
 
         product = intent!!.extras!!.get("addProduct") as ProductVariant
-        var qty: Int = 1
-        binding.inwardbtn1.setOnClickListener {
-            qty = binding.etProductQty.text.toString().toInt() + 10
-            if (qty > 0) {
-                binding.etProductQty.setText(qty.toString());
-            }
 
-
-        }
 
 
         if (product != null) {
@@ -78,10 +70,10 @@ class InwardProductActivity : AppCompatActivity() {
             binding.llPurchaseContainer.visibility= View.VISIBLE
         }
 
-        var quantity: Int = 1
+        var quantity: Float = 1.0f
         binding.minus.setOnClickListener() {
 
-            quantity = binding.etProductQty.text.toString().toInt() - 1
+            quantity = binding.etProductQty.text.toString().toFloat() - 1
             if (quantity > 0) {
                 binding.etProductQty.setText(quantity.toString());
             } else {
@@ -90,30 +82,29 @@ class InwardProductActivity : AppCompatActivity() {
         }
 
         binding.plus.setOnClickListener() {
-            quantity = binding.etProductQty.text.toString().toInt() + 1
+            quantity = binding.etProductQty.text.toString().toFloat() + 1
             binding.etProductQty.setText(quantity.toString());
         }
-        var qty1: Int = 1
+
+
+        var qty: Float = 1.0f
         binding.inwardbtn1.setOnClickListener() {
-            qty = binding.etProductQty.text.toString().toInt() + 10
+            qty = binding.etProductQty.text.toString().toFloat() + 10
             binding.etProductQty.setText(qty.toString());
 
         }
-        var qty2: Int = 1
         binding.inwardbtn2.setOnClickListener() {
-            qty = binding.etProductQty.text.toString().toInt() + 25
+            qty = binding.etProductQty.text.toString().toFloat() + 25
             binding.etProductQty.setText(qty.toString());
 
         }
-        var qty3: Int = 1
         binding.inwardbtn3.setOnClickListener() {
-            qty = binding.etProductQty.text.toString().toInt() + 50
+            qty = binding.etProductQty.text.toString().toFloat() + 50
             binding.etProductQty.setText(qty.toString());
 
         }
-        var qty4: Int = 1
         binding.inwardbtn4.setOnClickListener() {
-            qty = binding.etProductQty.text.toString().toInt() + 100
+            qty = binding.etProductQty.text.toString().toFloat() + 100
             binding.etProductQty.setText(qty.toString());
 
         }
@@ -140,9 +131,9 @@ class InwardProductActivity : AppCompatActivity() {
                         procuPrice = binding.etProcPrice.text.toString().toFloat()
                     }
                     val sellPrice: Float = binding.etInputSellPrice.text.toString().toFloat()
-                    product!!.procPrice = procuPrice.toLong().toFloat().toLong()//changed
-                    product!!.sellingPrice = sellPrice.toLong().toFloat().toLong()//changed
-                    product!!.quantity = quantity.toLong()
+                    product!!.procPrice = procuPrice.toFloat()//changed
+                    product!!.sellingPrice = sellPrice.toFloat()//changed
+                    product!!.quantity = quantity.toFloat()
 
 
 
@@ -174,9 +165,9 @@ class InwardProductActivity : AppCompatActivity() {
                         procuPrice = binding.etProcPrice.text.toString().toFloat()
                     }
                     val sellPrice: Float = binding.etInputSellPrice.text.toString().toFloat()
-                    product!!.procPrice = procuPrice.toLong().toFloat().toLong()//changed
-                    product!!.sellingPrice = sellPrice.toLong().toFloat().toLong()//changed
-                    product!!.quantity = quantity.toLong()
+                    product!!.procPrice = procuPrice.toFloat()//changed
+                    product!!.sellingPrice = sellPrice.toFloat()//changed
+                    product!!.quantity = quantity.toFloat()
 
 
 
@@ -228,14 +219,14 @@ class InwardProductActivity : AppCompatActivity() {
 
 
                     var procuPrice:Float=0F
-                    val quantity: Int = binding.etProductQty.text.toString().toInt()
+                    val quantity: Float = binding.etProductQty.text.toString().toFloat()
                     if(!TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())){//changed
                         procuPrice = binding.etProcPrice.text.toString().toFloat()//changed
                     }
                     val sellPrice: Float = binding.etInputSellPrice.text.toString().toFloat()//changed
-                    product!!.procPrice = procuPrice.toLong().toFloat().toLong()//changed
-                    product!!.sellingPrice = sellPrice.toLong().toFloat().toLong()//changed
-                    product!!.quantity = quantity.toLong()
+                    product!!.procPrice = procuPrice.toFloat()//changed
+                    product!!.sellingPrice = sellPrice.toFloat()//changed
+                    product!!.quantity = quantity.toFloat()
 
 
 
@@ -260,15 +251,15 @@ class InwardProductActivity : AppCompatActivity() {
 
 
                     var procuPrice:Float=0F
-                    val quantity: Int = binding.etProductQty.text.toString().toInt()
+                    val quantity: Float = binding.etProductQty.text.toString().toFloat()
                     if(!TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())){
 
                         procuPrice = binding.etProcPrice.text.toString().toFloat()
                     }
                     val sellPrice: Float = binding.etInputSellPrice.text.toString().toFloat()
-                    product!!.procPrice = procuPrice.toLong().toFloat().toLong()//changed
-                    product!!.sellingPrice = sellPrice.toLong().toFloat().toLong()//changed
-                    product!!.quantity = quantity.toLong()
+                    product!!.procPrice = procuPrice.toFloat()//changed
+                    product!!.sellingPrice = sellPrice.toFloat()//changed
+                    product!!.quantity = quantity.toFloat()
 
 
 

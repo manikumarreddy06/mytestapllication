@@ -136,8 +136,8 @@ class ProductAdditionActivity : AppCompatActivity() {
                 obj.addProperty("manufacturedtype",etmanufacturedtype)
                 obj.addProperty("unit", etproductqty)
                 obj.addProperty("mrp", etProcPrice)
-                obj.addProperty("procurementprice", etProcPrice)
-                obj.addProperty("selling price", etInputSellPrice)
+                obj.addProperty("procPrice", etProcPrice)
+                obj.addProperty("sellingPrice", etInputSellPrice)
                 obj.addProperty(
                     "storeId",
                     PreferenceManager.instance(this).get(PreferenceManager.STORE_ID, "")

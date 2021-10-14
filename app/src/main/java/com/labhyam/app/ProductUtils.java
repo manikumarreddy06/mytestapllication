@@ -32,7 +32,7 @@ public class ProductUtils {
             list.add(p);
         }
         else{
-            long updatedQty=0;
+            float updatedQty=0;
             boolean itemExists=false;
             for(ProductVariant product:list){
                 if(product.getVariantId()==p.getVariantId()){
@@ -94,15 +94,15 @@ public class ProductUtils {
         CategoryList = categoryList;
     }
 
-    public long getTotalProcumentPrice(){
-        long totalPrice=0l;
+    public float getTotalProcumentPrice(){
+        float totalPrice=0l;
         for(ProductVariant product:list){
             totalPrice=totalPrice+(product.getProcPrice()*product.getQuantity());
         }
         return totalPrice;
     }
-    public long getTotalSellingPrice(){
-        long totalPrice=0l;
+    public float getTotalSellingPrice(){
+        float totalPrice=0l;
         for(ProductVariant product:list){
             totalPrice=totalPrice+(product.getSellingPrice()*product.getQuantity());
         }

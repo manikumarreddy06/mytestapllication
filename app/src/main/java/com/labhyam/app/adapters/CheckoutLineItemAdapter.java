@@ -24,11 +24,17 @@ import java.util.List;
 public class CheckoutLineItemAdapter extends RecyclerView.Adapter<CheckoutLineItemAdapter.GroceryViewHolder>{
     private List<ProductVariant> horizontalGrocderyList;
     Context context;
-    int quantity=0;
+    float quantity=0;
+    RecyclerViewClickListener mListener;
+    public interface RecyclerViewClickListener {
 
-    public CheckoutLineItemAdapter(List<ProductVariant> horizontalGrocderyList, Context context){
+        void updateTotalPrice();
+    }
+
+    public CheckoutLineItemAdapter(List<ProductVariant> horizontalGrocderyList, Context context, RecyclerViewClickListener listener){
         this.horizontalGrocderyList= horizontalGrocderyList;
         this.context = context;
+        mListener=listener;
     }
 
     @Override
@@ -63,7 +69,7 @@ public class CheckoutLineItemAdapter extends RecyclerView.Adapter<CheckoutLineIt
         holder.tvMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quantity=Integer.parseInt(holder.tvQuantity.getText().toString())-1;
+                quantity=Float.parseFloat(holder.tvQuantity.getText().toString())-1;
                 if(quantity>0) {
                     productInfo.setQuantity(quantity);
                     ProductUtils.instance(context).updateQty(productInfo);
@@ -72,16 +78,19 @@ public class CheckoutLineItemAdapter extends RecyclerView.Adapter<CheckoutLineIt
                 else{
                     Utils.Companion.toast("quantity should be  more than zero",context);
                 }
+                mListener.updateTotalPrice();
             }
         });
 
         holder.tvPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quantity = Integer.parseInt(holder.tvQuantity.getText().toString()) + 1;
+                quantity = Float.parseFloat(holder.tvQuantity.getText().toString()) + 1;
                 holder.tvQuantity.setText(quantity + "");
                 productInfo.setQuantity(quantity);
                 ProductUtils.instance(context).updateQty(productInfo);
+
+                mListener.updateTotalPrice();
 
             }
         });
