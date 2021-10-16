@@ -115,17 +115,17 @@ class InwardProductActivity : AppCompatActivity() {
             if(ProductUtils.instance(this).isOutOrderTypeFlag) {
                 if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
                     Utils.toast("quantity should be  more than zero", this)
-                }else if (!isPriceAvailble && TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())) {
+                }else if (!isPriceAvailble && TextUtils.isEmpty(binding.etProcPrice.text.toString().toString())) {
                     Utils.toast("procurment should be  more than zero", this)
                 }
-                else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString().toFloat().toString())) {
+                else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString().toString())) {
                     Utils.toast("sellPrice should be  more than zero", this)
                 } else {
 
 
 
                     var procuPrice:Float= 0F
-                    val quantity: Int = binding.etProductQty.text.toString().toInt()
+                    val quantity: Float = binding.etProductQty.text.toString().toFloat()
                     if(!TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())){
 
                         procuPrice = binding.etProcPrice.text.toString().toFloat()
@@ -159,7 +159,7 @@ class InwardProductActivity : AppCompatActivity() {
 
 
                     var procuPrice:Float= 0F
-                    val quantity: Int = binding.etProductQty.text.toString().toInt()
+                    val quantity: Float = binding.etProductQty.text.toString().toFloat()
                     if(!TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())){
 
                         procuPrice = binding.etProcPrice.text.toString().toFloat()
@@ -209,10 +209,10 @@ class InwardProductActivity : AppCompatActivity() {
             if(ProductUtils.instance(this).isOutOrderTypeFlag) {
                 if (TextUtils.isEmpty(binding.etProductQty.text.toString())) {
                     Utils.toast("quantity should be  more than zero", this)
-                } else if (!isPriceAvailble && TextUtils.isEmpty(binding.etProcPrice.text.toString().toFloat().toString())) {//
+                } else if (!isPriceAvailble && TextUtils.isEmpty(binding.etProcPrice.text.toString())) {//
                     Utils.toast("procurment should be  more than zero", this)
                 }
-                else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString().toFloat().toString())) {//
+                else if (TextUtils.isEmpty(binding.etInputSellPrice.text.toString())) {//
                     Utils.toast("sellPrice should be  more than zero", this)
                 }
                 else {
