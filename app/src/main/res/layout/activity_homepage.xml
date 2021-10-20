@@ -92,7 +92,7 @@
                     android:background="@drawable/homepageinward"
                     android:text="Inventory Entry"
                     android:textColor="@color/white"
-                    android:textSize="25sp"
+                    android:textSize="20sp"
                     />
             </LinearLayout>
             <LinearLayout
@@ -110,7 +110,7 @@
                     android:background="@drawable/homepageinventory"
                     android:text="@string/Inventory"
                     android:textColor="@color/white"
-                    android:textSize="25sp"/>
+                    android:textSize="22sp"/>
 
                 <Button
                     android:id="@+id/btn4"

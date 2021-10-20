@@ -130,23 +130,27 @@
 
                     <Button
                         android:id="@+id/inwardbtn1"
-                        android:layout_width="65dp"
+                        android:layout_width="0dp"
                         android:layout_height="45dp"
+                        android:layout_weight="1"
                         android:text="+10"/>
                     <Button
                         android:id="@+id/inwardbtn2"
-                        android:layout_width="65dp"
+                        android:layout_width="0dp"
                         android:layout_height="45dp"
+                        android:layout_weight="1"
                         android:text="+25"/>
                     <Button
                         android:id="@+id/inwardbtn3"
-                        android:layout_width="65dp"
+                        android:layout_width="0dp"
                         android:layout_height="45dp"
+                        android:layout_weight="1"
                         android:text="+50"/>
                     <Button
                         android:id="@+id/inwardbtn4"
-                        android:layout_width="65dp"
+                        android:layout_width="0dp"
                         android:layout_height="45dp"
+                        android:layout_weight="1"
                         android:text="+100"/>
 
                 </LinearLayout>
@@ -263,16 +267,18 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/addMoreBtn"
-            android:layout_width="200dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_weight="1"
             android:background="@color/white"
             android:text="@string/add_more_txt"
             android:textSize="@dimen/size_20sp" />
 
         <Button
             android:id="@+id/updateBtn"
-            android:layout_width="217dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_weight="1"
             android:background="#730099"
             android:text="@string/finish_txt"
             android:textColor="@color/white"
