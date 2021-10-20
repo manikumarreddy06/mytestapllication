@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Labhyam</string>
     <string name="outward">Outward</string>
     <string name="Inward">inward</string>
@@ -41,8 +41,7 @@
     <string name="procurment_price_txt">Procurment Price</string>
     <string name="add_product_txt">Add Product</string>
     <string name="quantity_txt">Quantity</string>
-    <string name="procurent_price_txt">Procurent Price</string>
-    <string name="enter_procurent_price_here_txt">Enter Procurent Price here</string>
+    <string name="enter_procurent_price_here_txt">Enter Procurement Price here</string>
     <string name="add_txt">add</string>
     <string name="clear_txt">Clear</string>
     <string name="scan_the_barcode_txt">Scan the Barcode</string>
@@ -51,7 +50,7 @@
     <string name="checchi_sd_dsds_sdsds_txt">checchi sd dsds sdsds</string>
     <string name="checkout_txt">Checkout</string>
     <string name="select_variant_txt">Select Variant</string>
-    <string name="procurement_price_txt">Procurement Price</string>
+   // <string name="procurement_price_txt">Procurement Price</string>
     <string name="selling_price_txt">Selling Price</string>
     <string name="quantity_and_type_txt">quantity and type</string>
     <string name="test_txt">test</string>
@@ -108,8 +107,8 @@
     </string-array>
 
     <string-array name="manufactured_type">
-        <item>Buyer</item>
-        <item>Seller</item>
+        <item>Buy &amp; sell</item>
+        <item>Expense</item>
         <item>Manufactured</item>
 
 
@@ -118,4 +117,5 @@
 
     <string name="barcode_txt">Barcode</string>
     <string name="inventor_entry">Inventor_entry</string>
+    <string name="enter_buying_price">Enter buying price</string>
 </resources>
