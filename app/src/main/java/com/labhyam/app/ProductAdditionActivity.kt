@@ -15,7 +15,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 
 class ProductAdditionActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityProductadditionactivityBinding
+    private lateinit var binding:ActivityProductadditionactivityBinding
 
     private var selectedPosition=-1
     override fun onCreate(savedInstanceState: Bundle?) {

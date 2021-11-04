@@ -31,6 +31,4 @@ public class City implements Serializable
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
-
-
 }

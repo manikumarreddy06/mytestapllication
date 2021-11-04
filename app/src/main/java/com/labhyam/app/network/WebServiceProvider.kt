@@ -78,7 +78,7 @@ interface WebServiceProvider {
 
 
     @POST("api/login")
-    fun login(@Body data: JsonObject): Single<LoginResponseBean>
+    fun login( @Body data:JsonObject ): Single<LoginResponseBean>
 
 
 
