@@ -50,7 +50,8 @@
     <string name="checchi_sd_dsds_sdsds_txt">checchi sd dsds sdsds</string>
     <string name="checkout_txt">Checkout</string>
     <string name="select_variant_txt">Select Variant</string>
-   // <string name="procurement_price_txt">Procurement Price</string>
+    //
+    <string name="procurement_price_txt">Procurement Price</string>
     <string name="selling_price_txt">Selling Price</string>
     <string name="quantity_and_type_txt">quantity and type</string>
     <string name="test_txt">test</string>

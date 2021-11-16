@@ -17,7 +17,7 @@ import okhttp3.ResponseBody
 class ShareActivity:AppCompatActivity() {
     private lateinit var binding: ShareActivityBinding
 
-     private lateinit var phoneNumber:String
+    // private lateinit var phoneNumber:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ShareActivityBinding.inflate(layoutInflater)
