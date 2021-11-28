@@ -20,11 +20,11 @@ interface WebServiceProvider {
     companion object {
 
 
-//        private const val BASE_URL = "http://65.1.163.109:8081/" //production
+        private const val BASE_URL = "http://65.1.163.109:8081/" //production
 
         //DEV
-        private const val BASE_URL = "http://15.206.255.26:8080/"
-
+//        private const val BASE_URL = "http://15.206.255.26:8080/"
+//
 
         private val okHttpClient = OkHttpClient.Builder()
                 .readTimeout(60, TimeUnit.SECONDS)
