@@ -78,7 +78,7 @@ interface WebServiceProvider {
 
 
     @POST("api/login")
-    fun login(@Body data: JsonObject): Single<LoginResponseBean>
+    fun login( @Body data:JsonObject ): Single<LoginResponseBean>
 
 
 
@@ -153,6 +153,9 @@ interface WebServiceProvider {
 
     @GET("/api/stores/{storeId}")
     fun getStoresBycity(@Path("storeId") storeId: String): Single<BaseResponse>
+
+
+
 
 
 

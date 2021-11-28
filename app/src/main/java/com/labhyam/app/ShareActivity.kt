@@ -1,6 +1,7 @@
 package com.labhyam.app
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -15,17 +16,21 @@ import okhttp3.ResponseBody
 
 class ShareActivity:AppCompatActivity() {
     private lateinit var binding: ShareActivityBinding
+
+    // private lateinit var phoneNumber:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding=ShareActivityBinding.inflate(layoutInflater)
+        binding = ShareActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var orderId=intent.getStringExtra("orderId");
-
-        binding.btnShare.setOnClickListener(){
+        var orderId = intent.getStringExtra("orderId");
 
 
-            var message:String="bill details are http://15.206.255.26:8081/api/order/export/pdf/"+orderId
+        binding.btnShare.setOnClickListener() {
+
+
+            var message: String =
+                "bill details are http://15.206.255.26:8081/api/order/export/pdf/" + orderId
 
 
             var whatsappIntent = Intent(Intent.ACTION_SEND)
@@ -34,28 +39,47 @@ class ShareActivity:AppCompatActivity() {
             whatsappIntent.putExtra(Intent.EXTRA_TEXT, message);
             try {
                 startActivity(whatsappIntent);
-            }
-            catch (e:Exception){
+            } catch (e: Exception) {
 
-                Utils.toast("Whatsapp have not been installed.",this)
+                Utils.toast("Whatsapp have not been installed.", this)
             }
         }
 
 
 
-        binding.backButton.setOnClickListener(){
+        binding.btnHome2.setOnClickListener {
+            var message: String =
+                "bill details are http://15.206.255.26:8081/api/order/export/pdf/" + orderId
+
+                val uri = Uri.parse("smsto:")
+                val intent = Intent(Intent.ACTION_SENDTO, uri)
+                intent.putExtra(Intent.EXTRA_TEXT, message)
+                startActivity(intent)
+
+        try {
+                startActivity(intent)
+            } catch (e: Exception) {
+
+                Utils.toast("unable to launch messaging app", this)
+            }
+
+
+        }
+
+
+        binding.backButton.setOnClickListener() {
 
             Intent(this@ShareActivity, HomepageActivity::class.java).also {
-                it.flags= Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                 startActivity(it)
                 finish()
             }
         }
 
-        binding.btnHome.setOnClickListener(){
+        binding.btnHome.setOnClickListener() {
             Intent(this@ShareActivity, HomepageActivity::class.java).also {
-                it.flags= Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                 startActivity(it)
                 finish()
@@ -65,13 +89,13 @@ class ShareActivity:AppCompatActivity() {
     }
 
 
-
     private fun getOrderDetails() {
 
-        val storeId=
-            PreferenceManager.instance(this@ShareActivity).get(PreferenceManager.STORE_ID,"1").toString()
+        val storeId =
+            PreferenceManager.instance(this@ShareActivity).get(PreferenceManager.STORE_ID, "1")
+                .toString()
 
-        Utils.showDialog(this,"Loading")
+        Utils.showDialog(this, "Loading")
         var provider: WebServiceProvider =
             WebServiceProvider.retrofit.create(WebServiceProvider::class.java)
         provider.pdfGenerator()
@@ -83,7 +107,7 @@ class ShareActivity:AppCompatActivity() {
 
                 override fun onSuccess(response: ResponseBody) {
                     Utils.hideDialog()
-                   // FileUtils.writeResponseBodyToDisk(response,this@ShareActivity)
+                    // FileUtils.writeResponseBodyToDisk(response,this@ShareActivity)
 
                 }
 
@@ -96,3 +120,5 @@ class ShareActivity:AppCompatActivity() {
 
     }
 }
+
+

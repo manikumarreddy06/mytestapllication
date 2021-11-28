@@ -32,11 +32,15 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        binding.btnuseronboard.setOnClickListener {
+            Intent(this,UseronboardActivity::class.java).also {
+                startActivity(it)
+                finish()
+            }
+        }
 
 
-
-
-    }
+        }
 
     private fun doLogin(usernumber: Editable, userpassword: Editable) {
 
@@ -111,7 +115,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        //remaining fields
-    }
 
-}
+      }
+
+    }

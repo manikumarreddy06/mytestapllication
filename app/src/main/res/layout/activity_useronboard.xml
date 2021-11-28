@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".UseronboardActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:background="#730099"
+            android:gravity="center"
+            android:text="user onboard"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/margin_4dp">
+
+            <LinearLayout
+                android:id="@+id/containerSupervisor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/margin_4dp"
+                android:visibility="visible">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="City Name"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+
+                <Spinner
+                    android:id="@+id/etCityList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="Enter type of store"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:text=""
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="Store name"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+
+                <EditText
+                    android:id="@+id/etStorename"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_12dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="Enter store name"
+                    android:inputType="text"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:text="phone number"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+                <EditText
+                    android:id="@+id/etphonenum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="enter your mobile number here"
+                    android:maxLength="10"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:text=""
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="password"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+
+                <EditText
+                    android:id="@+id/etPassword1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="Enter your password"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:text=""
+                    android:inputType="text"
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="Owner"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+
+                <EditText
+                    android:id="@+id/etownername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="Enter owner name"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:text=""
+                    android:inputType="text"
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="Aadhar number"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+                <EditText
+                    android:id="@+id/etAadharnum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="Enter your Aadhar number"
+                    android:maxLength="12"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:text=""
+                    android:inputType="number"
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="Location"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+                <EditText
+                    android:id="@+id/etlocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="enter location"
+                    android:maxLength="12"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:text=""
+                    android:inputType="text"
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/activity_vertical_margin"-->
+<!--                    android:layout_marginRight="@dimen/activity_vertical_margin"-->
+<!--                    android:text="user type"-->
+<!--                    android:layout_marginTop="@dimen/margin_8dp"-->
+<!--                    android:textColor="@color/primaryText"-->
+<!--                    android:textSize="@dimen/size_16sp" />-->
+
+
+<!--                <Spinner-->
+<!--                    android:id="@+id/etUsertype"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/activity_vertical_margin"-->
+<!--                    android:layout_marginTop="@dimen/margin_6dp"-->
+<!--                    android:layout_marginRight="@dimen/activity_vertical_margin"-->
+<!--                    android:background="@drawable/shape_outline_rect_gray"-->
+<!--                    android:focusedByDefault="false"-->
+<!--                    android:hint="Enter type of store"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLength="10"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:minHeight="40dp"-->
+<!--                    android:padding="@dimen/margin_8dp"-->
+<!--                    android:text=""-->
+<!--                    android:textColor="@color/primaryText"-->
+<!--                    android:textColorHint="@color/subHeaderText"-->
+<!--                    android:textSize="@dimen/size_14sp" />-->
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:text="Store Type"
+                    android:layout_marginTop="@dimen/margin_8dp"
+                    android:textColor="@color/primaryText"
+                    android:textSize="@dimen/size_16sp" />
+
+
+                <EditText
+                    android:id="@+id/etStoreType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="@dimen/margin_6dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin"
+                    android:background="@drawable/shape_outline_rect_gray"
+                    android:focusedByDefault="false"
+                    android:hint="Enter StoreType"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:minHeight="40dp"
+                    android:padding="@dimen/margin_8dp"
+                    android:text=""
+                    android:inputType="text"
+                    android:textColor="@color/primaryText"
+                    android:textColorHint="@color/subHeaderText"
+                    android:textSize="@dimen/size_14sp" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/activity_vertical_margin"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginRight="@dimen/activity_vertical_margin">
+
+                    <Button
+                        android:id="@+id/btnadd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_margin="@dimen/margin_16dp"
+                        android:background="@android:color/transparent"
+                        android:text="@string/add_txt"
+                        android:textAllCaps="false"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/size_16sp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/btnCancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/margin_16dp"
+                        android:layout_toLeftOf="@+id/btnadd"
+                        android:background="@android:color/transparent"
+                        android:text="@string/clear_txt"
+                        android:textAllCaps="false"
+                        android:textColor="@color/theme_blue_color"
+                        android:textSize="@dimen/size_16sp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

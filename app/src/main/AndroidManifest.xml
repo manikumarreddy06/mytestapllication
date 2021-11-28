@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
         android:allowBackup="true"
@@ -20,31 +21,31 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.labhyam.app.StorelistActivity"></activity>
-
-        <activity android:name="com.labhyam.app.StoreCreationActivity"></activity>
-
-        <activity android:name="com.labhyam.app.ProductAdditionActivity" />
+        <activity android:name=".UseronboardActivity"></activity>
+        <activity android:name=".user_onboard" />
+        <activity android:name=".StorelistActivity" />
+        <activity android:name=".StoreCreationActivity" />
+        <activity android:name=".ProductAdditionActivity" />
         <activity
-            android:name="com.labhyam.app.MainActivity"
+            android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name="com.labhyam.app.ProfitActivity" />
-        <activity android:name="com.labhyam.app.outactivity" />
-        <activity android:name="com.labhyam.app.inventoryapprovalactivity" />
-        <activity android:name="com.labhyam.app.InventoryActivity" />
-        <activity android:name="com.labhyam.app.HomepageActivity" />
-        <activity android:name="com.labhyam.app.ProfitdetailsActivity" />
-        <activity android:name="com.labhyam.app.inward.InwardProductActivity" />
-        <activity android:name="com.labhyam.app.SplashActivity">
+        <activity android:name=".ProfitActivity" />
+        <activity android:name=".outactivity" />
+        <activity android:name=".inventoryapprovalactivity" />
+        <activity android:name=".InventoryActivity" />
+        <activity android:name=".HomepageActivity" />
+        <activity android:name=".ProfitdetailsActivity" />
+        <activity android:name=".inward.InwardProductActivity" />
+        <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.labhyam.app.ScannerActivity" />
-        <activity android:name="com.labhyam.app.inward.CheckoutActivity" />
-        <activity android:name="com.labhyam.app.ShareActivity" />
+        <activity android:name=".ScannerActivity" />
+        <activity android:name=".inward.CheckoutActivity" />
+        <activity android:name=".ShareActivity" />
     </application>
 
 </manifest>
