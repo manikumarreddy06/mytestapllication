@@ -143,7 +143,7 @@ class UseronboardActivity :AppCompatActivity() {
                                 Utils.hideDialog()
                                 if (t.isIsvalid()){
                                     Toast.makeText(this@UseronboardActivity, "store created successfully", Toast.LENGTH_SHORT).show()
-                                    Intent(this@UseronboardActivity, HomepageActivity::class.java).also {
+                                    Intent(this@UseronboardActivity, MainActivity::class.java).also {
                                         it.flags= Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                                         startActivity(it)
