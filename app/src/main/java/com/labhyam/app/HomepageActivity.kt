@@ -27,6 +27,20 @@ class HomepageActivity : AppCompatActivity() {
         } else {
             binding.llStoreUser.visibility = View.VISIBLE
             binding.llAdmin.visibility = View.GONE
+
+            if (!TextUtils.isEmpty(userType) && userType.equals(Constants.storeOwner, true)) {
+
+            }
+            else if (!TextUtils.isEmpty(userType) && userType.equals(Constants.executive, true)) {
+                binding.plBtn.visibility=View.GONE
+            }
+            else if (!TextUtils.isEmpty(userType) && userType.equals(Constants.Helper, true)) {
+                    binding.plBtn.visibility=View.GONE
+                    binding.invBtn.visibility=View.GONE
+            }
+
+
+
         }
 
         binding.tvUserName.text = "Welcome " + PreferenceManager.instance(this@HomepageActivity)
@@ -35,7 +49,7 @@ class HomepageActivity : AppCompatActivity() {
         binding.tvStoreName.text =
             PreferenceManager.instance(this@HomepageActivity).get(PreferenceManager.STORE_NAME, "")
 
-        binding.btn1.setOnClickListener {
+        binding.sellBtn.setOnClickListener {
             ProductUtils.instance(this).clear()
             ProductUtils.instance(this).isOutOrderTypeFlag = true
             Intent(this, ScannerActivity::class.java).also {
@@ -43,7 +57,7 @@ class HomepageActivity : AppCompatActivity() {
             }
         }
 
-        binding.btn2.setOnClickListener {
+        binding.buyBtn.setOnClickListener {
 
             ProductUtils.instance(this).clear()
             ProductUtils.instance(this).isOutOrderTypeFlag = false
@@ -51,12 +65,12 @@ class HomepageActivity : AppCompatActivity() {
                 startActivity(it)
             }
         }
-        binding.btn3.setOnClickListener {
+        binding.invBtn.setOnClickListener {
             Intent(this, InventoryActivity::class.java).also {
                 startActivity(it)
             }
         }
-        binding.btn4.setOnClickListener {
+        binding.plBtn.setOnClickListener {
             Intent(this, ProfitActivity::class.java).also {
                 startActivity(it)
             }

@@ -1,6 +1,7 @@
 package com.labhyam.app
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -37,6 +38,11 @@ class MainActivity : AppCompatActivity() {
                 startActivity(it)
                 finish()
             }
+        }
+        binding.supportcall.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:+918861565525")
+            startActivity(intent)
         }
 
 

@@ -118,5 +118,8 @@
 
     <string name="barcode_txt">Barcode</string>
     <string name="inventor_entry">Inventor_entry</string>
-    <string name="enter_buying_price">Enter buying price</string>
+    <string name="enter_buying_price" translatable="false">Enter buying price</string>
+
+
+    <string name="support_message" translatable="false"><u>Customer Support</u></string>
 </resources>
