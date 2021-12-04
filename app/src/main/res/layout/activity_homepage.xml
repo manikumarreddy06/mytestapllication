@@ -16,6 +16,7 @@
     android:orientation="vertical"
     tools:context=".HomepageActivity">
     <LinearLayout
+        android:id="@+id/llCards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/homepagedesign"
@@ -172,7 +173,20 @@
             </LinearLayout>
 
         </LinearLayout>
+
+
     </LinearLayout>
+    <TextView
+        android:id="@+id/supportcall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/support_message"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@id/llCards"
+       android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"/>
     <Button
           android:id="@+id/btnlogout"
         android:layout_width="match_parent"

@@ -2,6 +2,8 @@ package com.labhyam.app
 
 import android.R
 import android.content.Intent
+import android.net.Uri
+import android.net.Uri.*
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.View
@@ -117,6 +119,11 @@ class HomepageActivity : AppCompatActivity() {
                 Intent(this,StorelistActivity::class.java).also{
                     startActivity(it)
                 }
+        }
+        binding.supportcall.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = parse("tel:+918861565525")
+            startActivity(intent)
         }
 
     }

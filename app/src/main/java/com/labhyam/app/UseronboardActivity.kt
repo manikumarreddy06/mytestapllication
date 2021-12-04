@@ -127,7 +127,7 @@ class UseronboardActivity :AppCompatActivity() {
                 obj.addProperty("aadharNumber",etaadahrnum)
                 obj.addProperty("storeLocation",etlocation)
                 obj.addProperty("storeType", etStoreType)
-                obj.addProperty("userType", mUserList)
+                obj.addProperty("userType", "1")
                 obj.addProperty("createdby",""+ PreferenceManager.instance(this).get(
                     PreferenceManager.USER_ID,0L))
                 var provider: WebServiceProvider
