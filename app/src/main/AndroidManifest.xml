@@ -21,14 +21,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UseronboardActivity"></activity>
-        <activity android:name=".user_onboard" />
+        <activity android:name=".storeUserActivity"
+           android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UseronboardActivity" />
         <activity android:name=".StorelistActivity" />
         <activity android:name=".StoreCreationActivity" />
         <activity android:name=".ProductAdditionActivity" />
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+         />
         <activity android:name=".ProfitActivity" />
         <activity android:name=".outactivity" />
         <activity android:name=".inventoryapprovalactivity" />

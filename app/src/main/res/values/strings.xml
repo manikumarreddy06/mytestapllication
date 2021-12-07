@@ -122,4 +122,5 @@
 
 
     <string name="support_message" translatable="false"><u>Customer Support</u></string>
+    <string name="support">support</string>
 </resources>

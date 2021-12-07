@@ -125,6 +125,12 @@ class HomepageActivity : AppCompatActivity() {
             intent.data = parse("tel:+918861565525")
             startActivity(intent)
         }
+        binding.Storeusers.setOnClickListener {
+            Intent(this,storeUserActivity::class.java).also{
+                startActivity(it)
+            }
+        }
+
 
     }
 }

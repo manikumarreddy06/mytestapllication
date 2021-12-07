@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
@@ -21,39 +18,45 @@
         android:layout_height="wrap_content"
         android:background="@drawable/homepagedesign"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
                 android:text="@string/labhyam_txt"
                 android:textColor="@color/white"
-                android:textSize="35sp"
-                android:layout_marginLeft="40dp"/>
+                android:textSize="35sp" />
+
             <TextView
                 android:id="@+id/tvUserName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/username"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginTop="20dp"
                 android:layout_marginLeft="15dp"
-                android:textSize="20dp"/>
+                android:layout_marginTop="20dp"
+                android:text="@string/username"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tvStoreName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/userstore_name"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="15dp"
-                android:textSize="18sp"/>
+                android:layout_marginTop="20dp"
+                android:text="@string/userstore_name"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/llStoreUser"
             android:layout_width="match_parent"
@@ -93,8 +96,7 @@
                     android:background="@drawable/homepageinward"
                     android:text="Inventory Entry"
                     android:textColor="@color/white"
-                    android:textSize="20sp"
-                    />
+                    android:textSize="20sp"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -170,23 +172,40 @@
                     android:textColor="@color/white"
                     android:textSize="30sp"
                     />
+
+
             </LinearLayout>
 
         </LinearLayout>
 
-
     </LinearLayout>
-    <TextView
-        android:id="@+id/supportcall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/support_message"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_below="@id/llCards"
-       android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/black"/>
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/llCards"
+       android:layout_marginTop="5dp"
+       >
+       <TextView
+           android:id="@+id/Storeusers"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="StoreUsers"
+           android:textSize="20sp"
+           android:textStyle="bold"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="20dp"
+           android:textColor="@color/black"/>
+       <com.google.android.material.floatingactionbutton.FloatingActionButton
+           android:id="@+id/supportcall"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="bottom|end"
+           android:layout_toEndOf="@id/Storeusers"
+           android:layout_marginStart="50dp"
+           android:contentDescription="@string/support"
+           android:src="@drawable/fab_support" />
+   </RelativeLayout>
+
     <Button
           android:id="@+id/btnlogout"
         android:layout_width="match_parent"
@@ -197,6 +216,7 @@
         android:textColor="@color/white"
         android:text="@string/Logout"/>
 </RelativeLayout>
+
 
 
 
