@@ -19,7 +19,7 @@
             android:layout_height="50dp"
             android:background="#730099"
             android:gravity="center"
-            android:text="Store onboard"
+            android:text="Store user"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="18sp"
@@ -269,7 +269,7 @@
                     android:layout_marginRight="@dimen/activity_vertical_margin"
                     android:background="@drawable/shape_outline_rect_gray"
                     android:focusedByDefault="false"
-                    android:hint="Enter type of store"
+                    android:hint="usertype"
                     android:inputType="text"
                     android:maxLength="10"
                     android:maxLines="1"
@@ -279,8 +279,6 @@
                     android:textColor="@color/primaryText"
                     android:textColorHint="@color/subHeaderText"
                     android:textSize="@dimen/size_14sp" />
-
-
 
                 <TextView
                     android:layout_width="match_parent"

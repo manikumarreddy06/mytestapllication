@@ -10,4 +10,10 @@
         <item>4</item>
         <item>5</item>
     </string-array>
+   <!-- <string-array name="usertype">
+        <item>owner</item>
+        <item>storemanager</item>
+        <item>storehelper</item>
+
+    </string-array>-->
 </resources>
