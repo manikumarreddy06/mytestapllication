@@ -41,7 +41,6 @@
     <string name="procurment_price_txt">Procurment Price</string>
     <string name="add_product_txt">Add Product</string>
     <string name="quantity_txt">Quantity</string>
-    <string name="enter_procurent_price_here_txt">Enter Procurement Price here</string>
     <string name="add_txt">add</string>
     <string name="clear_txt">Clear</string>
     <string name="scan_the_barcode_txt">Scan the Barcode</string>
@@ -123,4 +122,5 @@
 
     <string name="support_message" translatable="false"><u>Customer Support</u></string>
     <string name="support">support</string>
+    <string name="enter_seliing_price">Enter seliing price</string>
 </resources>

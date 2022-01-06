@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        }
+    }
 
     private fun doLogin(usernumber: Editable, userpassword: Editable) {
 
@@ -101,6 +101,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun onsaveData(response: User) {
 
+
+
         var preferenceManager:PreferenceManager= PreferenceManager.instance(this,)
 
         preferenceManager.set(PreferenceManager.USER_NAME,response.username)
@@ -113,15 +115,13 @@ class MainActivity : AppCompatActivity() {
 
         preferenceManager.set(PreferenceManager.USER_TYPE,response.userTypeName)
 
-
-
-
         Intent(this,HomepageActivity::class.java).also {
             startActivity(it)
             finish()
         }
 
 
-      }
-
     }
+
+}
+
